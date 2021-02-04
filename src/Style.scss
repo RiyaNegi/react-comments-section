@@ -1,0 +1,48 @@
+/* add css module styles here (optional) */
+
+.section{
+  display: flex;
+  flex-direction: column;
+  width:70%;
+
+
+  .inputInfo{
+    display: flex;
+
+    .userImg{
+      display: flex;
+      width:5%;
+    }
+    .inputBox{
+      display: flex;
+      width:100%;
+
+
+      .postComment{
+        width:100%;
+        border: none;
+        border-bottom: 1px solid rgb(24, 24, 24);
+        text-decoration: none;
+        background-color: transparent;
+      }
+      .postComment:focus {
+        outline:none;
+        border-bottom: 2px solid rgb(14, 14, 14);
+      }
+    }
+    
+  }
+
+  .inputActions{
+    display: flex;
+    justify-content: flex-end;
+    .postBtn{
+
+    }
+
+    .cancelBtn{
+
+    }
+  }
+}
+
