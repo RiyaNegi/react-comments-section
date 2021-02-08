@@ -8,7 +8,6 @@ const InputField = () => {
     const handleChange = (e) => {
         setText(e.target.value)
     }
-    console.log("text->", text)
 
     return (
         <input

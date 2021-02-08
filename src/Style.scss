@@ -3,7 +3,7 @@
 .section{
   display: flex;
   flex-direction: column;
-  width:70%;
+  width:50%;
 
 
   .inputInfo{
@@ -36,12 +36,88 @@
   .inputActions{
     display: flex;
     justify-content: flex-end;
-    .postBtn{
+    margin-top: 12px;
 
+    .postBtn {
+      color: white;
+      text-align: center;
+      background-size: 200% auto;
+      font-weight:700;
+      border-radius:5px;
+      transition: 0.5s;
+      padding:6px 16px;
+      background-color: rgb(75, 204, 255);
+      border:none;
+      margin-right: 20px;
+
+      &:hover {
+        background-position: right center;
+      }
+
+      &:focus {
+        outline:0;
+      }
     }
 
-    .cancelBtn{
+    .cancelBtn {
+      color: rgb(226, 93, 31);
+      text-align: center;
+      background-size: 200% auto;
+      font-weight:700;
+      border-radius:5px;
+      transition: 0.5s;
+      padding:6px 10px;
+      border: 2px solid rgb(226, 93, 31);
 
+      &:hover {
+        background-position: right center;
+        background-color: rgb(226, 93, 31);
+      }
+
+      &:focus {
+        outline:0;
+      }
+    }
+
+  }  
+  
+}
+.displayComments{
+  margin-top: 18px;
+  margin-left: 38px;
+
+  .userInfo{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+
+    .commentsTwo{
+      display: flex;
+      margin-top: 6px;
+
+      .fullName{
+        display: flex;
+        margin-left: 10px;
+      }
+      .replyBtn{
+        background-color: transparent;
+        border:none;
+        color: gray;
+        outline:none;
+        font-weight: 600;
+        font-size:14px;
+        margin: 0px 5px!important;
+        width:70px;
+        padding: 5px;
+        border-radius: 4px;
+
+        &:hover{
+          outline:none;
+          background-color: rgba(160, 160, 160, 0.315);
+        }
+        &:focus {outline:0;}
+      }
+      
     }
   }
 }
