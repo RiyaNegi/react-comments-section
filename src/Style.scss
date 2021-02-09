@@ -52,6 +52,8 @@
 
       &:hover {
         background-position: right center;
+        cursor: pointer;
+
       }
 
       &:focus {
@@ -71,7 +73,8 @@
 
       &:hover {
         background-position: right center;
-        background-color: rgb(226, 93, 31);
+        cursor: pointer;
+
       }
 
       &:focus {

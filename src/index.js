@@ -1,13 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Style.scss'
 import InputField from './components/InputField'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReply } from '@fortawesome/free-solid-svg-icons'
 
-
-export const CommentSection = ({ authorImg, commentsArray, currentUser }) => {
+export const CommentSection = ({
+  authorImg,
+  commentsArray,
+  currentUser,
+  onSubmit
+}) => {
   const [comments, setComments] = useState(commentsArray)
-  console.log(commentsArray, currentUser)
+  useEffect(() => {
+    setComments(commentsArray)
+  }, [commentsArray])
+  console.log(comments)
+
+  const handleLibSubmit = (text) => {
+    // setComments([
+    //   ...comments,
+    //   {
+    //     userId: '02a',
+    //     avatarUrl: 'https://avatars.dicebear.com/4.5/api/bottts/Tanvi_Ai90.svg',
+    //     fullName: 'new',
+    //     text: text
+    //   }
+    // ])
+  }
+
   return (
     <div>
       <div className={styles.section}>
@@ -20,12 +40,8 @@ export const CommentSection = ({ authorImg, commentsArray, currentUser }) => {
             />
           </div>
           <div className={styles.inputBox}>
-            <InputField />
+            <InputField onSubmit={onSubmit} handleLibSubmit={handleLibSubmit} />
           </div>
-        </div>
-        <div className={styles.inputActions}>
-          <div className={styles.postBtn}>Post</div>
-          <div className={styles.cancelBtn}>Cancel</div>
         </div>
       </div>
       <div className={styles.displayComments}>
