@@ -1,12 +1,14 @@
 /* eslint-disable prettier/prettier */
-
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from '../Style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReply } from '@fortawesome/free-solid-svg-icons'
+import { ActionContext } from "./ActionContext"
 
-
+// const handleCancel = useContext(ActionContext)
 const CommentStructure = ({ i, reply }) => {
+    const actions = useContext(ActionContext)
+    console.log(actions.handleReply)
     return (
         <div className={styles.userInfo} style={reply && { marginLeft: 15 }} >
             <div>{i.text}</div>
@@ -20,7 +22,7 @@ const CommentStructure = ({ i, reply }) => {
                 </div>
                 <div className={styles.fullName}>{i.fullName} </div>
                 <div>
-                    <button className={styles.replyBtn}>
+                    <button className={styles.replyBtn} onClick={actions.handleReply}>
                         {' '}
                         <FontAwesomeIcon icon={faReply} size='1x' color='gray' /> Reply
                      </button>

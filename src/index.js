@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './Style.scss'
 import InputField from './components/InputField'
 import DisplayComments from './components/DisplayComments'
+import { ActionProvider } from './components/ActionContext'
 
 export const CommentSection = ({
   authorImg,
@@ -16,7 +17,7 @@ export const CommentSection = ({
   console.log(comments)
 
   return (
-    <div>
+    <ActionProvider>
       <div className={styles.section}>
         <div className={styles.inputInfo}>
           <div className={styles.userImg}>
@@ -34,6 +35,6 @@ export const CommentSection = ({
           <DisplayComments comments={comments} />
         </div>
       </div>
-    </div>
+    </ActionProvider>
   )
 }
