@@ -5,7 +5,7 @@ import React, { createContext } from "react";
 export const ActionContext = createContext()
 
 export const ActionProvider = ({ children }) => {
-    const handleReply = () => { console.log("reply called") }
+    const handleReply = () => { }
 
     const handleCancel = () => { console.log("cancel called") }
 
