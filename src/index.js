@@ -17,19 +17,10 @@ export const CommentSection = ({
   console.log(comments)
 
   return (
-    <ActionProvider>
+    <ActionProvider onSubmit={onSubmit}>
       <div className={styles.section}>
-        <div className={styles.inputInfo}>
-          <div className={styles.userImg}>
-            <img
-              src={authorImg}
-              style={{ width: 36, height: 36, borderRadius: 36 / 2 }}
-              alt='userIcon'
-            />
-          </div>
-          <div className={styles.inputBox}>
-            <InputField onSubmit={onSubmit} />
-          </div>
+        <div className={styles.inputBox}>
+          <InputField onSubmit={onSubmit} authorImg={authorImg} />
         </div>
         <div className={styles.displayComments}>
           <DisplayComments comments={comments} />

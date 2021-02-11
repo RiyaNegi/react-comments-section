@@ -4,16 +4,12 @@ import React, { createContext } from "react";
 
 export const ActionContext = createContext()
 
-export const ActionProvider = ({ children }) => {
-    const handleReply = () => { }
-
-    const handleCancel = () => { console.log("cancel called") }
+export const ActionProvider = ({ children, onSubmit }) => {
 
     return (
         <ActionContext.Provider
             value={{
-                handleReply: handleReply,
-                handleCancel: handleCancel
+                onSubmit: onSubmit
             }}
         >
             {children}

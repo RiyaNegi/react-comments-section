@@ -1,18 +1,21 @@
 [
   {
     "userId": "01a",
+    "comId": "012",
     "avatarUrl": "https://avatars.dicebear.com/4.5/api/bottts/Riya_GeS43.svg",
     "fullName": "Riya Negi",
     "text": "Hello there",
     "replies": [
       {
         "userId": "02a",
+        "comId": "013",
         "avatarUrl": "https://avatars.dicebear.com/4.5/api/bottts/Tanvi_Ai90.svg",
         "fullName": "tanvi N",
         "text": "great project"
       },
       {
         "userId": "01a",
+        "comId": "014",
         "avatarUrl": "https://avatars.dicebear.com/4.5/api/bottts/Riya_GeS43.svg",
         "fullName": "Riya Negi",
         "text": "thanks!"
@@ -21,12 +24,14 @@
   },
   {
     "userId": "02a",
+    "comId": "015",
     "avatarUrl": "https://avatars.dicebear.com/4.5/api/bottts/Tanvi_Ai90.svg",
     "fullName": "Tanvi N",
     "text": "Hello0oo0oo",
     "replies": [
       {
         "userId": "01b",
+        "comId": "016",
         "avatarUrl": "https://avatars.dicebear.com/4.5/api/bottts/Sayli_s5J0.svg",
         "fullName": "Chalmal",
         "text": "ssup!"
@@ -35,12 +40,14 @@
   },
   {
     "userId": "02b",
+    "comId": "017",
     "avatarUrl": "https://avatars.dicebear.com/4.5/api/bottts/Riya_GeS43.svg",
     "fullName": "Rihanna",
     "text": "kya bolti public!"
   },
   {
     "userId": "01c",
+    "comId": "018",
     "avatarUrl": "https://avatars.dicebear.com/4.5/api/bottts/Ankit_hbM0.svg",
     "fullName": "Beyonce",
     "text": "Ek number project!!!"

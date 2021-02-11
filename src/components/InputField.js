@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import styles from '../Style.scss'
 
-const InputField = ({ onSubmit, handleLibSubmit, handleCancel, cancellor }) => {
+const InputField = ({ onSubmit, handleLibSubmit, handleCancel, cancellor, authorImg }) => {
     const [text, setText] = useState("")
 
     const handleChange = (e) => {
@@ -10,7 +10,14 @@ const InputField = ({ onSubmit, handleLibSubmit, handleCancel, cancellor }) => {
     }
 
     return (
-        <form>
+        <form className={styles.form}>
+            <div className={styles.userImg}>
+                <img
+                    src={authorImg}
+                    style={{ width: 36, height: 36, borderRadius: 36 / 2 }}
+                    alt='userIcon'
+                />
+            </div>
             <input
                 className={styles.postComment}
                 type='text'
