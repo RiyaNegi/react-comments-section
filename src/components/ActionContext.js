@@ -4,12 +4,14 @@ import React, { createContext } from "react";
 
 export const ActionContext = createContext()
 
-export const ActionProvider = ({ children, onSubmit }) => {
+export const ActionProvider = ({ children, onSubmit, currentUser }) => {
 
     return (
         <ActionContext.Provider
             value={{
-                onSubmit: onSubmit
+                onSubmit: onSubmit,
+                userImg: currentUser.avatarUrl,
+                userId: currentUser.userId
             }}
         >
             {children}

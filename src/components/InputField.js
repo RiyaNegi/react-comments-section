@@ -9,6 +9,7 @@ const InputField = ({ onSubmit, handleLibSubmit, handleCancel, cancellor, author
         setText(e.target.value)
     }
 
+
     return (
         <form className={styles.form}>
             <div className={styles.userImg}>

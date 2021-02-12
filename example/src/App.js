@@ -7,12 +7,13 @@ const App = () => {
   const [comment, setComment] = useState(data)
   console.log('submit:', comment);
 
-  return <CommentSection currentUser="01a" commentsArray={comment} authorImg="https://avatars.dicebear.com/4.5/api/bottts/Riya_GeS43.svg"
+  return <CommentSection currentUser={{ userId: "01a", avatarUrl: "https://avatars.dicebear.com/4.5/api/bottts/Riya_GeS43.svg" }} commentsArray={comment}
     onSubmit={text => {
       if (text.length > 0) {
         setComment([...comment,
         {
-          userId: '02a',
+          userId: '02v',
+          comId: "123",
           avatarUrl: 'https://avatars.dicebear.com/4.5/api/bottts/Tanvi_Ai90.svg',
           fullName: 'new',
           text: text

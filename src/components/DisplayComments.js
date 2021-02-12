@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReply } from '@fortawesome/free-solid-svg-icons'
 import InputField from "./InputField"
 import { ActionContext } from "./ActionContext"
-// const handleCancel = useContext(ActionContext)
 const CommentStructure = ({ i, reply, handleReply }) => {
     return (
         <div className={styles.userInfo} style={reply && { marginLeft: 15 }} >
@@ -49,10 +48,19 @@ const DisplayComments = ({ comments }) => {
         <div >
             {comments.map((i, index) => (
                 <div key={i.comId} >
-                    {replies.filter(id => id === i.comId).length === 0 ? <CommentStructure i={i} handleReply={handleReply} /> : <InputField handleCancel={handleCancel} cancellor={i.comId} onSubmit={actions.onSubmit} />
+                    <CommentStructure i={i} handleReply={handleReply} />
+                    {replies.filter(id => id === i.comId).length !== 0
+                        &&
+                        <InputField handleCancel={handleCancel} cancellor={i.comId} onSubmit={actions.onSubmit} authorImg={actions.userImg} />
                     }
                     <div className={styles.replySection}>
-                        {i.replies && i.replies.map((i, index) => replies.filter(id => id === i.comId).length === 0 ? <CommentStructure i={i} key={i.comId} reply handleReply={handleReply} /> : <InputField handleCancel={handleCancel} cancellor={i.comId} onSubmit={actions.onSubmit} />
+                        {i.replies && i.replies.map((i, index) => (
+                            <div key={i.comId} >
+                                <CommentStructure i={i} reply handleReply={handleReply} />
+                                { replies.filter(id => id === i.comId).length !== 0 &&
+                                    <InputField handleCancel={handleCancel} cancellor={i.comId} onSubmit={actions.onSubmit} authorImg={actions.userImg} />
+                                }
+                            </div>)
                         )}
                     </div>
                 </div>
