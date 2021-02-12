@@ -1,20 +1,23 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from '../Style.scss'
+import { ActionContext } from './ActionContext'
 
-const InputField = ({ onSubmit, handleLibSubmit, handleCancel, cancellor, authorImg }) => {
+const InputField = ({ cancellor, parentId, child }) => {
     const [text, setText] = useState("")
 
     const handleChange = (e) => {
         setText(e.target.value)
     }
 
+    const actions = useContext(ActionContext)
+
 
     return (
         <form className={styles.form}>
             <div className={styles.userImg}>
                 <img
-                    src={authorImg}
+                    src={actions.userImg}
                     style={{ width: 36, height: 36, borderRadius: 36 / 2 }}
                     alt='userIcon'
                 />
@@ -28,8 +31,8 @@ const InputField = ({ onSubmit, handleLibSubmit, handleCancel, cancellor, author
                 onChange={handleChange}
             />
             <div className={styles.inputActions}>
-                <div className={styles.postBtn} onClick={() => { handleLibSubmit(text); onSubmit(text) }}>Post</div>
-                <div className={styles.cancelBtn} onClick={() => handleCancel(cancellor)}>Cancel</div>
+                <div className={styles.postBtn} onClick={() => { actions.handleCancel(cancellor); actions.onSubmit(text, parentId, child && child) }}>Post</div>
+                <div className={styles.cancelBtn} onClick={() => actions.handleCancel(cancellor)}>Cancel</div>
             </div>
         </form>
 

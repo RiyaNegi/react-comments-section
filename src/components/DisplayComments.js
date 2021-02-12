@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import styles from '../Style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReply } from '@fortawesome/free-solid-svg-icons'
@@ -32,33 +32,21 @@ const CommentStructure = ({ i, reply, handleReply }) => {
 const DisplayComments = ({ comments }) => {
 
     const actions = useContext(ActionContext)
-
-    const [replies, setReplies] = useState([])
-    const handleReply = (id) => {
-        setReplies([...replies, id])
-    }
-    const handleCancel = (id) => {
-        const list = [...replies]
-        const newList = list.filter(i => i !== id)
-        setReplies(newList)
-    }
-
-    console.log(replies)
     return (
         <div >
             {comments.map((i, index) => (
                 <div key={i.comId} >
-                    <CommentStructure i={i} handleReply={handleReply} />
-                    {replies.filter(id => id === i.comId).length !== 0
+                    <CommentStructure i={i} handleReply={actions.handleReply} />
+                    {actions.replies.filter(id => id === i.comId).length !== 0
                         &&
-                        <InputField handleCancel={handleCancel} cancellor={i.comId} onSubmit={actions.onSubmit} authorImg={actions.userImg} />
+                        <InputField cancellor={i.comId} parentId={i.comId} />
                     }
                     <div className={styles.replySection}>
-                        {i.replies && i.replies.map((i, index) => (
-                            <div key={i.comId} >
-                                <CommentStructure i={i} reply handleReply={handleReply} />
-                                { replies.filter(id => id === i.comId).length !== 0 &&
-                                    <InputField handleCancel={handleCancel} cancellor={i.comId} onSubmit={actions.onSubmit} authorImg={actions.userImg} />
+                        {i.replies && i.replies.map((a, index) => (
+                            <div key={a.comId} >
+                                <CommentStructure i={a} reply handleReply={actions.handleReply} />
+                                { actions.replies.filter(id => id === a.comId).length !== 0 &&
+                                    <InputField cancellor={a.comId} parentId={i.comId} child />
                                 }
                             </div>)
                         )}
