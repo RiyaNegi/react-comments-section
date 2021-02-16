@@ -57,6 +57,7 @@
     "jquery": "^3.5.1",
     "node-sass": "^5.0.0",
     "popper.js": "^1.16.1",
-    "react-uuid": "^1.0.2"
+    "react-uuid": "^1.0.2",
+    "reactjs-popup": "^2.0.4"
   }
 }
