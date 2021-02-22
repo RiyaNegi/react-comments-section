@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from '../Style.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReply, faEllipsisV } from '@fortawesome/free-solid-svg-icons'
@@ -8,8 +8,7 @@ import { ActionContext } from "./ActionContext"
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-
-const CommentStructure = ({ i, reply, handleReply }) => {
+const CommentStructure = ({ i, reply, handleReply, handleEdit }) => {
     const actions = useContext(ActionContext)
 
     return (
@@ -33,19 +32,19 @@ const CommentStructure = ({ i, reply, handleReply }) => {
                     </div>
                 </div>
             </div>
-            <div className={styles.userActions}>
+            <div className={styles.userActions} >
                 {actions.userId === i.userId &&
                     <Popup
                         role="tooltip"
                         trigger={<button className={styles.actionsBtn}>
-                            <FontAwesomeIcon icon={faEllipsisV} size='1x' color='#a5a5a5' />
+                            <FontAwesomeIcon icon={faEllipsisV} size='1x' color='#b9b9b9' />
                         </button>}
                         position="right center"
                     >
-                        <ul className={styles.actionsDiv}>
-                            <li> edit</li>
-                            <li> delete</li>
-                        </ul>
+                        <div className={styles.actionDiv} >
+                            <div><button className={styles.editBtn} onClick={() => handleEdit(i.comId)}> edit</button></div>
+                            <div><button className={styles.deleteBtn}> delete</button></div>
+                        </div>
                     </Popup>
                 }
             </div>
@@ -54,13 +53,24 @@ const CommentStructure = ({ i, reply, handleReply }) => {
 }
 
 const DisplayComments = ({ comments }) => {
+    const [edit, setEdit] = useState([])
 
+    const handleEdit = (id) => {
+        setEdit([...edit, id])
+    }
+    const handleCancelEdit = (id) => {
+        const list = [...edit]
+        const newList = list.filter(i => i !== id)
+        setEdit(newList)
+    }
     const actions = useContext(ActionContext)
     return (
         <div >
             {comments.map((i, index) => (
                 <div key={i.comId} >
-                    <CommentStructure i={i} handleReply={actions.handleReply} />
+                    {edit.filter(id => id === i.comId).length !== 0 ? <InputField cancellor={i.comId} value={i.text} handleCancelEdit={handleCancelEdit} edit /> :
+                        <CommentStructure i={i} handleReply={actions.handleReply} handleEdit={handleEdit} />
+                    }
                     {actions.replies.filter(id => id === i.comId).length !== 0
                         &&
                         <InputField cancellor={i.comId} parentId={i.comId} />
@@ -68,7 +78,9 @@ const DisplayComments = ({ comments }) => {
                     <div className={styles.replySection}>
                         {i.replies && i.replies.map((a, index) => (
                             <div key={a.comId} >
-                                <CommentStructure i={a} reply handleReply={actions.handleReply} />
+                                {edit.filter(id => id === a.comId).length !== 0 ?
+                                    <InputField cancellor={a.comId} value={a.text} handleCancelEdit={handleCancelEdit} edit parentId={i.comId} />
+                                    : <CommentStructure i={a} reply handleReply={actions.handleReply} handleEdit={handleEdit} />}
                                 { actions.replies.filter(id => id === a.comId).length !== 0 &&
                                     <InputField cancellor={a.comId} parentId={i.comId} child />
                                 }

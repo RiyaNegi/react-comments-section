@@ -130,31 +130,24 @@
     }
     .userActions{
       margin-top: 20px;
-
+     
       .actionsBtn{
         background-color: transparent;
         border: none;
-        padding: 4px;
+        padding: 6px 12px;
+        border-radius: 50%;
+        cursor: pointer;
 
         &:hover{
           outline:none;
-          background-color: rgba(160, 160, 160, 0.315);
+          background-color: #dbdbdb5d;
         }
         &:focus {outline:0;}
-
-        .actionDiv{
-          font-size: 10.5px;
-      font-family: 'Montserrat';
-      padding: 5px;
-      list-style: none;
-      background-color: #c4c4c4;
-      box-shadow: 3px 3px 3px #00000029;
-        }
+        
       }
-
+     
     }
   }
-
   
   .replySection{
     margin-left: 35px;
@@ -163,4 +156,22 @@
   
 }
 
+
+.actionDiv{
+  width:0px !important;
+  
+  .editBtn{
+    background-color: transparent;
+    outline:none;
+    border:none;
+    cursor: pointer;
+  }
+  .deleteBtn{
+    background-color: transparent;
+    outline:none;
+    border:none;
+    cursor: pointer;
+
+  }
+}
 

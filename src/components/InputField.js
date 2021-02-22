@@ -1,18 +1,23 @@
 /* eslint-disable prettier/prettier */
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styles from '../Style.scss'
 import { ActionContext } from './ActionContext'
 
-const InputField = ({ cancellor, parentId, child }) => {
+const InputField = ({ cancellor, parentId, child, value, handleCancelEdit, edit }) => {
     const [text, setText] = useState("")
 
     const handleChange = (e) => {
         setText(e.target.value)
     }
 
+    useEffect(() => {
+        setText(value)
+    }, [value]);
+
+
     const actions = useContext(ActionContext)
 
-
+    console.log("edit", edit)
     return (
         <form className={styles.form}>
             <div className={styles.userImg}>
@@ -31,10 +36,20 @@ const InputField = ({ cancellor, parentId, child }) => {
                 onChange={handleChange}
             />
             <div className={styles.inputActions}>
-                <div className={styles.postBtn} onClick={() => { actions.handleCancel(cancellor); actions.onSubmit(text, parentId, child && child) }}>Post</div>
-                <div className={styles.cancelBtn} onClick={() => actions.handleCancel(cancellor)}>Cancel</div>
+                <div className={styles.postBtn}
+                    onClick={() =>
+                        edit === true ? (
+                            actions.onEdit(cancellor, text, parentId),
+                            handleCancelEdit(cancellor)
+                        ) : (
+                                actions.onSubmit(text, parentId, child && child),
+                                (actions.handleCancel(cancellor))
+                            )
+                    }>
+                    Post</div>
+                <div className={styles.cancelBtn} onClick={() => handleCancelEdit ? handleCancelEdit(cancellor) : actions.handleCancel(cancellor)}>Cancel</div>
             </div>
-        </form>
+        </form >
 
     )
 }

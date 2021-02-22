@@ -7,8 +7,6 @@ import uuid from 'react-uuid'
 
 const App = () => {
   const [comment, setComment] = useState(data)
-  console.log('submit:', comment);
-  console.log('some:', comment[2]);
 
   return <CommentSection currentUser={{ userId: "01a", avatarUrl: "https://avatars.dicebear.com/4.5/api/bottts/Riya_GeS43.svg" }} commentsArray={comment}
     onSubmit={(text, parentId, child) => {
@@ -16,7 +14,7 @@ const App = () => {
         if (!parentId && !child) {
           setComment([...comment,
           {
-            userId: uuid(),
+            userId: "01a",
             comId: uuid(),
             avatarUrl: 'https://avatars.dicebear.com/4.5/api/bottts/Tanvi_Ai90.svg',
             fullName: 'new',
@@ -29,7 +27,7 @@ const App = () => {
           const newList = [...comment]
           let index = newList.findIndex(x => x.comId === parentId)
           newList[index].replies.push({
-            userId: uuid(),
+            userId: "01a",
             comId: uuid(),
             avatarUrl: 'https://avatars.dicebear.com/4.5/api/bottts/Tanvi_Ai90.svg',
             fullName: 'new',
@@ -43,7 +41,7 @@ const App = () => {
           let index = newList.findIndex(x => x.comId === parentId)
           let newReplies = newList[index].replies === undefined ? [] : [...newList[index].replies]
           newReplies.push({
-            userId: uuid(),
+            userId: "01a",
             comId: uuid(),
             avatarUrl: 'https://avatars.dicebear.com/4.5/api/bottts/Tanvi_Ai90.svg',
             fullName: 'new',
@@ -54,7 +52,22 @@ const App = () => {
           return
         }
       }
-    }} />
+    }} editText={(id, text, parentId) => {
+      if (parentId === undefined) {
+        let newList = [...comment]
+        let index = newList.findIndex(x => x.comId === id)
+        newList[index].text = text
+        setComment(newList)
+      }
+      else if (parentId !== undefined) {
+        let newList = [...comment]
+        let index = newList.findIndex(x => x.comId === parentId)
+        let replyIndex = newList[index].replies.findIndex(i => i.comId === id)
+        newList[index].replies[replyIndex].text = text
+        setComment(newList)
+      }
+    }
+    } />
 }
 
 export default App
