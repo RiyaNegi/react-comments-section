@@ -4,7 +4,7 @@ import React, { createContext, useState } from "react";
 
 export const ActionContext = createContext()
 
-export const ActionProvider = ({ children, onSubmit, currentUser, onEdit }) => {
+export const ActionProvider = ({ children, onSubmit, currentUser, onEdit, onDelete }) => {
 
     const [replies, setReplies] = useState([])
     const handleReply = (id) => {
@@ -26,7 +26,8 @@ export const ActionProvider = ({ children, onSubmit, currentUser, onEdit }) => {
                 handleCancel: handleCancel,
                 replies: replies,
                 setReplies: setReplies,
-                onEdit: onEdit
+                onEdit: onEdit,
+                onDelete: onDelete
             }}
         >
             {children}

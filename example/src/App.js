@@ -67,6 +67,20 @@ const App = () => {
         setComment(newList)
       }
     }
+    } deleteText={(id, parentId) => {
+      if (parentId === undefined) {
+        let newList = [...comment]
+        let filter = newList.filter(x => x.comId !== id)
+        setComment(filter)
+      }
+      else if (parentId !== undefined) {
+        let newList = [...comment]
+        let index = newList.findIndex(x => x.comId === parentId)
+        let filter = newList[index].replies.filter(x => x.comId !== id)
+        newList[index].replies = filter
+        setComment(newList)
+      }
+    }
     } />
 }
 

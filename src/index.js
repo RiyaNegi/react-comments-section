@@ -8,7 +8,8 @@ export const CommentSection = ({
   commentsArray,
   currentUser,
   onSubmit,
-  editText
+  editText,
+  deleteText
 }) => {
   const [comments, setComments] = useState(commentsArray)
   useEffect(() => {
@@ -20,6 +21,7 @@ export const CommentSection = ({
       onSubmit={onSubmit}
       currentUser={currentUser}
       onEdit={editText}
+      onDelete={deleteText}
     >
       <div className={styles.section}>
         <div className={styles.inputBox}>
