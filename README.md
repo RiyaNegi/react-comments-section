@@ -154,12 +154,6 @@ currentUser={{ userId: userId, avatarUrl: avatarUrl }}
 ]
 ```
 
-  >  #### Usage
-  >where `comment` is a state
-  >```
-   > commentsArray={comment}
-    >```
-
 ### onSubmit
 
  > func | require
