@@ -21,8 +21,6 @@ const InputField = ({
   }, [value])
 
   const actions = useContext(ActionContext)
-
-  console.log('edit', edit)
   return (
     <form className={styles.form}>
       <div className={styles.userImg}>
@@ -41,7 +39,7 @@ const InputField = ({
         onChange={handleChange}
       />
       <div className={styles.inputActions}>
-        <div
+        <button
           className={styles.postBtn}
           onClick={() =>
             edit === true
@@ -50,19 +48,28 @@ const InputField = ({
               : (actions.onSubmit(text, parentId, child && child),
                 actions.handleCancel(cancellor))
           }
-        >
-          Post
-        </div>
-        <div
-          className={styles.cancelBtn}
-          onClick={() =>
-            handleCancelEdit
-              ? handleCancelEdit(cancellor)
-              : actions.handleCancel(cancellor)
+          type='button'
+          disabled={!text}
+          style={
+            !text
+              ? { backgroundColor: '#84dcff' }
+              : { backgroundColor: '#30c3fd' }
           }
         >
-          Cancel
-        </div>
+          Post
+        </button>
+        {(text || parentId) && (
+          <button
+            className={styles.cancelBtn}
+            onClick={() =>
+              handleCancelEdit
+                ? handleCancelEdit(cancellor)
+                : actions.handleCancel(cancellor)
+            }
+          >
+            Cancel
+          </button>
+        )}
       </div>
     </form>
   )

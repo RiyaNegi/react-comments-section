@@ -3,15 +3,21 @@ import data from "./data.json"
 import { CommentSection } from 'react-comments'
 import 'react-comments/dist/index.css'
 import uuid from 'react-uuid'
+import "./App.css"
 
 
 const App = () => {
   const [comment, setComment] = useState(data)
   const userId = "01a"
-  const avatarUrl = "https://avatars.dicebear.com/4.5/api/bottts/Riya_GeS43.svg"
+  const avatarUrl = "https://ui-avatars.com/api/name=Riya&background=random"
   const name = "xyz"
+  let count = 0
+  comment.map(i => {count+=1; i.replies && i.replies.map(i=> count+=1)} )
 
-  return <CommentSection currentUser={{ userId: userId, avatarUrl: avatarUrl }} commentsArray={comment}
+  return <div className="commentSection">
+<div className="header">{count} Comments</div>
+
+<CommentSection currentUser={{ userId: userId, avatarUrl: avatarUrl }} commentsArray={comment}
     onSubmit={(text, parentId, child) => {
       if (text.length > 0) {
         if (!parentId && !child) {
@@ -85,6 +91,7 @@ const App = () => {
       }
     }
     } />
+    </div>
 }
 
 export default App

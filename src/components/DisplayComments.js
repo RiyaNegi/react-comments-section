@@ -21,7 +21,10 @@ const CommentStructure = ({ i, reply, handleReply, handleEdit, parentId }) => {
 
   return (
     <div className={styles.halfDiv}>
-      <div className={styles.userInfo} style={reply && { marginLeft: 15 }}>
+      <div
+        className={styles.userInfo}
+        style={reply && { marginLeft: 15, marginTop: '6px' }}
+      >
         <div>{i.text}</div>
         <div className={styles.commentsTwo}>
           <div>

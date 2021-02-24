@@ -6,7 +6,6 @@
   width:50%;
     
   .inputBox{
-    display: flex;
     width:100%;
   }  
 
@@ -14,6 +13,7 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 12px;
+    margin-left: 15px;
 
     .postBtn {
       color: white;
@@ -23,9 +23,9 @@
       border-radius:5px;
       transition: 0.5s;
       padding:6px 16px;
-      background-color: rgb(75, 204, 255);
+      background-color: #84dcff;
       border:none;
-      margin-right: 20px;
+      margin-right: 10px;
 
       &:hover {
         background-position: right center;
@@ -39,14 +39,14 @@
     }
 
     .cancelBtn {
-      color: rgb(226, 93, 31);
+      color: rgb(139, 139, 139);
       text-align: center;
       background-size: 200% auto;
       font-weight:700;
       border-radius:5px;
       transition: 0.5s;
       padding:6px 10px;
-      border: 2px solid rgb(226, 93, 31);
+      border: 2px solid rgb(139, 139, 139);
 
       &:hover {
         background-position: right center;
@@ -69,18 +69,25 @@
     .userImg{
       display: flex;
       width:10%;
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
     }
 
     .postComment{
-      width:100%;
+      width:80%;
       border: none;
       border-bottom: 1px solid rgb(24, 24, 24);
       text-decoration: none;
       background-color: transparent;
+      margin-left: 4px;
     }
     .postComment:focus {
       outline:none;
       border-bottom: 2px solid rgb(14, 14, 14);
+    }
+    .postComment::placeholder{
+      margin-top: -2px;
     }
   }
 
@@ -97,11 +104,11 @@
     .userInfo{
       display: flex;
       flex-direction: column;
-      margin-bottom: 16px;
+      margin-top: 16px;
   
       .commentsTwo{
         display: flex;
-        margin-top: 6px;
+        margin-top: 8px;
   
         .fullName{
           display: flex;
@@ -152,6 +159,7 @@
   .replySection{
     margin-left: 35px;
     border-left: 2px solid rgb(199, 199, 199);
+    margin-top: 6px;
   }
   
 }
