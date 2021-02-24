@@ -7,17 +7,20 @@ import uuid from 'react-uuid'
 
 const App = () => {
   const [comment, setComment] = useState(data)
+  const userId = "01a"
+  const avatarUrl = "https://avatars.dicebear.com/4.5/api/bottts/Riya_GeS43.svg"
+  const name = "xyz"
 
-  return <CommentSection currentUser={{ userId: "01a", avatarUrl: "https://avatars.dicebear.com/4.5/api/bottts/Riya_GeS43.svg" }} commentsArray={comment}
+  return <CommentSection currentUser={{ userId: userId, avatarUrl: avatarUrl }} commentsArray={comment}
     onSubmit={(text, parentId, child) => {
       if (text.length > 0) {
         if (!parentId && !child) {
           setComment([...comment,
           {
-            userId: "01a",
+            userId: userId,
             comId: uuid(),
-            avatarUrl: 'https://avatars.dicebear.com/4.5/api/bottts/Tanvi_Ai90.svg',
-            fullName: 'new',
+            avatarUrl: avatarUrl,
+            fullName: name,
             text: text
           }]
           );
@@ -27,10 +30,10 @@ const App = () => {
           const newList = [...comment]
           let index = newList.findIndex(x => x.comId === parentId)
           newList[index].replies.push({
-            userId: "01a",
+            userId: userId,
             comId: uuid(),
-            avatarUrl: 'https://avatars.dicebear.com/4.5/api/bottts/Tanvi_Ai90.svg',
-            fullName: 'new',
+            avatarUrl: avatarUrl,
+            fullName: name,
             text: text
           })
           setComment(newList)
@@ -41,10 +44,10 @@ const App = () => {
           let index = newList.findIndex(x => x.comId === parentId)
           let newReplies = newList[index].replies === undefined ? [] : [...newList[index].replies]
           newReplies.push({
-            userId: "01a",
+            userId: userId,
             comId: uuid(),
-            avatarUrl: 'https://avatars.dicebear.com/4.5/api/bottts/Tanvi_Ai90.svg',
-            fullName: 'new',
+            avatarUrl: avatarUrl,
+            fullName: name,
             text: text
           })
           newList[index].replies = newReplies
