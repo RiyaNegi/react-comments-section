@@ -1,10 +1,12 @@
 # react-comments
 
-`react-comments` is a simple React comment section component that help you create comments section, similar to youtube or instagram coomments section for your React App.
+`react-comments` is a simple but multi-functional react comment section component that helps you create comments section similar to youtube or instagram for your React App.
 `react-comments` is very useful for react beginners who want a comment section in their project. This library will give a fully functional comment section with the following features: 
   - User can reply to comments  
   - User can edit his/her comments
   - User can delete his/her comments
+
+live demo of the library -> https://riyanegi.github.io/react-comments/
 
 [![NPM](https://img.shields.io/npm/v/react-comments.svg)](https://www.npmjs.com/package/react-comments) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
