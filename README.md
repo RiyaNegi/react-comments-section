@@ -11,7 +11,7 @@
 ## Install
 
 ```bash
-npm install --save react-comments
+npm i react-comments-section
 ```
 
 ## Usage
