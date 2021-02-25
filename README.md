@@ -93,13 +93,16 @@ export default App
 All the props that you will require for using this library
 
 ## currentUser
+This prop is required to give currently logged in user's details.
 
  > object | require
 ```jsx
-currentUser={{ userId: userId, avatarUrl: avatarUrl }}
+currentUser={{ userId: userId, avatarUrl: avatarUrl, name:name}}
 ```
 
 ## commentsArray
+This prop is required to give an array of comments in this format strictly.
+
 
  > JSON Array | require
 ```jsx
@@ -137,6 +140,8 @@ currentUser={{ userId: userId, avatarUrl: avatarUrl }}
 ]
 ```
 ## setComment
+This prop is required to give a set-state function to keep the parent component's state updated.
+
 
  > func | require
 ```jsx
