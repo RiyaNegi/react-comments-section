@@ -6,7 +6,7 @@
   - User can edit his/her comments
   - User can delete his/her comments
 
-live demo of the library -> https://riyanegi.github.io/react-comments/
+live demo of the library -> https://riyanegi.github.io/react-comments-section/
 
 [![NPM](https://img.shields.io/npm/v/react-comments.svg)](https://www.npmjs.com/package/react-comments) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
