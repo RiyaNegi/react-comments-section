@@ -8,7 +8,8 @@ const InputField = ({
   child,
   value,
   handleCancelEdit,
-  edit
+  edit,
+  main
 }) => {
   const [text, setText] = useState('')
 
@@ -22,11 +23,18 @@ const InputField = ({
 
   const actions = useContext(ActionContext)
   return (
-    <form className={styles.form}>
+    <form
+      className={styles.form}
+      style={
+        !child && !edit && main === undefined
+          ? { marginLeft: 36 }
+          : { marginLeft: 8 }
+      }
+    >
       <div className={styles.userImg}>
         <img
           src={actions.userImg}
-          style={{ width: 36, height: 36, borderRadius: 36 / 2 }}
+          style={{ width: 38, height: 38, borderRadius: 38 / 2 }}
           alt='userIcon'
         />
       </div>
@@ -44,9 +52,11 @@ const InputField = ({
           onClick={() =>
             edit === true
               ? (actions.onEdit(cancellor, text, parentId),
-                handleCancelEdit(cancellor))
+                handleCancelEdit(cancellor),
+                setText(''))
               : (actions.onSubmit(text, parentId, child && child),
-                actions.handleCancel(cancellor))
+                actions.handleCancel(cancellor),
+                setText(''))
           }
           type='button'
           disabled={!text}

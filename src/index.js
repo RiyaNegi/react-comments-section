@@ -4,13 +4,7 @@ import InputField from './components/InputField'
 import DisplayComments from './components/DisplayComments'
 import { ActionProvider } from './components/ActionContext'
 
-export const CommentSection = ({
-  commentsArray,
-  currentUser,
-  onSubmit,
-  editText,
-  deleteText
-}) => {
+export const CommentSection = ({ commentsArray, currentUser, setComment }) => {
   const [comments, setComments] = useState(commentsArray)
   useEffect(() => {
     setComments(commentsArray)
@@ -18,14 +12,13 @@ export const CommentSection = ({
 
   return (
     <ActionProvider
-      onSubmit={onSubmit}
       currentUser={currentUser}
-      onEdit={editText}
-      onDelete={deleteText}
+      setComment={setComment}
+      comments={comments}
     >
       <div className={styles.section}>
         <div className={styles.inputBox}>
-          <InputField onSubmit={onSubmit} authorImg={currentUser.avatarUrl} />
+          <InputField authorImg={currentUser.avatarUrl} main />
         </div>
         <div className={styles.displayComments}>
           <DisplayComments comments={comments} />

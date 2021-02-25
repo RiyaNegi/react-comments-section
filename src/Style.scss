@@ -12,7 +12,7 @@
   .inputActions{
     display: flex;
     justify-content: flex-end;
-    margin-top: 12px;
+    margin-top: 20px;
     margin-left: 15px;
 
     .postBtn {
@@ -66,12 +66,14 @@
 
   .form{
     display: flex;
+    background-color: rgb(243, 243, 243);
+    padding: 20px 10px;
+    border-radius: 8px;
     .userImg{
       display: flex;
       width:10%;
       justify-content: center;
       align-items: center;
-      padding: 8px;
     }
 
     .postComment{
