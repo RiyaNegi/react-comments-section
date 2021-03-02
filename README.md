@@ -10,6 +10,8 @@ live demo of the library -> https://riyanegi.github.io/react-comments-section/
 
 [![NPM](https://img.shields.io/npm/v/react-comments.svg)](https://www.npmjs.com/package/react-comments) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+![commentbox](https://github.com/RiyaNegi/react-comments-section/blob/main/example/userlogin.png)
+
 ## Install
 
 ```bash
@@ -89,8 +91,11 @@ class App extends PureComponent{
 export default App
 
 ```
-###Display comments in the basis of user authentication
-You can optionally add a signin URL and Signup URL, to 
+### Display comments on the basis of user authentication
+If the prop currentUser is undefined, the comment section refers to the signinUrl or signupUrl props to redirect the user to the given URLs
+
+![commentbox](https://github.com/RiyaNegi/react-comments-section/blob/main/example/usernotlog.png)
+
 
 
 
