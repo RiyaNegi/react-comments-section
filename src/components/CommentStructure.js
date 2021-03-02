@@ -37,6 +37,7 @@ const CommentStructure = ({ i, reply, handleReply, handleEdit, parentId }) => {
             <button
               className={styles.replyBtn}
               onClick={() => handleReply(i.comId)}
+              disabled={!actions.user}
             >
               {' '}
               <FontAwesomeIcon icon={faReply} size='1x' color='#a5a5a5' /> Reply
@@ -45,7 +46,7 @@ const CommentStructure = ({ i, reply, handleReply, handleEdit, parentId }) => {
         </div>
       </div>
       <div className={styles.userActions}>
-        {actions.userId === i.userId && (
+        {actions.userId === i.userId && actions.user && (
           <Popup
             role='tooltip'
             trigger={

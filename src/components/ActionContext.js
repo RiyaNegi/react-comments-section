@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import uuid from 'react-uuid'
 
 export const ActionContext = createContext()
@@ -6,9 +6,23 @@ export const ActionProvider = ({
   children,
   currentUser,
   setComment,
-  comments
+  comments,
+  signinUrl,
+  signupUrl
 }) => {
   const [replies, setReplies] = useState([])
+  const [user, setUser] = useState()
+
+  useEffect(() => {
+    if (currentUser) {
+      console.log('1 called')
+      setUser(true)
+    } else {
+      console.log('2 called')
+      setUser(false)
+    }
+  })
+
   const handleReply = (id) => {
     setReplies([...replies, id])
   }
@@ -95,14 +109,17 @@ export const ActionProvider = ({
     <ActionContext.Provider
       value={{
         onSubmit: onSubmit,
-        userImg: currentUser.avatarUrl,
-        userId: currentUser.userId,
+        userImg: currentUser && currentUser.avatarUrl,
+        userId: currentUser && currentUser.userId,
         handleReply: handleReply,
         handleCancel: handleCancel,
         replies: replies,
         setReplies: setReplies,
         onEdit: editText,
-        onDelete: deleteText
+        onDelete: deleteText,
+        signinUrl: signinUrl,
+        signupUrl: signupUrl,
+        user: user
       }}
     >
       {children}

@@ -5,21 +5,31 @@ import 'react-comments/dist/index.css'
 import "./App.css"
 
 
- const App = () => {
-   const [comment, setComment] = useState(data)
-   const userId = "01a"
-   const avatarUrl = "https://ui-avatars.com/api/name=Riya&background=random"
-   const name = "xyz"
-   let count = 0
-   comment.map(i => {count+=1; i.replies && i.replies.map(i=> count+=1)} )
+const App = () => {
+  const [comment, setComment] = useState(data)
+  const userId = "01a"
+  const avatarUrl = "https://ui-avatars.com/api/name=Riya&background=random"
+  const name = "xyz"
+  const signinUrl = "/signin"
+  const signupUrl = "/signup"
+  let count = 0
+  comment.map(i => { count += 1; i.replies && i.replies.map(i => count += 1) })
 
-   return <div className="commentSection">
- <div className="header">{count} Comments</div>
-
- <CommentSection currentUser={{ userId: userId, avatarUrl: avatarUrl, name:name }} commentsArray={comment}
- setComment={setComment} />
-     </div>
- }
+  return <div className="cols">
+  <div className="commentSection">
+    <div className="header">{count} Comments (user logged in)</div>
+    <CommentSection currentUser={userId && { userId: userId, avatarUrl: avatarUrl, name: name }} commentsArray={comment}
+      setComment={setComment} signinUrl={signinUrl} signupUrl={signupUrl} />
+  </div>
+  <div class="verticalLine">
+</div>
+  <div className="commentSection">
+    <div className="header">{count} Comments (user not logged in)</div>
+    <CommentSection commentsArray={comment}
+      setComment={setComment} signinUrl={signinUrl} signupUrl={signupUrl} />
+  </div>
+  </div>
+}
 
 // class App extends PureComponent{
 //   state={ 
@@ -39,7 +49,7 @@ import "./App.css"
 
 //     return <div className="commentSection">
 //      <div className="header">{count} Comments</div>
-    
+
 //      <CommentSection currentUser={{ userId: userId, avatarUrl: avatarUrl, name:name }} commentsArray={this.state.comment}
 //      setComment={this.handleState} />
 //          </div>

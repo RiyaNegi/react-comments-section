@@ -1,8 +1,11 @@
+.cols{
+    display: flex;
+}
 .commentSection{
     padding-left: 20px;
     color:rgb(58, 58, 58);
     font-weight:800px ; 
-    width:80%;
+    width:60%;
 }
 .header{
     color: rgb(56, 56, 56);
@@ -10,3 +13,7 @@
      font-size: 40px;
     margin-bottom: 15px;
 }
+.verticalLine {
+    border-left: 2px solid #757575;
+    margin-left: 12px;
+  }
