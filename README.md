@@ -33,14 +33,16 @@ import "./App.css"
    const userId = "01a"
    const avatarUrl = "https://ui-avatars.com/api/name=Riya&background=random"
    const name = "xyz"
+   const signinUrl = "/signin"
+   const signupUrl = "/signup"
    let count = 0
    comment.map(i => {count+=1; i.replies && i.replies.map(i=> count+=1)} )
 
    return <div className="commentSection">
  <div className="header">{count} Comments</div>
 
- <CommentSection currentUser={{ userId: userId, avatarUrl: avatarUrl, name:name }} commentsArray={comment}
- setComment={setComment} />
+ <CommentSection currentUser={userId && { userId: userId, avatarUrl: avatarUrl, name: name }} commentsArray={comment}
+ setComment={setComment} signinUrl={signinUrl} signupUrl={signupUrl}/>
      </div>
  }
  
@@ -70,14 +72,16 @@ class App extends PureComponent{
     const userId = "01a"
     const avatarUrl = "https://ui-avatars.com/api/name=Riya&background=random"
     const name = "xyz"
+    const signinUrl = "/signin"
+    const signupUrl = "/signup"
     let count = 0
    this.state.comment.map(i => {count+=1; i.replies && i.replies.map(i=> count+=1)} )
 
     return <div className="commentSection">
      <div className="header">{count} Comments</div>
     
-     <CommentSection currentUser={{ userId: userId, avatarUrl: avatarUrl, name:name }} commentsArray={this.state.comment}
-     setComment={this.handleState} />
+     <CommentSection currentUser={userId && { userId: userId, avatarUrl: avatarUrl, name:name }} commentsArray={this.state.comment}
+     setComment={this.handleState} signinUrl={signinUrl} signupUrl={signupUrl} />
          </div>
 }
 }
@@ -85,7 +89,8 @@ class App extends PureComponent{
 export default App
 
 ```
-
+###Display comments in the basis of user authentication
+You can optionally add a signin URL and Signup URL, to 
 
 
 
@@ -110,32 +115,41 @@ This prop is required to give an array of comments in this format strictly.
   {
     "userId": "01a",
     "comId": "012",
-    "avatarUrl": "https://avatars.dicebear.com/4.5/api/bottts/Riya_GeS43.svg",
     "fullName": "Riya Negi",
-    "text": "Hello there",
+    "avatarUrl": "https://ui-avatars.com/api/name=Riya&background=random" ,
+    "text": "Hey, Loved your blog! ",
     "replies": [
       {
         "userId": "02a",
         "comId": "013",
-        "avatarUrl": "https://avatars.dicebear.com/4.5/api/bottts/Tanvi_Ai90.svg",
-        "fullName": "tanvi N",
-        "text": "great project"
+  
+        "fullName": "Adam Scott",
+        "avatarUrl": "https://ui-avatars.com/api/name=Adam&background=random" ,
+        "text": "Thanks! It took me 1 month to finish this project but I am glad it helped out someone!🥰"
       },
       {
         "userId": "01a",
         "comId": "014",
-        "avatarUrl": "https://avatars.dicebear.com/4.5/api/bottts/Riya_GeS43.svg",
+  
         "fullName": "Riya Negi",
-        "text": "thanks!"
+        "avatarUrl": "https://ui-avatars.com/api/name=Riya&background=random",
+        "text": "thanks!😊"
       }
     ]
   },
   {
+    "userId": "02b",
+    "comId": "017",
+    "fullName": "Lily",
+    "text": "I have a doubt about the 4th point🤔",
+    "avatarUrl": "https://ui-avatars.com/api/name=Lily&background=random"
+  },
+  {
     "userId": "01c",
     "comId": "018",
-    "avatarUrl": "https://avatars.dicebear.com/4.5/api/bottts/Ankit_hbM0.svg",
-    "fullName": "Beyonce",
-    "text": "Ek number project!!!"
+    "fullName": "Derek",
+    "text": "Great explanation!!!",
+    "avatarUrl": "https://ui-avatars.com/api/name=Derek&background=random"
   }
 ]
 ```
@@ -146,6 +160,24 @@ This prop is required to give a set-state function to keep the parent component'
  > func | require
 ```jsx
 setComment={this.handleState}
+
+```
+## signinUrl
+This prop is given in addition to the currentUser prop, so  that if no user is logged in, It can redirect it to the login link.
+
+
+ > string | optional
+```jsx
+signinUrl="/signin"
+
+```
+## signupUrl
+This prop is given in addition to the currentUser prop, so  that if no user is logged in, It can redirect it to the signup/registeration link.
+
+
+ > string | optional
+```jsx
+signupUrl="/signup"
 
 ```
 
