@@ -8,7 +8,8 @@ export const ActionProvider = ({
   setComment,
   comments,
   signinUrl,
-  signupUrl
+  signupUrl,
+  customInput
 }) => {
   const [replies, setReplies] = useState([])
   const [user, setUser] = useState()
@@ -119,7 +120,8 @@ export const ActionProvider = ({
         onDelete: deleteText,
         signinUrl: signinUrl,
         signupUrl: signupUrl,
-        user: user
+        user: user,
+        customInput: customInput
       }}
     >
       {children}

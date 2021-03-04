@@ -22,12 +22,24 @@ const DisplayComments = ({ comments }) => {
       {comments.map((i, index) => (
         <div key={i.comId}>
           {edit.filter((id) => id === i.comId).length !== 0 ? (
-            <InputField
-              cancellor={i.comId}
-              value={i.text}
-              handleCancelEdit={handleCancelAction}
-              edit
-            />
+            actions.customInput ? (
+              actions.customInput({
+                cancellor: i.comId,
+                value: i.text,
+                handleCancelEdit: handleCancelAction,
+                onSubmit: actions.onSubmit,
+                edit: true,
+                handleCancel: actions.handleCancel,
+                onEdit: actions.onEdit
+              })
+            ) : (
+              <InputField
+                cancellor={i.comId}
+                value={i.text}
+                handleCancelEdit={handleCancelAction}
+                edit
+              />
+            )
           ) : (
             <CommentStructure
               i={i}
@@ -35,21 +47,43 @@ const DisplayComments = ({ comments }) => {
               handleEdit={handleAction}
             />
           )}
-          {actions.replies.filter((id) => id === i.comId).length !== 0 && (
-            <InputField cancellor={i.comId} parentId={i.comId} />
-          )}
+          {actions.replies.filter((id) => id === i.comId).length !== 0 &&
+            (actions.customInput ? (
+              actions.customInput({
+                cancellor: i.comId,
+                parentId: i.comId,
+                onSubmit: actions.onSubmit,
+                handleCancel: actions.handleCancel,
+                handleCancelEdit: handleCancelAction
+              })
+            ) : (
+              <InputField cancellor={i.comId} parentId={i.comId} />
+            ))}
           <div className={styles.replySection}>
             {i.replies &&
               i.replies.map((a, index) => (
                 <div key={a.comId}>
                   {edit.filter((id) => id === a.comId).length !== 0 ? (
-                    <InputField
-                      cancellor={a.comId}
-                      value={a.text}
-                      handleCancelEdit={handleCancelAction}
-                      edit
-                      parentId={i.comId}
-                    />
+                    actions.customInput ? (
+                      actions.customInput({
+                        cancellor: a.comId,
+                        value: a.text,
+                        handleCancelEdit: handleCancelAction,
+                        edit,
+                        parentId: i.comId,
+                        onSubmit: actions.onSubmit,
+                        handleCancel: actions.handleCancel,
+                        onEdit: actions.onEdit
+                      })
+                    ) : (
+                      <InputField
+                        cancellor={a.comId}
+                        value={a.text}
+                        handleCancelEdit={handleCancelAction}
+                        edit
+                        parentId={i.comId}
+                      />
+                    )
                   ) : (
                     <CommentStructure
                       i={a}
@@ -60,9 +94,23 @@ const DisplayComments = ({ comments }) => {
                     />
                   )}
                   {actions.replies.filter((id) => id === a.comId).length !==
-                    0 && (
-                    <InputField cancellor={a.comId} parentId={i.comId} child />
-                  )}
+                    0 &&
+                    (actions.customInput ? (
+                      actions.customInput({
+                        cancellor: a.comId,
+                        parentId: i.comId,
+                        child: true,
+                        onSubmit: actions.onSubmit,
+                        handleCancel: actions.handleCancel,
+                        handleCancelEdit: handleCancelAction
+                      })
+                    ) : (
+                      <InputField
+                        cancellor={a.comId}
+                        parentId={i.comId}
+                        child
+                      />
+                    ))}
                 </div>
               ))}
           </div>
