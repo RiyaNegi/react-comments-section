@@ -2,12 +2,9 @@ import React, {useState, useEffect} from "react"
 
 const CustomInput=({cancellor,
   parentId,
-  child,
   value,
-  handleCancelEdit,
   edit,
-  onEdit,
-  onSubmit,
+  submit,
   handleCancel,
   })=>{
     const [text, setText] = useState(value)
@@ -15,9 +12,6 @@ const CustomInput=({cancellor,
     const handleChange = (e) => {
         setText(e.target.value)
       }
-    
-      console.log(handleCancel)
-    
     return(  <form>
         <input
           type='text'
@@ -30,19 +24,19 @@ const CustomInput=({cancellor,
           <button
             onClick={() =>
               edit === true
-                ? (onEdit(cancellor, text, parentId),
-                  handleCancelEdit(cancellor),
-                  setText(''))
-                : (onSubmit(text, parentId, child && child),
-                  handleCancel(cancellor),
-                  setText(''))
+                ? submit(cancellor, text, parentId, true, setText)
+                : submit(cancellor, text, parentId, false, setText)
             }
             type='button'
             disabled={!text}
           >
             Post
           </button>
-            <button>
+            <button onClick={() =>
+              edit
+                ? handleCancel(cancellor,edit)
+                : handleCancel(cancellor,false)
+            }>
               Cancel
             </button>
         </div>

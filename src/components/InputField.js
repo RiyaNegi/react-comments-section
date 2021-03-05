@@ -2,15 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import styles from '../Style.scss'
 import { ActionContext } from './ActionContext'
 
-const InputField = ({
-  cancellor,
-  parentId,
-  child,
-  value,
-  handleCancelEdit,
-  edit,
-  main
-}) => {
+const InputField = ({ cancellor, parentId, child, value, edit, main }) => {
   const [text, setText] = useState('')
 
   const handleChange = (e) => {
@@ -51,12 +43,8 @@ const InputField = ({
           className={styles.postBtn}
           onClick={() =>
             edit === true
-              ? (actions.onEdit(cancellor, text, parentId),
-                handleCancelEdit(cancellor),
-                setText(''))
-              : (actions.onSubmit(text, parentId, child && child),
-                actions.handleCancel(cancellor),
-                setText(''))
+              ? actions.submit(cancellor, text, parentId, true, setText)
+              : actions.submit(cancellor, text, parentId, false, setText)
           }
           type='button'
           disabled={!text}
@@ -72,8 +60,8 @@ const InputField = ({
           <button
             className={styles.cancelBtn}
             onClick={() =>
-              handleCancelEdit
-                ? handleCancelEdit(cancellor)
+              edit
+                ? actions.handleCancel(cancellor, edit)
                 : actions.handleCancel(cancellor)
             }
           >

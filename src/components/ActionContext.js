@@ -13,24 +13,29 @@ export const ActionProvider = ({
 }) => {
   const [replies, setReplies] = useState([])
   const [user, setUser] = useState()
+  const [editArr, setEdit] = useState([])
 
   useEffect(() => {
     if (currentUser) {
-      console.log('1 called')
       setUser(true)
     } else {
-      console.log('2 called')
       setUser(false)
     }
   })
 
-  const handleReply = (id) => {
-    setReplies([...replies, id])
+  const handleAction = (id, edit) => {
+    edit ? setEdit([...editArr, id]) : setReplies([...replies, id])
   }
-  const handleCancel = (id) => {
-    const list = [...replies]
-    const newList = list.filter((i) => i !== id)
-    setReplies(newList)
+  const handleCancel = (id, edit) => {
+    if (edit) {
+      const list = [...editArr]
+      const newList = list.filter((i) => i !== id)
+      setEdit(newList)
+    } else if (!edit) {
+      const list = [...replies]
+      const newList = list.filter((i) => i !== id)
+      setReplies(newList)
+    }
   }
 
   const onSubmit = (text, parentId, child) => {
@@ -106,22 +111,36 @@ export const ActionProvider = ({
     }
   }
 
+  const submit = (cancellor, text, parentId, edit, setText, child) => {
+    if (edit) {
+      editText(cancellor, text, parentId)
+      handleCancel(cancellor, edit)
+      setText('')
+    } else {
+      onSubmit(text, parentId, child)
+      handleCancel(cancellor)
+      setText('')
+    }
+  }
+
   return (
     <ActionContext.Provider
       value={{
         onSubmit: onSubmit,
         userImg: currentUser && currentUser.avatarUrl,
         userId: currentUser && currentUser.userId,
-        handleReply: handleReply,
+        handleAction: handleAction,
         handleCancel: handleCancel,
         replies: replies,
         setReplies: setReplies,
+        editArr: editArr,
         onEdit: editText,
         onDelete: deleteText,
         signinUrl: signinUrl,
         signupUrl: signupUrl,
         user: user,
-        customInput: customInput
+        customInput: customInput,
+        submit: submit
       }}
     >
       {children}

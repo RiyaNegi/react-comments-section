@@ -4,13 +4,12 @@ import { ActionContext } from './ActionContext'
 
 const Input = () => {
   const action = useContext(ActionContext)
-  console.log('func->', action.handleCancel)
   return action.customInput ? (
     action.customInput({
       authorImg: action.userImg,
       main: true,
-      onSubmit: action.onSubmit,
-      handleCancel: action.handleCancel
+      handleCancel: action.handleCancel,
+      submit: action.submit
     })
   ) : (
     <InputField authorImg={action.userImg} main />

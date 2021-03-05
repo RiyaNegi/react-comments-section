@@ -14,8 +14,9 @@ import {
 } from './ModalStyles'
 import { ActionContext } from './ActionContext'
 
-const CommentStructure = ({ i, reply, handleReply, handleEdit, parentId }) => {
+const CommentStructure = ({ i, reply, parentId }) => {
   const actions = useContext(ActionContext)
+  const edit = true
 
   return (
     <div className={styles.halfDiv}>
@@ -36,7 +37,7 @@ const CommentStructure = ({ i, reply, handleReply, handleEdit, parentId }) => {
           <div>
             <button
               className={styles.replyBtn}
-              onClick={() => handleReply(i.comId)}
+              onClick={() => actions.handleAction(i.comId)}
               disabled={!actions.user}
             >
               {' '}
@@ -61,7 +62,7 @@ const CommentStructure = ({ i, reply, handleReply, handleEdit, parentId }) => {
               <div>
                 <button
                   className={styles.editBtn}
-                  onClick={() => handleEdit(i.comId)}
+                  onClick={() => actions.handleAction(i.comId, edit)}
                 >
                   {' '}
                   edit

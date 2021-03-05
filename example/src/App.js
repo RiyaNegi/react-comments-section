@@ -18,16 +18,15 @@ const App = () => {
   const customInputFunc = (props) => {
     return <CustomInput parentId={props.parentId}
       cancellor={props.cancellor}
-      child={props.child} value={props.value}
-      handleCancelEdit={props.handleCancelEdit}
-      edit={props.edit} onSubmit={props.onSubmit} handleCancel={props.handleCancel} onEdit={props.onEdit}/>
+      value={props.value}  edit={props.edit}
+      submit={props.submit} handleCancel={props.handleCancel}/>
   }
 
   return <div className="cols">
     <div className="commentSection">
       <div className="header">{count} Comments (user logged in)</div>
       <CommentSection currentUser={userId && { userId: userId, avatarUrl: avatarUrl, name: name }} commentsArray={comment}
-        setComment={setComment} signinUrl={signinUrl} signupUrl={signupUrl} customInput={customInputFunc} />
+        setComment={setComment} signinUrl={signinUrl} signupUrl={signupUrl} />
     </div>
     <div class="verticalLine">
     </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import styles from '../Style.scss'
 import InputField from './InputField'
 import { ActionContext } from './ActionContext'
@@ -6,55 +6,34 @@ import 'reactjs-popup/dist/index.css'
 import CommentStructure from './CommentStructure'
 
 const DisplayComments = ({ comments }) => {
-  const [edit, setEdit] = useState([])
-
-  const handleAction = (id) => {
-    setEdit([...edit, id])
-  }
-  const handleCancelAction = (id) => {
-    const list = [...edit]
-    const newList = list.filter((i) => i !== id)
-    setEdit(newList)
-  }
   const actions = useContext(ActionContext)
   return (
     <div>
       {comments.map((i, index) => (
         <div key={i.comId}>
-          {edit.filter((id) => id === i.comId).length !== 0 ? (
+          {actions.editArr.filter((id) => id === i.comId).length !== 0 ? (
             actions.customInput ? (
               actions.customInput({
                 cancellor: i.comId,
                 value: i.text,
-                handleCancelEdit: handleCancelAction,
-                onSubmit: actions.onSubmit,
-                edit: true,
                 handleCancel: actions.handleCancel,
-                onEdit: actions.onEdit
+                submit: actions.submit,
+                edit: true
               })
             ) : (
-              <InputField
-                cancellor={i.comId}
-                value={i.text}
-                handleCancelEdit={handleCancelAction}
-                edit
-              />
+              <InputField cancellor={i.comId} value={i.text} edit />
             )
           ) : (
-            <CommentStructure
-              i={i}
-              handleReply={actions.handleReply}
-              handleEdit={handleAction}
-            />
+            <CommentStructure i={i} handleEdit={() => actions.handleAction} />
           )}
           {actions.replies.filter((id) => id === i.comId).length !== 0 &&
             (actions.customInput ? (
               actions.customInput({
                 cancellor: i.comId,
                 parentId: i.comId,
-                onSubmit: actions.onSubmit,
+                submit: actions.submit,
                 handleCancel: actions.handleCancel,
-                handleCancelEdit: handleCancelAction
+                edit: false
               })
             ) : (
               <InputField cancellor={i.comId} parentId={i.comId} />
@@ -63,23 +42,21 @@ const DisplayComments = ({ comments }) => {
             {i.replies &&
               i.replies.map((a, index) => (
                 <div key={a.comId}>
-                  {edit.filter((id) => id === a.comId).length !== 0 ? (
+                  {actions.editArr.filter((id) => id === a.comId).length !==
+                  0 ? (
                     actions.customInput ? (
                       actions.customInput({
                         cancellor: a.comId,
                         value: a.text,
-                        handleCancelEdit: handleCancelAction,
-                        edit,
-                        parentId: i.comId,
-                        onSubmit: actions.onSubmit,
                         handleCancel: actions.handleCancel,
-                        onEdit: actions.onEdit
+                        edit: true,
+                        parentId: i.comId,
+                        submit: actions.submit
                       })
                     ) : (
                       <InputField
                         cancellor={a.comId}
                         value={a.text}
-                        handleCancelEdit={handleCancelAction}
                         edit
                         parentId={i.comId}
                       />
@@ -89,8 +66,7 @@ const DisplayComments = ({ comments }) => {
                       i={a}
                       reply
                       parentId={i.comId}
-                      handleReply={actions.handleReply}
-                      handleEdit={handleAction}
+                      handleEdit={() => actions.handleAction}
                     />
                   )}
                   {actions.replies.filter((id) => id === a.comId).length !==
@@ -100,9 +76,9 @@ const DisplayComments = ({ comments }) => {
                         cancellor: a.comId,
                         parentId: i.comId,
                         child: true,
-                        onSubmit: actions.onSubmit,
+                        submit: actions.submit,
                         handleCancel: actions.handleCancel,
-                        handleCancelEdit: handleCancelAction
+                        edit: false
                       })
                     ) : (
                       <InputField
