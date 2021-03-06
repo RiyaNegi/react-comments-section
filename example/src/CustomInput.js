@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 
 const CustomInput=({cancellor,
   parentId,
@@ -14,9 +14,6 @@ const CustomInput=({cancellor,
       }
     return(  <form>
         <input
-          type='text'
-          placeholder='Type your reply here.'
-          component='input'
           value={text}
           onChange={handleChange}
         />
