@@ -22,21 +22,13 @@ const CustomInput=({cancellor,
         />
         <div >
           <button
-            onClick={() =>
-              edit === true
-                ? submit(cancellor, text, parentId, true, setText)
-                : submit(cancellor, text, parentId, false, setText)
-            }
+            onClick={() =>submit(cancellor, text, parentId, edit, setText)}
             type='button'
             disabled={!text}
           >
             Post
           </button>
-            <button onClick={() =>
-              edit
-                ? handleCancel(cancellor,edit)
-                : handleCancel(cancellor,false)
-            }>
+            <button onClick={() => handleCancel(cancellor,edit)}>
               Cancel
             </button>
         </div>
