@@ -16,7 +16,7 @@ const SignField = () => {
   return (
     <div className={styles.signBox}>
       <div className={styles.signLine}>
-        Log in or sign up to leave a comment
+        {actions.i18n.sign.boxLine}
       </div>
       <div>
         <button
@@ -24,14 +24,14 @@ const SignField = () => {
           name='login'
           onClick={(e) => handleDivClick(e)}
         >
-          Log In
+          {actions.i18n.sign.logIn}
         </button>
         <button
           className={styles.signBtn}
           name='signup'
           onClick={(e) => handleDivClick(e)}
         >
-          Sign Up
+          {actions.i18n.sign.signUp}
         </button>
       </div>
     </div>

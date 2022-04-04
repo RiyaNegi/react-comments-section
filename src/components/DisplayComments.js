@@ -33,7 +33,8 @@ const DisplayComments = ({ comments }) => {
                 parentId: i.comId,
                 submit: actions.submit,
                 handleCancel: actions.handleCancel,
-                edit: false
+                edit: false,
+                i18n: actions.i18n
               })
             ) : (
               <InputField cancellor={i.comId} parentId={i.comId} />
@@ -51,7 +52,8 @@ const DisplayComments = ({ comments }) => {
                         handleCancel: actions.handleCancel,
                         edit: true,
                         parentId: i.comId,
-                        submit: actions.submit
+                        submit: actions.submit,
+                        i18n: actions.i18n
                       })
                     ) : (
                       <InputField
@@ -78,7 +80,8 @@ const DisplayComments = ({ comments }) => {
                         child: true,
                         submit: actions.submit,
                         handleCancel: actions.handleCancel,
-                        edit: false
+                        edit: false,
+                        i18n: actions.i18n
                       })
                     ) : (
                       <InputField

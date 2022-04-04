@@ -9,7 +9,8 @@ export const ActionProvider = ({
   comments,
   signinUrl,
   signupUrl,
-  customInput
+  customInput,
+  i18n
 }) => {
   const [replies, setReplies] = useState([])
   const [user, setUser] = useState()
@@ -140,7 +141,8 @@ export const ActionProvider = ({
         signupUrl: signupUrl,
         user: user,
         customInput: customInput,
-        submit: submit
+        submit: submit,
+        i18n: i18n
       }}
     >
       {children}
