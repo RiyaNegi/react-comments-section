@@ -31,6 +31,32 @@ export const enI18n = {
   }
 }
 
+export const esI18n = {
+  sign: {
+    boxLine: 'Inicie sesión o regístrese para dejar un comentario',
+    logIn: 'Iniciar Sesión',
+    signUp: 'Registrarse'
+  },
+  post: {
+    placeholder: 'Escriba su respuesta aquí.',
+    post: 'Publicar',
+    cancel: 'Cancelar',
+  },
+  comment: {
+    reply: 'Responder'
+  },
+  editComment: {
+    action: 'editar'
+  },
+  deleteComment: {
+    action: 'eliminar',
+    header: 'Eliminar Comentario',
+    content: '¿Desea eliminar su comentario permanentemente?',
+    confirmButton: 'Eliminar',
+    cancelButton: 'Cancelar'
+  }
+}
+
 export const CommentSection = ({
   commentsArray,
   currentUser,
