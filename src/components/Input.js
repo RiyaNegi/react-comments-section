@@ -9,7 +9,8 @@ const Input = () => {
       authorImg: action.userImg,
       main: true,
       handleCancel: action.handleCancel,
-      submit: action.submit
+      submit: action.submit,
+      i18n: action.i18n
     })
   ) : (
     <InputField authorImg={action.userImg} main />

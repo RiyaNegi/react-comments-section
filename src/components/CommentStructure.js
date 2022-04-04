@@ -41,7 +41,7 @@ const CommentStructure = ({ i, reply, parentId }) => {
               disabled={!actions.user}
             >
               {' '}
-              <FontAwesomeIcon icon={faReply} size='1x' color='#a5a5a5' /> Reply
+              <FontAwesomeIcon icon={faReply} size='1x' color='#a5a5a5' /> {actions.i18n.comment.reply}
             </button>
           </div>
         </div>
@@ -65,13 +65,13 @@ const CommentStructure = ({ i, reply, parentId }) => {
                   onClick={() => actions.handleAction(i.comId, edit)}
                 >
                   {' '}
-                  edit
+                  {actions.i18n.editComment.action}
                 </button>
               </div>
               <div>
                 <Popup
                   trigger={
-                    <button className={styles.deleteBtn}> delete</button>
+                    <button className={styles.deleteBtn}> {actions.i18n.deleteComment.action}</button>
                   }
                   modal
                   nested
@@ -87,11 +87,11 @@ const CommentStructure = ({ i, reply, parentId }) => {
                       </button>
                       <div className='header' style={modalHeader}>
                         {' '}
-                        Delete Comment{' '}
+                        {actions.i18n.deleteComment.header}{' '}
                       </div>
                       <div className='content' style={modalContent}>
                         {' '}
-                        Delete your comment permanently?
+                        {actions.i18n.deleteComment.content}
                       </div>
                       <div className='actions' style={modalActions}>
                         <button
@@ -102,7 +102,7 @@ const CommentStructure = ({ i, reply, parentId }) => {
                             close()
                           }}
                         >
-                          Delete
+                          {actions.i18n.deleteComment.confirmButton}
                         </button>
                         <button
                           className='button'
@@ -111,7 +111,7 @@ const CommentStructure = ({ i, reply, parentId }) => {
                             close()
                           }}
                         >
-                          Cancel
+                          {actions.i18n.deleteComment.cancelButton}
                         </button>
                       </div>
                     </div>

@@ -33,7 +33,7 @@ const InputField = ({ cancellor, parentId, child, value, edit, main }) => {
       <input
         className={styles.postComment}
         type='text'
-        placeholder='Type your reply here.'
+        placeholder={actions.i18n.post.placeholder}
         component='input'
         value={text}
         onChange={handleChange}
@@ -54,7 +54,7 @@ const InputField = ({ cancellor, parentId, child, value, edit, main }) => {
               : { backgroundColor: '#30c3fd' }
           }
         >
-          Post
+          {actions.i18n.post.post}
         </button>
         {(text || parentId) && (
           <button
@@ -65,7 +65,7 @@ const InputField = ({ cancellor, parentId, child, value, edit, main }) => {
                 : actions.handleCancel(cancellor)
             }
           >
-            Cancel
+            {actions.i18n.post.cancel}
           </button>
         )}
       </div>
