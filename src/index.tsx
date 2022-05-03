@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import CommentStructure from "./components/CommentStructure.tsx/Index";
-import InputField from "./components/InputField.tsx/Index";
+import CommentSection from "./components/CommentSection/Index";
 import GlobalProvider from "./context/Provider";
 
 const root = ReactDOM.createRoot(
@@ -9,34 +8,16 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <GlobalProvider>
-      <InputField />
+    <GlobalProvider
+      currentUser={{
+        currentUserId: "01a",
+        currentUserImg:
+          "https://ui-avatars.com/api/name=Riya&background=random",
+        currentUserProfile: "https://www.linkedin.com/in/riya-negi-8879631a9/",
+        currentUserFullName: "Riya Negi",
+      }}
+    >
+      <CommentSection />
     </GlobalProvider>
   </React.StrictMode>
 );
-
-// import React, { useEffect, useState } from "react";
-// import InputField from "./components/InputField.tsx/Index";
-// import GlobalProvider from "./context/Provider";
-
-// export const CommentSection = ({}) => {
-//   const [comments, setComments] = useState([]);
-//   // useEffect(() => {
-//   //   setComments(commentsArray)
-//   // }, [commentsArray])
-
-//   return (
-//     <GlobalProvider
-//       // currentUser={currentUser}
-//       // setComment={setComment}
-//       comments={comments}
-//       // signinUrl={signinUrl}
-//       // signupUrl={signupUrl}
-//       // customInput={customInput}
-//     >
-//       <div>
-//         <InputField />
-//       </div>
-//     </GlobalProvider>
-//   );
-// };

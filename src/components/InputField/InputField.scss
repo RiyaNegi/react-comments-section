@@ -1,0 +1,61 @@
+.form {
+  display: flex;
+  background-color: rgb(243, 243, 243);
+  padding: 20px;
+  border-radius: 8px;
+  .userImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px;
+  }
+
+  .postComment {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgb(24, 24, 24);
+    text-decoration: none;
+    background-color: transparent;
+    margin-left: 4px;
+  }
+  .postComment:focus {
+    outline: none;
+    border-bottom: 2px solid rgb(14, 14, 14);
+  }
+  .postComment::placeholder {
+    margin-top: -2px;
+  }
+
+  .postBtn {
+    border: 2px solid rgb(0, 195, 255);
+    border-radius: 8px;
+    background-color: rgb(0, 195, 255);
+    padding: 5px 10px;
+    color: white;
+    font-weight: bolder;
+    margin-left: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 20px;
+    &:hover {
+      border: 2px solid rgb(0, 184, 240);
+      background-color: rgb(0, 184, 240);
+    }
+  }
+  .cancelBtn {
+    border: 2px solid rgb(237, 237, 237);
+    border-radius: 8px;
+    background-color: rgb(237, 237, 237);
+    padding: 5px 10px;
+    color: rgb(174, 174, 174);
+    font-weight: bolder;
+    margin-left: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 20px;
+    &:hover {
+      border: 2px solid rgb(210, 210, 210);
+      background-color: rgb(210, 210, 210);
+    }
+  }
+}
