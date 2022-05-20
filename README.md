@@ -25,8 +25,8 @@ npm i react-comments-section
 ```jsx
 import React, { PureComponent, useState } from 'react'
 import data from "./data.json"
-import { CommentSection } from 'react-comments'
-import 'react-comments/dist/index.css'
+import { CommentSection } from 'react-comments-section'
+import 'react-comments-section/dist/index.css'
 import "./App.css"
 
 
@@ -57,8 +57,8 @@ import "./App.css"
 ```jsx
 import React, { PureComponent, useState } from 'react'
 import data from "./data.json"
-import { CommentSection } from 'react-comments'
-import 'react-comments/dist/index.css'
+import { CommentSection } from 'react-comments-section'
+import 'react-comments-section/dist/index.css'
 import "./App.css"
 
 class App extends PureComponent{
