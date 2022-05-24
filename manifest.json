@@ -1,6 +1,6 @@
 {
-  "short_name": "react-comments",
-  "name": "react-comments",
+  "short_name": "rc",
+  "name": "rc",
   "icons": [
     {
       "src": "favicon.ico",
