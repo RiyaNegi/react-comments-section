@@ -1,0 +1,46 @@
+[
+  {
+    "userId": "02b",
+    "comId": "017",
+    "fullName": "Lily",
+    "userProfile": "https://www.linkedin.com/in/riya-negi-8879631a9/",
+    "text": "I have a doubt about the 4th point🤔",
+    "avatarUrl": "https://ui-avatars.com/api/name=Lily&background=random",
+    "replies": []
+  },
+  {
+    "userId": "02a",
+    "comId": "07",
+    "fullName": "Adam Scott",
+    "text": "Follow my page for more such interesting blogs!😇",
+    "avatarUrl": "https://ui-avatars.com/api/name=Adam&background=random",
+    "userProfile": "https://www.linkedin.com/in/riya-negi-8879631a9/",
+    "replies": []
+  },
+  {
+    "userId": "02a",
+    "comId": "015",
+    "fullName": "Robert Jae",
+    "avatarUrl": "https://ui-avatars.com/api/name=Robert&background=random",
+    "text": "Woah pretty helpful! how did you solve for x?",
+    "replies": [
+      {
+        "userId": "01b",
+        "comId": "016",
+        "userProfile": "https://www.linkedin.com/in/riya-negi-8879631a9/",
+        "fullName": "Adam Scott",
+        "text": "Thanks! refer to this link -> acs.com",
+        "avatarUrl": "https://ui-avatars.com/api/name=Adam&background=random"
+      }
+    ]
+  },
+  {
+    "userId": "02c",
+    "comId": "018",
+    "fullName": "Robin",
+    "userProfile": "https://www.linkedin.com/in/riya-negi-8879631a9/",
+    "text": "Aaaah! got it got it. Pretty cool",
+    "avatarUrl": "https://ui-avatars.com/api/name=Robin&background=random",
+    "replies": []
+  }
+]

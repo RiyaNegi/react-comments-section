@@ -1,21 +1,19 @@
 {
   "name": "react-comments-section",
-  "version": "2.0.0",
-  "description": "React component library for a functioning comments section",
+  "version": "1.0.7",
+  "description": "A react library for building comments section",
   "author": "RiyaNegi",
   "license": "MIT",
-  "repository": "RiyaNegi/react-comments-section",
+  "repository": "RiyaNegi/react-comments",
   "main": "dist/index.js",
-  "style": "dist/styles.css",
   "module": "dist/index.modern.js",
-  "source": "src/index.tsx",
-  "sideEffects": false,
+  "source": "src/index.js",
   "engines": {
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl-with-assets --css-modules false --no-compress --format modern,cjs",
-    "start": "microbundle-crl-with-assets --css-modules false watch --no-compress --format modern,cjs",
+    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
@@ -29,15 +27,6 @@
     "react": "^16.0.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^25.1.4",
-    "@types/node": "^12.12.38",
-    "@types/react": "^16.9.27",
-    "@types/react-dom": "^16.9.7",
-    "@typescript-eslint/eslint-plugin": "^2.26.0",
-    "@typescript-eslint/parser": "^2.26.0",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
@@ -57,22 +46,27 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
-    "typescript": "^3.7.5"
+    "sass": "^1.50.1",
+    "@types/uuid": "^8.3.4",
+    "lodash": "^4.17.21",
+    "node-sass": "^7.0.1",
+    "@szhsin/react-menu": "^3.0.1",
+    "react-responsive-modal": "^6.2.0",
+    "@types/lodash": "^4.14.182"
   },
   "files": [
     "dist"
   ],
   "dependencies": {
-    "@szhsin/react-menu": "^3.0.1",
-    "@types/lodash": "^4.14.182",
-    "@types/uuid": "^8.3.4",
-    "microbundle-crl-with-assets": "^0.13.12",
-    "react-responsive-modal": "^6.2.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-scss": "^3.0.0",
-    "sass": "^1.51.0"
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.25",
+    "@types/react": "^18.0.6",
+    "@types/react-dom": "^18.0.2",
+    "jquery": "^3.5.1",
+    "node-sass": "^5.0.0",
+    "popper.js": "^1.16.1",
+    "react-uuid": "^1.0.2",
+    "reactjs-popup": "^2.0.4",
+    "typescript": "^3.9.10"
   }
 }
