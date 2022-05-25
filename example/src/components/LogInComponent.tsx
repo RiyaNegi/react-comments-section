@@ -51,14 +51,7 @@ const LogInComponent = () => {
         <span className='title'>Login Component</span>
       </a>
       <CommentSectionComponent
-        currentUser={{
-          currentUserId: '01a',
-          currentUserImg:
-            'https://ui-avatars.com/api/name=Riya&background=random',
-          currentUserProfile:
-            'https://www.linkedin.com/in/riya-negi-8879631a9/',
-          currentUserFullName: 'Riya Negi'
-        }}
+        currentUser={null}
         commentData={data}
         logIn={{
           loginLink: 'http://localhost:3001/',

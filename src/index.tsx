@@ -8,7 +8,7 @@ interface CommentSectionProps {
     currentUserImg: string
     currentUserProfile: string
     currentUserFullName: string
-  }
+  } | null
   logIn?: {
     loginLink: string
     signupLink: string
