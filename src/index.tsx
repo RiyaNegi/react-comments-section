@@ -28,6 +28,7 @@ interface CommentSectionProps {
   onDeleteAction?: Function
   onReplyAction?: Function
   onEditAction?: Function
+  customNoComment?: Function
   commentData: Array<{
     userId: string
     comId: string
@@ -57,7 +58,8 @@ export const CommentSectionComponent = ({
   onSubmitAction,
   onDeleteAction,
   onReplyAction,
-  onEditAction
+  onEditAction,
+  customNoComment
 }: CommentSectionProps) => {
   return (
     <GlobalProvider
@@ -81,6 +83,7 @@ export const CommentSectionComponent = ({
         hrStyle={hrStyle}
         logIn={logIn}
         titleStyle={titleStyle}
+        customNoComment={customNoComment}
       />
     </GlobalProvider>
   )

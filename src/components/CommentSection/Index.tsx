@@ -6,6 +6,7 @@ import { GlobalContext } from '../../context/Provider'
 import _ from 'lodash'
 import React from 'react'
 import LoginSection from '../LoginSection/LoginSection'
+import NoComments from './NoComments'
 
 interface CommentSectionProps {
   overlayStyle?: object
@@ -15,13 +16,15 @@ interface CommentSectionProps {
   }
   hrStyle?: object
   titleStyle?: object
+  customNoComment?: Function
 }
 
 const CommentSection = ({
   overlayStyle,
   logIn,
   hrStyle,
-  titleStyle
+  titleStyle,
+  customNoComment
 }: CommentSectionProps) => {
   const loginMode = () => {
     return (
@@ -44,54 +47,65 @@ const CommentSection = ({
       ) : (
         <InputField formStyle={{ margin: '10px 0px' }} imgDiv={{ margin: 0 }} />
       )}
-      {globalStore.data.map(
-        (i: {
-          userId: string
-          comId: string
-          fullName: string
-          avatarUrl: string
-          text: string
-          userProfile?: string
-          replies: Array<any> | undefined
-        }) => {
-          return (
-            <div key={i.comId}>
-              <CommentStructure
-                info={i}
-                editMode={
-                  _.indexOf(globalStore.editArr, i.comId) === -1 ? false : true
-                }
-                replyMode={
-                  _.indexOf(globalStore.replyArr, i.comId) === -1 ? false : true
-                }
-                logIn={logIn}
-              />
-              {i.replies &&
-                i.replies.length > 0 &&
-                i.replies.map((j) => {
-                  return (
-                    <div className='replySection' key={j.comId}>
-                      <CommentStructure
-                        info={j}
-                        parentId={i.comId}
-                        editMode={
-                          _.indexOf(globalStore.editArr, j.comId) === -1
-                            ? false
-                            : true
-                        }
-                        replyMode={
-                          _.indexOf(globalStore.replyArr, j.comId) === -1
-                            ? false
-                            : true
-                        }
-                        logIn={logIn}
-                      />
-                    </div>
-                  )
-                })}
-            </div>
-          )
-        }
+
+      {globalStore.data.length > 0 ? (
+        globalStore.data.map(
+          (i: {
+            userId: string
+            comId: string
+            fullName: string
+            avatarUrl: string
+            text: string
+            userProfile?: string
+            replies: Array<any> | undefined
+          }) => {
+            return (
+              <div key={i.comId}>
+                <CommentStructure
+                  info={i}
+                  editMode={
+                    _.indexOf(globalStore.editArr, i.comId) === -1
+                      ? false
+                      : true
+                  }
+                  replyMode={
+                    _.indexOf(globalStore.replyArr, i.comId) === -1
+                      ? false
+                      : true
+                  }
+                  logIn={logIn}
+                />
+                {i.replies &&
+                  i.replies.length > 0 &&
+                  i.replies.map((j) => {
+                    return (
+                      <div className='replySection' key={j.comId}>
+                        <CommentStructure
+                          info={j}
+                          parentId={i.comId}
+                          editMode={
+                            _.indexOf(globalStore.editArr, j.comId) === -1
+                              ? false
+                              : true
+                          }
+                          replyMode={
+                            _.indexOf(globalStore.replyArr, j.comId) === -1
+                              ? false
+                              : true
+                          }
+                          logIn={logIn}
+                        />
+                      </div>
+                    )
+                  })}
+              </div>
+            )
+          }
+        )
+      ) : customNoComment ? (
+        customNoComment()
+      ) : (
+        <NoComments />
       )}
     </div>
   )

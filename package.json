@@ -57,7 +57,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.9.10"
   },
   "files": [
     "dist"
@@ -68,11 +68,6 @@
     "@types/uuid": "^8.3.4",
     "microbundle-crl-with-assets": "^0.13.12",
     "react-responsive-modal": "^6.2.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-scss": "^3.0.0",
     "sass": "^1.51.0"
   }
 }

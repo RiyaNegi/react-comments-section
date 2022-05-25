@@ -17,3 +17,11 @@
   font-weight: 700;
   color: #202020d1;
 }
+.no-comDiv {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #202020d1;
+  margin-top: 40px;
+}

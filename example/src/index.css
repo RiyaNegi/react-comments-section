@@ -12,3 +12,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.no-com {
+  background-color: aqua;
+}
+.example-div {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.example-row {
+  display: flex;
+  width: 100;
+}
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 10px 20px;
+}
+.head-title {
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
