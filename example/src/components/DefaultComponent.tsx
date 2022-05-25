@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { CommentSectionComponent } from 'react-comments-section'
 import 'react-comments-section/dist/index.css'
 
 const DefaultComponent = () => {
-  const [data, setData] = useState([
+  const data = [
     {
       userId: '01a',
       comId: '012',
@@ -39,10 +39,17 @@ const DefaultComponent = () => {
       avatarUrl: 'https://ui-avatars.com/api/name=Lily&background=random',
       replies: []
     }
-  ])
+  ]
   return (
     <div>
-      <span className='title'>Default Component</span>
+      <a
+        style={{ color: 'black', cursor: 'pointer' }}
+        target='_blank'
+        rel='noopener noreferrer'
+        href='https://github.com/RiyaNegi/react-comments-section/blob/main/example/src/components/DefaultComponent.tsx'
+      >
+        <span className='title'>Default Component</span>
+      </a>
       <CommentSectionComponent
         currentUser={{
           currentUserId: '01a',

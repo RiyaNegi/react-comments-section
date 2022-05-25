@@ -46,7 +46,14 @@ const CustomComponent = () => {
   )
   return (
     <div>
-      <span className='title'>Custom Component</span>
+      <a
+        style={{ color: 'black', cursor: 'pointer' }}
+        target='_blank'
+        rel='noopener noreferrer'
+        href='https://github.com/RiyaNegi/react-comments-section/blob/main/example/src/components/CustomComponent.tsx'
+      >
+        <span className='title'>Custom Component</span>
+      </a>
       <CommentSectionComponent
         currentUser={{
           currentUserId: '01a',

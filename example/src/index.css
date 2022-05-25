@@ -36,3 +36,11 @@ code {
   justify-content: center;
   margin: 10px;
 }
+
+@media screen and (max-width: 600px) {
+  .example-row {
+    display: flex;
+    width: 100;
+    flex-direction: column;
+  }
+}

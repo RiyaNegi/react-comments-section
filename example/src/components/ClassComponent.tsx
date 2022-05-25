@@ -45,7 +45,14 @@ class ClassComponent extends PureComponent {
   render() {
     return (
       <div>
-        <span className='title'>Class Component</span>
+        <a
+          style={{ color: 'black', cursor: 'pointer' }}
+          target='_blank'
+          rel='noopener noreferrer'
+          href='https://github.com/RiyaNegi/react-comments-section/blob/main/example/src/components/ClassComponent.tsx'
+        >
+          <span className='title'>Class Component</span>
+        </a>
         <CommentSectionComponent
           currentUser={{
             currentUserId: '01a',

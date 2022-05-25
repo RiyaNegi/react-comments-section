@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ClassComponent from './components/ClassComponent'
 import CustomComponent from './components/CustomComponent'
 import DefaultComponent from './components/DefaultComponent'
