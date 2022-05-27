@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../../context/Provider'
 import React from 'react'
 const { v4: uuidv4 } = require('uuid')
-import Radium from 'radium'
 
 interface InputFieldProps {
   formStyle?: object
@@ -161,4 +160,4 @@ const InputField = ({
     </form>
   )
 }
-export default Radium(InputField)
+export default InputField
