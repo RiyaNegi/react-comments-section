@@ -1,5 +1,5 @@
 import React from 'react'
-import { CommentSectionComponent } from 'react-comments-section'
+import { CommentSection } from 'react-comments-section'
 import 'react-comments-section/dist/index.css'
 import { useState } from 'react'
 
@@ -55,7 +55,7 @@ const CustomComponent = () => {
       >
         <span className='title'>Custom Component</span>
       </a>
-      <CommentSectionComponent
+      <CommentSection
         currentUser={{
           currentUserId: '01a',
           currentUserImg:

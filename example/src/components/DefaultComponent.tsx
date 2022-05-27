@@ -1,5 +1,5 @@
 import React from 'react'
-import { CommentSectionComponent } from 'react-comments-section'
+import { CommentSection } from 'react-comments-section'
 import 'react-comments-section/dist/index.css'
 
 const DefaultComponent = () => {
@@ -50,7 +50,7 @@ const DefaultComponent = () => {
       >
         <span className='title'>Default Component</span>
       </a>
-      <CommentSectionComponent
+      <CommentSection
         currentUser={{
           currentUserId: '01a',
           currentUserImg:

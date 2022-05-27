@@ -1,5 +1,5 @@
 import * as React from 'react'
-import CommentSection from './components/CommentSection/Index'
+import CommentSectionComponent from './components/CommentSectionComponent/Index'
 import GlobalProvider from './context/Provider'
 
 interface CommentSectionProps {
@@ -51,7 +51,7 @@ interface CommentSectionProps {
   }>
 }
 
-export const CommentSectionComponent = ({
+export const CommentSection = ({
   currentUser,
   customImg,
   inputStyle,
@@ -93,7 +93,7 @@ export const CommentSectionComponent = ({
       onEditAction={onEditAction}
       currentData={currentData}
     >
-      <CommentSection
+      <CommentSectionComponent
         overlayStyle={overlayStyle}
         hrStyle={hrStyle}
         logIn={logIn}
