@@ -16,7 +16,7 @@ live demo of the library -> https://riyanegi.github.io/react-comments-section/
 ## Install
 
 ```bash
-npm i react-comments-section
+npm i react-comments-section@2.0.3
 ```
 
 ## Usage
