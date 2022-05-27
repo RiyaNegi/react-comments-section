@@ -35,7 +35,7 @@ This is how the basic default component would look.
 
 ```jsx
 import React from 'react'
-import { CommentSectionComponent } from 'react-comments-section'
+import { CommentSection} from 'react-comments-section'
 import 'react-comments-section/dist/index.css'
 
 const DefaultComponent = () => {
@@ -50,7 +50,7 @@ const DefaultComponent = () => {
       replies: []
     }
   ]
-  return <CommentSectionComponent
+  return <CommentSection
         currentUser={{
           currentUserId: '01a',
           currentUserImg:
@@ -88,7 +88,7 @@ export default DefaultComponent
 
 ```jsx
 import React, { PureComponent } from 'react'
-import { CommentSectionComponent } from 'react-comments-section'
+import { CommentSection } from 'react-comments-section'
 import 'react-comments-section/dist/index.css'
 
 class ClassComponent extends PureComponent {
@@ -123,7 +123,7 @@ class ClassComponent extends PureComponent {
 
   render() {
     return 
-        <CommentSectionComponent
+        <CommentSection
           currentUser={{
             currentUserId: '01a',
             currentUserImg:
