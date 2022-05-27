@@ -60,6 +60,23 @@ const DefaultComponent = () => {
           currentUserFullName: 'Riya Negi'
         }}
         commentData={data}
+        logIn={{
+          loginLink: 'http://localhost:3001/',
+          signupLink: 'http://localhost:3001/'
+        }}
+        onSubmitAction={(data: {
+          userId: string
+          comId: string
+          avatarUrl: string
+          userProfile?: string
+          fullName: string
+          text: string
+          replies: any
+          commentId: string
+        }) => console.log('check submit, ', data)}
+        currentData={(data: any) => {
+          console.log('curent data', data)
+        }}
       />
     </div>
   )

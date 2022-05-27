@@ -10,7 +10,7 @@ import NoComments from './NoComments'
 
 interface CommentSectionProps {
   overlayStyle?: object
-  logIn?: {
+  logIn: {
     loginLink: string
     signupLink: string
   }
@@ -36,13 +36,22 @@ const CommentSection = ({
   }
   const globalStore: any = useContext(GlobalContext)
 
+  const totalComments = () => {
+    let count = 0
+    globalStore.data.map((i: any) => {
+      count = count + 1
+      i.replies.map(() => (count = count + 1))
+    })
+    return count
+  }
+
   return (
     <div className='overlay' style={overlayStyle}>
       <span className='comment-title' style={titleStyle}>
-        {globalStore.commentsCount || globalStore.data.length} Comments
+        {globalStore.commentsCount || totalComments()} Comments
       </span>
       <hr className='hr-style' style={hrStyle} />
-      {logIn ? (
+      {globalStore.currentUserData === null ? (
         loginMode()
       ) : (
         <InputField formStyle={{ margin: '10px 0px' }} imgDiv={{ margin: 0 }} />

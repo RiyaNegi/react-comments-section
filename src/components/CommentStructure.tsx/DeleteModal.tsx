@@ -28,7 +28,11 @@ const DeleteModal = ({ comId, parentId }: DeleteModalProps) => {
             className='delete'
             onClick={async () => (
               await globalStore.onDelete(comId, parentId),
-              globalStore.onDeleteAction && (await globalStore.onDeleteAction())
+              globalStore.onDeleteAction &&
+                (await globalStore.onDeleteAction({
+                  comIdToDelete: comId,
+                  parentOfDeleteId: parentId
+                }))
             )}
           >
             Delete

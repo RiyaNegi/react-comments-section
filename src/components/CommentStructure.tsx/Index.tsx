@@ -1,8 +1,6 @@
 import './CommentStructure.scss'
 import { useContext } from 'react'
 import { GlobalContext } from '../../context/Provider'
-// import replyIcon from '../../../public/reply.svg'
-// import optionIcon from '../../../public/options.svg'
 import InputField from '../InputField/Index'
 import { Menu, MenuItem } from '@szhsin/react-menu'
 import '@szhsin/react-menu/dist/core.css'
@@ -22,7 +20,7 @@ interface CommentStructureProps {
   editMode: boolean
   parentId?: string
   replyMode: boolean
-  logIn?: {
+  logIn: {
     loginLink: string
     signupLink: string
   }
@@ -32,8 +30,7 @@ const CommentStructure = ({
   info,
   editMode,
   parentId,
-  replyMode,
-  logIn
+  replyMode
 }: CommentStructureProps) => {
   const globalStore: any = useContext(GlobalContext)
   const currentUser = globalStore.currentUserData
@@ -94,7 +91,7 @@ const CommentStructure = ({
           <div>{info.text}</div>
           {userInfo()}
         </div>
-        {!logIn && optionsMenu()}
+        {currentUser && optionsMenu()}
       </div>
     )
   }
@@ -107,7 +104,7 @@ const CommentStructure = ({
           <div className='infoStyle'>{info.text}</div>
           <div style={{ marginLeft: 32 }}>
             {' '}
-            {!logIn && (
+            {currentUser && (
               <div>
                 <button
                   className='replyBtn'
@@ -120,7 +117,7 @@ const CommentStructure = ({
             )}
           </div>
         </div>
-        {!logIn && optionsMenu()}
+        {currentUser && optionsMenu()}
       </div>
     )
   }

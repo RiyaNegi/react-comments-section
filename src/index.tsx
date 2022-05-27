@@ -9,7 +9,7 @@ interface CommentSectionProps {
     currentUserProfile: string
     currentUserFullName: string
   } | null
-  logIn?: {
+  logIn: {
     loginLink: string
     signupLink: string
   }
@@ -21,6 +21,7 @@ interface CommentSectionProps {
   cancelBtnStyle?: object
   overlayStyle?: object
   imgStyle?: object
+  replyInputStyle?: object
   commentsCount?: number
   hrStyle?: object
   titleStyle?: object
@@ -29,6 +30,7 @@ interface CommentSectionProps {
   onReplyAction?: Function
   onEditAction?: Function
   customNoComment?: Function
+  currentData?: Function
   commentData: Array<{
     userId: string
     comId: string
@@ -36,7 +38,16 @@ interface CommentSectionProps {
     avatarUrl: string
     text: string
     userProfile?: string
-    replies?: Array<object> | undefined
+    replies?:
+      | Array<{
+          userId: string
+          comId: string
+          fullName: string
+          avatarUrl: string
+          text: string
+          userProfile?: string
+        }>
+      | undefined
   }>
 }
 
@@ -48,6 +59,7 @@ export const CommentSectionComponent = ({
   submitBtnStyle,
   cancelBtnStyle,
   overlayStyle,
+  replyInputStyle,
   logIn,
   imgStyle,
   replyTop,
@@ -59,7 +71,8 @@ export const CommentSectionComponent = ({
   onDeleteAction,
   onReplyAction,
   onEditAction,
-  customNoComment
+  customNoComment,
+  currentData
 }: CommentSectionProps) => {
   return (
     <GlobalProvider
@@ -70,6 +83,7 @@ export const CommentSectionComponent = ({
       formStyle={formStyle}
       submitBtnStyle={submitBtnStyle}
       cancelBtnStyle={cancelBtnStyle}
+      replyInputStyle={replyInputStyle}
       imgStyle={imgStyle}
       commentsCount={commentsCount}
       commentData={commentData}
@@ -77,6 +91,7 @@ export const CommentSectionComponent = ({
       onDeleteAction={onDeleteAction}
       onReplyAction={onReplyAction}
       onEditAction={onEditAction}
+      currentData={currentData}
     >
       <CommentSection
         overlayStyle={overlayStyle}

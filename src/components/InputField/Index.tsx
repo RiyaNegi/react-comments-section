@@ -2,6 +2,7 @@ import './InputField.scss'
 import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../../context/Provider'
 import React from 'react'
+const { v4: uuidv4 } = require('uuid')
 
 interface InputFieldProps {
   formStyle?: object
@@ -39,8 +40,72 @@ const InputField = ({
 
   const globalStore: any = useContext(GlobalContext)
 
+  const editMode = async () => (
+    await globalStore.onEdit(text, comId, parentId),
+    globalStore.onEditAction &&
+      (await globalStore.onEditAction({
+        userId: globalStore.currentUserData.currentUserId,
+        comId: comId,
+        avatarUrl: globalStore.currentUserData.currentUserImg,
+        userProfile: globalStore.currentUserData.currentUserProfile
+          ? globalStore.currentUserData.currentUserProfile
+          : null,
+        fullName: globalStore.currentUserData.currentUserFullName,
+        text: text,
+        parentOfEditedCommentId: parentId
+      }))
+  )
+
+  const replyMode = async (replyUuid: string) => (
+    await globalStore.onReply(text, comId, parentId, replyUuid),
+    globalStore.onReplyAction &&
+      (await globalStore.onReplyAction({
+        userId: globalStore.currentUserData.currentUserId,
+        repliedToCommentId: comId,
+        avatarUrl: globalStore.currentUserData.currentUserImg,
+        userProfile: globalStore.currentUserData.currentUserProfile
+          ? globalStore.currentUserData.currentUserProfile
+          : null,
+        fullName: globalStore.currentUserData.currentUserFullName,
+        text: text,
+        parentOfRepliedCommentId: parentId,
+        comId: replyUuid
+      }))
+  )
+  const submitMode = async (createUuid: string) => (
+    await globalStore.onSubmit(text, createUuid),
+    globalStore.onSubmitAction &&
+      (await globalStore.onSubmitAction({
+        userId: globalStore.currentUserData.currentUserId,
+        comId: createUuid,
+        avatarUrl: globalStore.currentUserData.currentUserImg,
+        userProfile: globalStore.currentUserData.currentUserProfile
+          ? globalStore.currentUserData.currentUserProfile
+          : null,
+        fullName: globalStore.currentUserData.currentUserFullName,
+        text: text,
+        replies: []
+      }))
+  )
+
+  const handleSubmit = async (event: any) => {
+    event.preventDefault()
+    const createUuid = uuidv4()
+    const replyUuid = uuidv4()
+    mode === 'editMode'
+      ? editMode()
+      : mode === 'replyMode'
+      ? replyMode(replyUuid)
+      : submitMode(createUuid)
+    setText('')
+  }
+
   return (
-    <form className='form' style={formStyle || globalStore.formStyle}>
+    <form
+      className='form'
+      style={formStyle || globalStore.formStyle}
+      onSubmit={handleSubmit}
+    >
       <div className='userImg' style={imgDiv}>
         <a
           target='_blank'
@@ -60,7 +125,11 @@ const InputField = ({
       </div>
       <input
         className='postComment'
-        style={inputStyle || globalStore.inputStyle}
+        style={
+          mode === 'replyMode' || mode === 'editMode'
+            ? globalStore.replyInputStyle
+            : inputStyle || globalStore.inputStyle
+        }
         type='text'
         placeholder='Type your reply here.'
         value={text}
@@ -82,20 +151,9 @@ const InputField = ({
       )}
       <button
         className='postBtn'
-        type='button'
+        type='submit'
         style={submitBtnStyle || globalStore.submitBtnStyle}
-        onClick={async () => {
-          mode === 'editMode'
-            ? (await globalStore.onEdit(text, comId, parentId),
-              globalStore.onEditAction && (await globalStore.onEditAction()))
-            : mode === 'replyMode'
-            ? (await globalStore.onReply(text, comId, parentId),
-              globalStore.onReplyAction && (await globalStore.onReplyAction()))
-            : (await globalStore.onSubmit(text),
-              globalStore.onSubmitAction &&
-                (await globalStore.onSubmitAction()))
-          setText('')
-        }}
+        onClick={(e) => handleSubmit(e)}
       >
         Post
       </button>

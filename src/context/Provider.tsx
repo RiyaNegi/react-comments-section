@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
-const { v4: uuidv4 } = require('uuid')
+// const { v4: uuidv4 } = require('uuid')
 import _ from 'lodash'
 
 export const GlobalContext = createContext({})
@@ -19,8 +19,50 @@ export const GlobalProvider = ({
   onSubmitAction,
   onDeleteAction,
   onReplyAction,
-  onEditAction
-}: any) => {
+  onEditAction,
+  currentData,
+  replyInputStyle
+}: {
+  children: any
+  currentUser?: {
+    currentUserId: string
+    currentUserImg: string
+    currentUserProfile?: string | undefined
+    currentUserFullName: string
+  } | null
+  replyTop?: boolean
+  customImg?: string
+  inputStyle?: object
+  formStyle?: object
+  submitBtnStyle?: object
+  cancelBtnStyle?: object
+  imgStyle?: object
+  replyInputStyle?: object
+  commentsCount?: number
+  commentData?: Array<{
+    userId: string
+    comId: string
+    fullName: string
+    avatarUrl: string
+    text: string
+    userProfile?: string
+    replies?:
+      | Array<{
+          userId: string
+          comId: string
+          fullName: string
+          avatarUrl: string
+          text: string
+          userProfile?: string
+        }>
+      | undefined
+  }>
+  onSubmitAction?: Function
+  onDeleteAction?: Function
+  onReplyAction?: Function
+  onEditAction?: Function
+  currentData?: Function
+}) => {
   const [currentUserData] = useState(currentUser)
   const [data, setData] = useState<
     Array<{
@@ -46,8 +88,16 @@ export const GlobalProvider = ({
   const [replyArr, setReply] = useState<string[]>([])
 
   useEffect(() => {
-    setData(commentData)
+    if (commentData) {
+      setData(commentData)
+    }
   }, [commentData])
+
+  useEffect(() => {
+    if (currentData) {
+      currentData(data)
+    }
+  }, [data])
 
   const handleAction = (id: string, edit: boolean) => {
     if (edit) {
@@ -73,16 +123,16 @@ export const GlobalProvider = ({
     }
   }
 
-  const onSubmit = (text: string) => {
+  const onSubmit = (text: string, uuid: string) => {
     let copyData = [...data]
     copyData.push({
-      userId: currentUserData.currentUserId,
-      comId: uuidv4(),
-      avatarUrl: currentUserData.currentUserImg,
-      userProfile: currentUserData.currentUserProfile
-        ? currentUserData.currentUserProfile
-        : null,
-      fullName: currentUserData.currentUserFullName,
+      userId: currentUserData!.currentUserId,
+      comId: uuid,
+      avatarUrl: currentUserData!.currentUserImg,
+      userProfile: currentUserData!.currentUserProfile
+        ? currentUserData!.currentUserProfile
+        : undefined,
+      fullName: currentUserData!.currentUserFullName,
       text: text,
       replies: []
     })
@@ -107,18 +157,23 @@ export const GlobalProvider = ({
     }
   }
 
-  const onReply = (text: string, comId: string, parentId: string) => {
+  const onReply = (
+    text: string,
+    comId: string,
+    parentId: string,
+    uuid: string
+  ) => {
     let copyData = [...data]
     if (parentId) {
       const indexOfParent = _.findIndex(copyData, { comId: parentId })
       copyData[indexOfParent].replies!.push({
-        userId: currentUserData.currentUserId,
-        comId: uuidv4(),
-        avatarUrl: currentUserData.currentUserImg,
-        userProfile: currentUserData.currentUserProfile
-          ? currentUserData.currentUserProfile
-          : null,
-        fullName: currentUserData.currentUserFullName,
+        userId: currentUserData!.currentUserId,
+        comId: uuid,
+        avatarUrl: currentUserData!.currentUserImg,
+        userProfile: currentUserData!.currentUserProfile
+          ? currentUserData!.currentUserProfile
+          : undefined,
+        fullName: currentUserData!.currentUserFullName,
         text: text
       })
       setData(copyData)
@@ -128,13 +183,13 @@ export const GlobalProvider = ({
         comId: comId
       })
       copyData[indexOfId].replies!.push({
-        userId: currentUserData.currentUserId,
-        comId: uuidv4(),
-        avatarUrl: currentUserData.currentUserImg,
-        userProfile: currentUserData.currentUserProfile
-          ? currentUserData.currentUserProfile
-          : null,
-        fullName: currentUserData.currentUserFullName,
+        userId: currentUserData!.currentUserId,
+        comId: uuid,
+        avatarUrl: currentUserData!.currentUserImg,
+        userProfile: currentUserData!.currentUserProfile
+          ? currentUserData!.currentUserProfile
+          : undefined,
+        fullName: currentUserData!.currentUserFullName,
         text: text
       })
       setData(copyData)
@@ -181,7 +236,8 @@ export const GlobalProvider = ({
         onSubmitAction: onSubmitAction,
         onDeleteAction: onDeleteAction,
         onReplyAction: onReplyAction,
-        onEditAction: onEditAction
+        onEditAction: onEditAction,
+        replyInputStyle: replyInputStyle
       }}
     >
       {children}

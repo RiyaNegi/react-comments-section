@@ -42,6 +42,10 @@ class ClassComponent extends PureComponent {
       }
     ]
   }
+  onSubmitAction = (data: any) => {
+    console.log('this comment was posted!,data', data)
+  }
+
   render() {
     return (
       <div>
@@ -63,6 +67,11 @@ class ClassComponent extends PureComponent {
             currentUserFullName: 'Riya Negi'
           }}
           commentData={this.state.data}
+          onSubmitAction={(data: any) => this.onSubmitAction(data)}
+          logIn={{
+            loginLink: 'http://localhost:3001/',
+            signupLink: 'http://localhost:3001/'
+          }}
         />
       </div>
     )
