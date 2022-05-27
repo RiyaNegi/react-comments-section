@@ -12,7 +12,7 @@
 
 live demo of the library -> https://riyanegi.github.io/react-comments-section/
 
-![commentbox](https://github.com/RiyaNegi/react-comments-section/blob/main/example/userlogin.png)
+![commentbox](https://github.com/RiyaNegi/react-comments-section/blob/main/example/blob/default.png)
 
 ## Install
 
