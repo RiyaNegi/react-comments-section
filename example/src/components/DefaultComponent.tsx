@@ -41,7 +41,7 @@ const DefaultComponent = () => {
     }
   ]
   return (
-    <div>
+    <div style={{ width: '100%' }}>
       <a
         style={{ color: 'black', cursor: 'pointer' }}
         target='_blank'
