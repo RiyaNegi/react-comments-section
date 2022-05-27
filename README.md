@@ -3,7 +3,7 @@
 ## Install
 Install the latest version!
 ```bash
-npm i react-comments-section@2.0.3
+npm i react-comments-section@2.0.4
 ```
 
 
