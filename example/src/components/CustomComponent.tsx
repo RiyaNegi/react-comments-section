@@ -64,8 +64,8 @@ const CustomComponent = () => {
             'https://www.linkedin.com/in/riya-negi-8879631a9/',
           currentUserFullName: 'Riya Negi'
         }}
-        hrStyle={{ color: 'pink' }}
-        titleStyle={{ color: 'blue' }}
+        hrStyle={{ border: '0.5px solid #ff0072' }}
+        titleStyle={{ color: '#f2f2f2' }}
         commentsCount={8}
         commentData={data}
         currentData={(data: any) => {
@@ -98,12 +98,21 @@ const CustomComponent = () => {
         customNoComment={() => customNoComment()}
         imgStyle={{ borderRadius: '0%' }}
         customImg='https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F13%2F2015%2F04%2F05%2Ffeatured.jpg&q=60'
-        inputStyle={{ border: '1px solid red' }}
-        formStyle={{ backgroundColor: 'aqua' }}
-        submitBtnStyle={{ backgroundColor: 'black' }}
-        cancelBtnStyle={{ backgroundColor: 'yellow' }}
-        overlayStyle={{ backgroundColor: 'black', color: 'white' }}
-        replyInputStyle={{ borderBottom: '1px solid blue', color: 'white' }}
+        inputStyle={{
+          border: '1px solid rgb(208 208 208)',
+          ':active': {
+            border: '2px solid red'
+          }
+        }}
+        formStyle={{ backgroundColor: 'white' }}
+        submitBtnStyle={{ border: '1px solid black', backgroundColor: 'black' }}
+        cancelBtnStyle={{
+          border: '1px solid gray',
+          backgroundColor: 'gray',
+          color: 'white'
+        }}
+        overlayStyle={{ backgroundColor: '#0f0d29', color: 'white' }}
+        replyInputStyle={{ borderBottom: '1px solid black', color: 'black' }}
       />
     </div>
   )

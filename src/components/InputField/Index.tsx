@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../../context/Provider'
 import React from 'react'
 const { v4: uuidv4 } = require('uuid')
+import Radium from 'radium'
 
 interface InputFieldProps {
   formStyle?: object
@@ -103,7 +104,7 @@ const InputField = ({
   return (
     <form
       className='form'
-      style={formStyle || globalStore.formStyle}
+      style={globalStore.formStyle || formStyle}
       onSubmit={handleSubmit}
     >
       <div className='userImg' style={imgDiv}>
@@ -113,11 +114,11 @@ const InputField = ({
         >
           <img
             src={
-              customImg ||
               globalStore.customImg ||
+              customImg ||
               globalStore.currentUserData.currentUserImg
             }
-            style={imgStyle || globalStore.imgStyle}
+            style={globalStore.imgStyle || imgStyle}
             alt='userIcon'
             className='imgdefault'
           />
@@ -128,7 +129,7 @@ const InputField = ({
         style={
           mode === 'replyMode' || mode === 'editMode'
             ? globalStore.replyInputStyle
-            : inputStyle || globalStore.inputStyle
+            : globalStore.inputStyle || inputStyle
         }
         type='text'
         placeholder='Type your reply here.'
@@ -138,7 +139,7 @@ const InputField = ({
       {mode && (
         <button
           className='cancelBtn'
-          style={cancelBtnStyle || globalStore.cancelBtnStyle}
+          style={globalStore.cancelBtnStyle || cancelBtnStyle}
           type='button'
           onClick={() =>
             mode === 'editMode'
@@ -152,7 +153,7 @@ const InputField = ({
       <button
         className='postBtn'
         type='submit'
-        style={submitBtnStyle || globalStore.submitBtnStyle}
+        style={globalStore.submitBtnStyle || submitBtnStyle}
         onClick={(e) => handleSubmit(e)}
       >
         Post
@@ -160,4 +161,4 @@ const InputField = ({
     </form>
   )
 }
-export default InputField
+export default Radium(InputField)
