@@ -1,5 +1,12 @@
 # react-comments-section
 
+## Install
+Install the latest version!
+```bash
+npm i react-comments-section@2.0.3
+```
+
+
 ## Detailed Documentation : https://riyanegi.github.io/react-comments-documentation/
 
 
@@ -12,12 +19,6 @@
 live demo of the library -> https://riyanegi.github.io/react-comments-section/
 
 ![commentbox](https://github.com/RiyaNegi/react-comments-section/blob/main/example/blob/default.png?raw=true)
-
-## Install
-
-```bash
-npm i react-comments-section@2.0.3
-```
 
 ## Usage
 
