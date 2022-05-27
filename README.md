@@ -1,5 +1,4 @@
 # react-comments-section
-![NPM](https://img.shields.io/npm/v/react-comments-section.svg)
 
 ## Detailed Documentation : https://riyanegi.github.io/react-comments-documentation/
 
