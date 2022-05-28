@@ -106,6 +106,7 @@ const CustomComponent = () => {
           backgroundColor: 'gray',
           color: 'white'
         }}
+        removeEmoji={true}
         overlayStyle={{ backgroundColor: '#0f0d29', color: 'white' }}
         replyInputStyle={{ borderBottom: '1px solid black', color: 'black' }}
       />

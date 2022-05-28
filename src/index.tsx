@@ -31,6 +31,7 @@ interface CommentSectionProps {
   onEditAction?: Function
   customNoComment?: Function
   currentData?: Function
+  removeEmoji?: boolean
   commentData: Array<{
     userId: string
     comId: string
@@ -67,6 +68,7 @@ export const CommentSection = ({
   commentData,
   hrStyle,
   titleStyle,
+  removeEmoji,
   onSubmitAction,
   onDeleteAction,
   onReplyAction,
@@ -92,6 +94,7 @@ export const CommentSection = ({
       onReplyAction={onReplyAction}
       onEditAction={onEditAction}
       currentData={currentData}
+      removeEmoji={removeEmoji}
     >
       <CommentSectionComponent
         overlayStyle={overlayStyle}

@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../../context/Provider'
 import React from 'react'
 const { v4: uuidv4 } = require('uuid')
+import EmojiInput from './EmojiInput'
 
 interface InputFieldProps {
   formStyle?: object
@@ -32,6 +33,7 @@ const InputField = ({
   imgDiv
 }: InputFieldProps) => {
   const [text, setText] = useState('')
+
   useEffect(() => {
     if (fillerText) {
       setText(fillerText)
@@ -101,63 +103,71 @@ const InputField = ({
   }
 
   return (
-    <form
-      className='form'
-      style={globalStore.formStyle || formStyle}
-      onSubmit={handleSubmit}
-    >
-      <div className='userImg' style={imgDiv}>
-        <a
-          target='_blank'
-          href={globalStore.currentUserData.currentUserProfile}
-        >
-          <img
-            src={
-              globalStore.customImg ||
-              customImg ||
-              globalStore.currentUserData.currentUserImg
-            }
-            style={globalStore.imgStyle || imgStyle}
-            alt='userIcon'
-            className='imgdefault'
-          />
-        </a>
-      </div>
-      <input
-        className='postComment'
-        style={
-          mode === 'replyMode' || mode === 'editMode'
-            ? globalStore.replyInputStyle
-            : globalStore.inputStyle || inputStyle
-        }
-        type='text'
-        placeholder='Type your reply here.'
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-      {mode && (
-        <button
-          className='cancelBtn'
-          style={globalStore.cancelBtnStyle || cancelBtnStyle}
-          type='button'
-          onClick={() =>
-            mode === 'editMode'
-              ? globalStore.handleAction(comId, true)
-              : globalStore.handleAction(comId, false)
-          }
-        >
-          Cancel
-        </button>
-      )}
-      <button
-        className='postBtn'
-        type='submit'
-        style={globalStore.submitBtnStyle || submitBtnStyle}
-        onClick={(e) => handleSubmit(e)}
+    <div>
+      <form
+        className='form'
+        style={globalStore.formStyle || formStyle}
+        onSubmit={handleSubmit}
       >
-        Post
-      </button>
-    </form>
+        <div className='userImg' style={imgDiv}>
+          <a
+            target='_blank'
+            href={globalStore.currentUserData.currentUserProfile}
+          >
+            <img
+              src={
+                globalStore.customImg ||
+                customImg ||
+                globalStore.currentUserData.currentUserImg
+              }
+              style={globalStore.imgStyle || imgStyle}
+              alt='userIcon'
+              className='imgdefault'
+            />
+          </a>
+        </div>
+        {globalStore.removeEmoji ? (
+          <input
+            className='postComment'
+            style={
+              mode === 'replyMode' || mode === 'editMode'
+                ? globalStore.replyInputStyle
+                : globalStore.inputStyle || inputStyle
+            }
+            type='text'
+            placeholder='Type your reply here.'
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+        ) : (
+          <EmojiInput text={text} setText={setText} />
+        )}
+
+        {mode && (
+          <button
+            className='cancelBtn'
+            style={globalStore.cancelBtnStyle || cancelBtnStyle}
+            type='button'
+            onClick={() =>
+              mode === 'editMode'
+                ? globalStore.handleAction(comId, true)
+                : globalStore.handleAction(comId, false)
+            }
+          >
+            Cancel
+          </button>
+        )}
+        <button
+          className='postBtn'
+          type='submit'
+          disabled={text != '' ? false : true}
+          style={globalStore.submitBtnStyle || submitBtnStyle}
+          onClick={(e) => (text ? handleSubmit(e) : null)}
+        >
+          Post
+        </button>
+      </form>
+    </div>
   )
 }
 export default InputField

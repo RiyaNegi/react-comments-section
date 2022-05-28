@@ -69,3 +69,23 @@
   width: 100%;
   border-top: 1px solid;
 }
+.emoji-input {
+  display: flex;
+  width: 100%;
+  position: relative;
+  .emoji-icon {
+    background-image: url('../../assets/smile.svg');
+    position: relative;
+    width: 24px;
+    background-repeat: no-repeat;
+    background-size: 23px;
+    top: 14px;
+    cursor: pointer;
+  }
+}
+.emoji-picker-react {
+  z-index: 1000;
+  position: absolute !important;
+  right: -63px;
+  top: 50px;
+}

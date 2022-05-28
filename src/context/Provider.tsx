@@ -21,7 +21,8 @@ export const GlobalProvider = ({
   onReplyAction,
   onEditAction,
   currentData,
-  replyInputStyle
+  replyInputStyle,
+  removeEmoji
 }: {
   children: any
   currentUser?: {
@@ -39,6 +40,7 @@ export const GlobalProvider = ({
   imgStyle?: object
   replyInputStyle?: object
   commentsCount?: number
+  removeEmoji?: boolean
   commentData?: Array<{
     userId: string
     comId: string
@@ -237,7 +239,8 @@ export const GlobalProvider = ({
         onDeleteAction: onDeleteAction,
         onReplyAction: onReplyAction,
         onEditAction: onEditAction,
-        replyInputStyle: replyInputStyle
+        replyInputStyle: replyInputStyle,
+        removeEmoji: removeEmoji
       }}
     >
       {children}

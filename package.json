@@ -1,6 +1,6 @@
 {
   "name": "react-comments-section",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "React component library for a functioning comments section",
   "author": "RiyaNegi",
   "license": "MIT",
@@ -67,6 +67,7 @@
     "@szhsin/react-menu": "^3.0.1",
     "@types/lodash": "^4.14.182",
     "@types/uuid": "^8.3.4",
+    "emoji-picker-react": "^3.5.1",
     "microbundle-crl-with-assets": "^0.13.12",
     "react-responsive-modal": "^6.2.0",
     "sass": "^1.51.0"
