@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, useContext } from 'react'
+import { GlobalContext } from '../../context/Provider'
 import Picker from 'emoji-picker-react'
 import './InputField.scss'
 
@@ -19,13 +20,17 @@ function useOutsideAlerter(ref: any, setOpen: Function) {
 interface EmojiInputProps {
   text: string
   setText: Function
+  mode?: string
+  inputStyle?: object
 }
 
-const EmojiInput = ({ text, setText }: EmojiInputProps) => {
+const EmojiInput = ({ text, setText, mode, inputStyle }: EmojiInputProps) => {
   const [open, setOpen] = useState(false)
   const [chosenEmoji, setChosenEmoji] = useState<{ emoji?: any }>()
   const wrapperRef = useRef(null)
   useOutsideAlerter(wrapperRef, setOpen)
+
+  const globalStore: any = useContext(GlobalContext)
 
   useEffect(() => {
     if (chosenEmoji) {
@@ -44,7 +49,12 @@ const EmojiInput = ({ text, setText }: EmojiInputProps) => {
     <div className='emoji-input'>
       <input
         className='postComment'
-        placeholder='type your reply'
+        style={
+          mode === 'replyMode' || mode === 'editMode'
+            ? globalStore.replyInputStyle
+            : globalStore.inputStyle || inputStyle
+        }
+        placeholder='type your reply here'
         type='text'
         value={text}
         onChange={(e) => setText(e.target.value)}

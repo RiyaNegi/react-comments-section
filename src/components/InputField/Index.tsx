@@ -140,7 +140,12 @@ const InputField = ({
             onChange={(e) => setText(e.target.value)}
           />
         ) : (
-          <EmojiInput text={text} setText={setText} />
+          <EmojiInput
+            text={text}
+            setText={setText}
+            mode={mode}
+            inputStyle={inputStyle}
+          />
         )}
 
         {mode && (
