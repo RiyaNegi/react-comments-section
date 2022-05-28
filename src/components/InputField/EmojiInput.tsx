@@ -36,12 +36,11 @@ const EmojiInput = ({ text, setText, mode, inputStyle }: EmojiInputProps) => {
     if (chosenEmoji) {
       let newText = text + ' ' + chosenEmoji.emoji
       setText(newText)
-      console.log('new', newText)
     }
   }, [chosenEmoji])
 
   const onEmojiClick = (event: any, emojiObject: { emoji?: any }) => {
-    console.log('check', event, emojiObject)
+    event
     setChosenEmoji(emojiObject)
   }
 
