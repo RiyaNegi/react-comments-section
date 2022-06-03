@@ -92,7 +92,7 @@
 .rdw-editor-wrapper {
   width: 100%;
 }
-.adv-form {
+.advanced-form {
   padding: 0px;
   flex-direction: column;
 }
@@ -100,32 +100,32 @@
   max-height: 200px;
   overflow: scroll;
 }
-.adv-btns {
+.advanced-btns {
   width: 100%;
   display: flex;
   margin: 6px 0px 0px 0px;
 }
-.adv-border {
+.advanced-border {
   border: 1px solid #e8e8e8;
   padding: 10px;
   border-radius: 10px;
-  .adv-border:focus-within {
+  .advanced-border:focus-within {
     border: 1px solid #353535;
   }
 }
-.adv-post {
+.advanced-post {
   margin-left: unset !important;
 }
-.adv-cancel {
+.advanced-cancel {
   margin-right: 15px;
   margin-left: unset !important;
 }
-.adv-overlay {
+.advanced-overlay {
   display: flex;
   margin: 10px 0px;
   width: 100%;
 }
-.adv-input {
+.advanced-input {
   margin-left: 6px;
   width: 100%;
 }

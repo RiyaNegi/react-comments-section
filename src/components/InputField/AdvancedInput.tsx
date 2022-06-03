@@ -64,7 +64,7 @@ const AdvancedInput = ({
   }, [editorState])
 
   return (
-    <div className='adv-overlay'>
+    <div className='advanced-overlay'>
       <div className='userImg' style={imgDiv}>
         <a
           target='_blank'
@@ -82,9 +82,9 @@ const AdvancedInput = ({
           />
         </a>
       </div>
-      <div className='adv-input'>
+      <div className='advanced-input'>
         <form
-          className='form adv-form '
+          className='form advanced-form '
           style={globalStore.formStyle || formStyle}
           onSubmit={async (e) =>
             editText != '<p></p>'
@@ -93,7 +93,7 @@ const AdvancedInput = ({
               : null
           }
         >
-          <div className='adv-border'>
+          <div className='advanced-border'>
             <Editor
               editorState={editorState}
               placeholder={'Type your reply here'}
@@ -173,10 +173,10 @@ const AdvancedInput = ({
               __html: text
             }}
           /> */}
-          <div className='adv-btns'>
+          <div className='advanced-btns'>
             {mode && (
               <button
-                className='adv-cancel cancelBtn'
+                className='advanced-cancel cancelBtn'
                 style={globalStore.cancelBtnStyle || cancelBtnStyle}
                 type='button'
                 onClick={() =>
@@ -189,7 +189,7 @@ const AdvancedInput = ({
               </button>
             )}
             <button
-              className='adv-post postBtn'
+              className='advanced-post postBtn'
               type='submit'
               disabled={editText === '<p></p>' ? true : false}
               style={globalStore.submitBtnStyle || submitBtnStyle}
