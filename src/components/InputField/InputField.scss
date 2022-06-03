@@ -88,3 +88,44 @@
   right: -63px;
   top: 50px;
 }
+
+.rdw-editor-wrapper {
+  width: 100%;
+}
+.adv-form {
+  padding: 0px;
+  flex-direction: column;
+}
+.rdw-editor-main {
+  max-height: 200px;
+  overflow: scroll;
+}
+.adv-btns {
+  width: 100%;
+  display: flex;
+  margin: 6px 0px 0px 0px;
+}
+.adv-border {
+  border: 1px solid #e8e8e8;
+  padding: 10px;
+  border-radius: 10px;
+  .adv-border:focus-within {
+    border: 1px solid #353535;
+  }
+}
+.adv-post {
+  margin-left: unset !important;
+}
+.adv-cancel {
+  margin-right: 15px;
+  margin-left: unset !important;
+}
+.adv-overlay {
+  display: flex;
+  margin: 10px 0px;
+  width: 100%;
+}
+.adv-input {
+  margin-left: 6px;
+  width: 100%;
+}

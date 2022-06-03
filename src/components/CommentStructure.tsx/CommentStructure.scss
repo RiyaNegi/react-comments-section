@@ -11,6 +11,7 @@
       display: flex;
       margin-left: 10px;
       font-size: 16px;
+      font-weight: 600;
     }
   }
 }
@@ -75,6 +76,9 @@
 .infoStyle {
   margin-left: 36px;
   font-size: 15px;
+  p {
+    margin: 0px;
+  }
 }
 .replyIcon {
   background-image: url('../../assets/reply.svg');

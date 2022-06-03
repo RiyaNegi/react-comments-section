@@ -101,7 +101,16 @@ const CommentStructure = ({
       <div className='halfDiv'>
         <div className='userInfo'>
           {userInfo()}
-          <div className='infoStyle'>{info.text}</div>
+          {globalStore.advancedInput ? (
+            <div
+              className='infoStyle'
+              dangerouslySetInnerHTML={{
+                __html: info.text
+              }}
+            />
+          ) : (
+            <div className='infoStyle'>{info.text}</div>
+          )}
           <div style={{ marginLeft: 32 }}>
             {' '}
             {currentUser && (

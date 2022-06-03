@@ -1,6 +1,7 @@
 import * as React from 'react'
 import CommentSectionComponent from './components/CommentSectionComponent/Index'
 import GlobalProvider from './context/Provider'
+import './Index.scss'
 
 interface CommentSectionProps {
   currentUser: {
@@ -32,6 +33,7 @@ interface CommentSectionProps {
   customNoComment?: Function
   currentData?: Function
   removeEmoji?: boolean
+  advancedInput?: boolean
   commentData: Array<{
     userId: string
     comId: string
@@ -74,7 +76,8 @@ export const CommentSection = ({
   onReplyAction,
   onEditAction,
   customNoComment,
-  currentData
+  currentData,
+  advancedInput
 }: CommentSectionProps) => {
   return (
     <GlobalProvider
@@ -95,6 +98,7 @@ export const CommentSection = ({
       onEditAction={onEditAction}
       currentData={currentData}
       removeEmoji={removeEmoji}
+      advancedInput={advancedInput}
     >
       <CommentSectionComponent
         overlayStyle={overlayStyle}

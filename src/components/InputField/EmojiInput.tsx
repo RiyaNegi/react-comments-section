@@ -53,7 +53,7 @@ const EmojiInput = ({ text, setText, mode, inputStyle }: EmojiInputProps) => {
             ? globalStore.replyInputStyle
             : globalStore.inputStyle || inputStyle
         }
-        placeholder='type your reply here'
+        placeholder='Type your reply here'
         type='text'
         value={text}
         onChange={(e) => setText(e.target.value)}

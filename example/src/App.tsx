@@ -1,4 +1,5 @@
 import React from 'react'
+import AdvancedComponent from './components/AdvancedComponent.'
 import ClassComponent from './components/ClassComponent'
 import CustomComponent from './components/CustomComponent'
 import DefaultComponent from './components/DefaultComponent'
@@ -16,6 +17,9 @@ const App = () => {
       <div className='example-row'>
         <CustomComponent />
         <LogInComponent />
+      </div>
+      <div className='example-row'>
+        <AdvancedComponent />
       </div>
     </div>
   )

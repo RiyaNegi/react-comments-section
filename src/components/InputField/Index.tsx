@@ -3,7 +3,8 @@ import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../../context/Provider'
 import React from 'react'
 const { v4: uuidv4 } = require('uuid')
-import EmojiInput from './EmojiInput'
+import RegularInput from './RegularInput'
+import AdvancedInput from './AdvancedInput'
 
 interface InputFieldProps {
   formStyle?: object
@@ -42,136 +43,111 @@ const InputField = ({
 
   const globalStore: any = useContext(GlobalContext)
 
-  const editMode = async () => (
-    await globalStore.onEdit(text, comId, parentId),
-    globalStore.onEditAction &&
-      (await globalStore.onEditAction({
-        userId: globalStore.currentUserData.currentUserId,
-        comId: comId,
-        avatarUrl: globalStore.currentUserData.currentUserImg,
-        userProfile: globalStore.currentUserData.currentUserProfile
-          ? globalStore.currentUserData.currentUserProfile
-          : null,
-        fullName: globalStore.currentUserData.currentUserFullName,
-        text: text,
-        parentOfEditedCommentId: parentId
-      }))
-  )
+  const editMode = async (advText?: string) => {
+    const textToSend = advText ? advText : text
 
-  const replyMode = async (replyUuid: string) => (
-    await globalStore.onReply(text, comId, parentId, replyUuid),
-    globalStore.onReplyAction &&
-      (await globalStore.onReplyAction({
-        userId: globalStore.currentUserData.currentUserId,
-        repliedToCommentId: comId,
-        avatarUrl: globalStore.currentUserData.currentUserImg,
-        userProfile: globalStore.currentUserData.currentUserProfile
-          ? globalStore.currentUserData.currentUserProfile
-          : null,
-        fullName: globalStore.currentUserData.currentUserFullName,
-        text: text,
-        parentOfRepliedCommentId: parentId,
-        comId: replyUuid
-      }))
-  )
-  const submitMode = async (createUuid: string) => (
-    await globalStore.onSubmit(text, createUuid),
-    globalStore.onSubmitAction &&
-      (await globalStore.onSubmitAction({
-        userId: globalStore.currentUserData.currentUserId,
-        comId: createUuid,
-        avatarUrl: globalStore.currentUserData.currentUserImg,
-        userProfile: globalStore.currentUserData.currentUserProfile
-          ? globalStore.currentUserData.currentUserProfile
-          : null,
-        fullName: globalStore.currentUserData.currentUserFullName,
-        text: text,
-        replies: []
-      }))
-  )
+    return (
+      await globalStore.onEdit(textToSend, comId, parentId),
+      globalStore.onEditAction &&
+        (await globalStore.onEditAction({
+          userId: globalStore.currentUserData.currentUserId,
+          comId: comId,
+          avatarUrl: globalStore.currentUserData.currentUserImg,
+          userProfile: globalStore.currentUserData.currentUserProfile
+            ? globalStore.currentUserData.currentUserProfile
+            : null,
+          fullName: globalStore.currentUserData.currentUserFullName,
+          text: textToSend,
+          parentOfEditedCommentId: parentId
+        }))
+    )
+  }
 
-  const handleSubmit = async (event: any) => {
+  const replyMode = async (replyUuid: string, advText?: string) => {
+    const textToSend = advText ? advText : text
+
+    return (
+      await globalStore.onReply(textToSend, comId, parentId, replyUuid),
+      globalStore.onReplyAction &&
+        (await globalStore.onReplyAction({
+          userId: globalStore.currentUserData.currentUserId,
+          repliedToCommentId: comId,
+          avatarUrl: globalStore.currentUserData.currentUserImg,
+          userProfile: globalStore.currentUserData.currentUserProfile
+            ? globalStore.currentUserData.currentUserProfile
+            : null,
+          fullName: globalStore.currentUserData.currentUserFullName,
+          text: textToSend,
+          parentOfRepliedCommentId: parentId,
+          comId: replyUuid
+        }))
+    )
+  }
+  const submitMode = async (createUuid: string, advText?: string) => {
+    const textToSend = advText ? advText : text
+
+    return (
+      await globalStore.onSubmit(textToSend, createUuid),
+      globalStore.onSubmitAction &&
+        (await globalStore.onSubmitAction({
+          userId: globalStore.currentUserData.currentUserId,
+          comId: createUuid,
+          avatarUrl: globalStore.currentUserData.currentUserImg,
+          userProfile: globalStore.currentUserData.currentUserProfile
+            ? globalStore.currentUserData.currentUserProfile
+            : null,
+          fullName: globalStore.currentUserData.currentUserFullName,
+          text: textToSend,
+          replies: []
+        }))
+    )
+  }
+
+  const handleSubmit = async (event: any, advText?: string) => {
     event.preventDefault()
     const createUuid = uuidv4()
     const replyUuid = uuidv4()
     mode === 'editMode'
-      ? editMode()
+      ? editMode(advText)
       : mode === 'replyMode'
-      ? replyMode(replyUuid)
-      : submitMode(createUuid)
+      ? replyMode(replyUuid, advText)
+      : submitMode(createUuid, advText)
     setText('')
   }
 
   return (
     <div>
-      <form
-        className='form'
-        style={globalStore.formStyle || formStyle}
-        onSubmit={handleSubmit}
-      >
-        <div className='userImg' style={imgDiv}>
-          <a
-            target='_blank'
-            href={globalStore.currentUserData.currentUserProfile}
-          >
-            <img
-              src={
-                globalStore.customImg ||
-                customImg ||
-                globalStore.currentUserData.currentUserImg
-              }
-              style={globalStore.imgStyle || imgStyle}
-              alt='userIcon'
-              className='imgdefault'
-            />
-          </a>
-        </div>
-        {globalStore.removeEmoji ? (
-          <input
-            className='postComment'
-            style={
-              mode === 'replyMode' || mode === 'editMode'
-                ? globalStore.replyInputStyle
-                : globalStore.inputStyle || inputStyle
-            }
-            type='text'
-            placeholder='Type your reply here.'
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-        ) : (
-          <EmojiInput
-            text={text}
-            setText={setText}
-            mode={mode}
-            inputStyle={inputStyle}
-          />
-        )}
-
-        {mode && (
-          <button
-            className='cancelBtn'
-            style={globalStore.cancelBtnStyle || cancelBtnStyle}
-            type='button'
-            onClick={() =>
-              mode === 'editMode'
-                ? globalStore.handleAction(comId, true)
-                : globalStore.handleAction(comId, false)
-            }
-          >
-            Cancel
-          </button>
-        )}
-        <button
-          className='postBtn'
-          type='submit'
-          disabled={text != '' ? false : true}
-          style={globalStore.submitBtnStyle || submitBtnStyle}
-          onClick={(e) => (text ? handleSubmit(e) : null)}
-        >
-          Post
-        </button>
-      </form>
+      {globalStore.advancedInput ? (
+        <AdvancedInput
+          key={mode === 'editMode' ? text : ''}
+          handleSubmit={handleSubmit}
+          text={mode === 'editMode' ? text : ''}
+          setText={setText}
+          formStyle={formStyle}
+          mode={mode}
+          cancelBtnStyle={cancelBtnStyle}
+          submitBtnStyle={submitBtnStyle}
+          comId={comId}
+          imgDiv={imgDiv}
+          imgStyle={imgStyle}
+          customImg={customImg}
+        />
+      ) : (
+        <RegularInput
+          formStyle={formStyle}
+          imgDiv={imgDiv}
+          imgStyle={imgStyle}
+          customImg={customImg}
+          mode={mode}
+          inputStyle={inputStyle}
+          cancelBtnStyle={cancelBtnStyle}
+          comId={comId}
+          submitBtnStyle={submitBtnStyle}
+          handleSubmit={handleSubmit}
+          text={text}
+          setText={setText}
+        />
+      )}
     </div>
   )
 }
