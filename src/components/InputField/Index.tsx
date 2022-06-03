@@ -119,10 +119,8 @@ const InputField = ({
     <div>
       {globalStore.advancedInput ? (
         <AdvancedInput
-          key={mode === 'editMode' ? text : ''}
           handleSubmit={handleSubmit}
           text={mode === 'editMode' ? text : ''}
-          setText={setText}
           formStyle={formStyle}
           mode={mode}
           cancelBtnStyle={cancelBtnStyle}

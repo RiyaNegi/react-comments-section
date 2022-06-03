@@ -18,7 +18,6 @@ interface AdvancedInputProps {
   imgDiv?: object
   customImg?: string
   text: string
-  setText: Function
 }
 
 const AdvancedInput = ({
@@ -31,7 +30,6 @@ const AdvancedInput = ({
   imgDiv,
   imgStyle,
   customImg,
-  //   setText,
   text
 }: AdvancedInputProps) => {
   const [html, setHtml] = useState('<p></p>')
@@ -63,9 +61,6 @@ const AdvancedInput = ({
     setEditText(
       draftToHtml(convertToRaw(editorState.getCurrentContent())).trim()
     )
-    {
-      console.log('checl', editText)
-    }
   }, [editorState])
 
   return (
