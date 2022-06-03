@@ -18,7 +18,13 @@ npm i react-comments-section
 
 live demo of the library -> https://riyanegi.github.io/react-comments-section/
 
+## Default Example 
+
 ![commentbox](https://github.com/RiyaNegi/react-comments-section/blob/main/example/blob/default.png?raw=true)
+
+## Advanced Input (rich text editor)
+
+![commentbox](https://github.com/RiyaNegi/react-comments-section/blob/main/example/blob/advanced.png?raw=true)
 
 ## Usage
 
