@@ -1,5 +1,5 @@
 import React from 'react'
-import AdvancedComponent from './components/AdvancedComponent.'
+import AdvancedComponent from './components/AdvancedComponent'
 import ClassComponent from './components/ClassComponent'
 import CustomComponent from './components/CustomComponent'
 import DefaultComponent from './components/DefaultComponent'
