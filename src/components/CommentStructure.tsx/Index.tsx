@@ -15,6 +15,7 @@ interface CommentStructureProps {
     avatarUrl: string
     text: string
     userProfile?: string
+    timestamp: string
     replies?: Array<object> | undefined
   }
   editMode: boolean
@@ -122,6 +123,7 @@ const CommentStructure = ({
                   <div className='replyIcon' />
                   <span style={{ marginLeft: 17 }}>Reply</span>
                 </button>
+                <sub style={{ fontSize: 'medium' }}>{info.timestamp}</sub>
               </div>
             )}
           </div>
