@@ -6,6 +6,7 @@
     "userProfile": "https://www.linkedin.com/in/riya-negi-8879631a9/",
     "text": "I have a doubt about the 4th point🤔",
     "avatarUrl": "https://ui-avatars.com/api/name=Lily&background=random",
+    "datePosted":"2023-04-21 17:15:57.050735",
     "replies": []
   },
   {
@@ -15,6 +16,7 @@
     "text": "Follow my page for more such interesting blogs!😇",
     "avatarUrl": "https://ui-avatars.com/api/name=Adam&background=random",
     "userProfile": "https://www.linkedin.com/in/riya-negi-8879631a9/",
+    "datePosted":"2023-04-21 17:15:57.050735",
     "replies": []
   },
   {
@@ -23,6 +25,7 @@
     "fullName": "Robert Jae",
     "avatarUrl": "https://ui-avatars.com/api/name=Robert&background=random",
     "text": "Woah pretty helpful! how did you solve for x?",
+    "datePosted":"2023-04-21 17:15:57.050735",
     "replies": [
       {
         "userId": "01b",
@@ -41,6 +44,7 @@
     "userProfile": "https://www.linkedin.com/in/riya-negi-8879631a9/",
     "text": "Aaaah! got it got it. Pretty cool",
     "avatarUrl": "https://ui-avatars.com/api/name=Robin&background=random",
+    "datePosted":"2023-04-21 17:15:57.050735",
     "replies": []
   }
 ]

@@ -11,6 +11,7 @@ const LogInComponent = () => {
       avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
       userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
       text: 'Hey, Loved your blog! ',
+      datePosted:'2023-04-21 17:15:57.050735',
       replies: [
         {
           userId: '02a',
@@ -18,6 +19,7 @@ const LogInComponent = () => {
           userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
           fullName: 'Adam Scott',
           avatarUrl: 'https://ui-avatars.com/api/name=Adam&background=random',
+          datePosted:'2023-04-21 17:15:57.050735',
           text: 'Thanks! It took me 1 month to finish this project but I am glad it helped out someone!🥰'
         },
         {
@@ -26,6 +28,7 @@ const LogInComponent = () => {
           userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
           fullName: 'Riya Negi',
           avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
+          datePosted:'2023-04-21 17:15:57.050735',
           text: 'thanks!😊'
         }
       ]
@@ -37,6 +40,7 @@ const LogInComponent = () => {
       userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
       text: 'I have a doubt about the 4th point🤔',
       avatarUrl: 'https://ui-avatars.com/api/name=Lily&background=random',
+      datePosted:'2023-04-21 17:15:57.050735',
       replies: []
     }
   ]

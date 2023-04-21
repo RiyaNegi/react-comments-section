@@ -49,6 +49,7 @@ export const GlobalProvider = ({
     avatarUrl: string
     text: string
     userProfile?: string
+    datePosted: string
     replies?:
       | Array<{
           userId: string
@@ -57,6 +58,7 @@ export const GlobalProvider = ({
           avatarUrl: string
           text: string
           userProfile?: string
+          datePosted:string
         }>
       | undefined
   }>
@@ -76,6 +78,7 @@ export const GlobalProvider = ({
       avatarUrl: string
       text: string
       userProfile?: string
+      datePosted:string
       replies?:
         | Array<{
             userId: string
@@ -84,6 +87,7 @@ export const GlobalProvider = ({
             avatarUrl: string
             text: string
             userProfile?: string
+            datePosted:string|undefined
           }>
         | undefined
     }>
@@ -127,7 +131,7 @@ export const GlobalProvider = ({
     }
   }
 
-  const onSubmit = (text: string, uuid: string) => {
+  const onSubmit = (text: string, uuid: string,) => {
     let copyData = [...data]
     copyData.push({
       userId: currentUserData!.currentUserId,
@@ -137,7 +141,8 @@ export const GlobalProvider = ({
         ? currentUserData!.currentUserProfile
         : undefined,
       fullName: currentUserData!.currentUserFullName,
-      text: text,
+      text: text,    
+      datePosted:new Date().toLocaleString(),
       replies: []
     })
     setData(copyData)
@@ -178,7 +183,9 @@ export const GlobalProvider = ({
           ? currentUserData!.currentUserProfile
           : undefined,
         fullName: currentUserData!.currentUserFullName,
-        text: text
+        text: text,
+        datePosted:new Date().toLocaleString()
+
       })
       setData(copyData)
       handleAction(comId, false)
@@ -194,7 +201,8 @@ export const GlobalProvider = ({
           ? currentUserData!.currentUserProfile
           : undefined,
         fullName: currentUserData!.currentUserFullName,
-        text: text
+        text: text,
+        datePosted:new Date().toLocaleString()
       })
       setData(copyData)
       handleAction(comId, false)
