@@ -56,6 +56,8 @@ const InputField = ({
           userProfile: globalStore.currentUserData.currentUserProfile
             ? globalStore.currentUserData.currentUserProfile
             : null,
+          createdAt: globalStore.currentUserData.currentUserCreatedAt,
+          updatedAt: globalStore.currentUserData.currentUserUpdatedAt,
           fullName: globalStore.currentUserData.currentUserFullName,
           text: textToSend,
           parentOfEditedCommentId: parentId
@@ -76,6 +78,8 @@ const InputField = ({
           userProfile: globalStore.currentUserData.currentUserProfile
             ? globalStore.currentUserData.currentUserProfile
             : null,
+          createdAt: globalStore.currentUserData.currentUserCreatedAt,
+          updatedAt: globalStore.currentUserData.currentUserUpdatedAt,
           fullName: globalStore.currentUserData.currentUserFullName,
           text: textToSend,
           parentOfRepliedCommentId: parentId,
@@ -96,6 +100,8 @@ const InputField = ({
           userProfile: globalStore.currentUserData.currentUserProfile
             ? globalStore.currentUserData.currentUserProfile
             : null,
+          createdAt: globalStore.currentUserData.currentUserCreatedAt,
+          updatedAt: globalStore.currentUserData.currentUserUpdatedAt,
           fullName: globalStore.currentUserData.currentUserFullName,
           text: textToSend,
           replies: []

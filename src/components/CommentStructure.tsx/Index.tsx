@@ -6,6 +6,7 @@ import { Menu, MenuItem } from '@szhsin/react-menu'
 import '@szhsin/react-menu/dist/core.css'
 import DeleteModal from './DeleteModal'
 import React from 'react'
+import moment from 'moment';
 
 interface CommentStructureProps {
   info: {
@@ -14,6 +15,8 @@ interface CommentStructureProps {
     fullName: string
     avatarUrl: string
     text: string
+    createdAt: string
+    updatedAt: string
     userProfile?: string
     replies?: Array<object> | undefined
   }
@@ -78,7 +81,7 @@ const CommentStructure = ({
               }
             />
           </div>
-          <div className='fullName'>{info.fullName} </div>
+          <div className='fullName'>{info.fullName} &#09; {moment(info.updatedAt).isSameOrAfter(info.createdAt) ? info.updatedAt + ' (edited)' : info.createdAt}</div>
         </a>
       </div>
     )

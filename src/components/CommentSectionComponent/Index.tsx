@@ -66,6 +66,8 @@ const CommentSection = ({
             fullName: string
             avatarUrl: string
             text: string
+            createdAt: string
+            updatedAt: string
             userProfile?: string
             replies: Array<any> | undefined
           }) => {
