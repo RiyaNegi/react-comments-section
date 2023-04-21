@@ -81,7 +81,7 @@ const CommentStructure = ({
               }
             />
           </div>
-          <div className='fullName'>{info.fullName} &#09; {moment(info.updatedAt).isSameOrAfter(info.createdAt) ? info.updatedAt + ' (edited)' : info.createdAt}</div>
+          <div className='fullName'>{info.fullName} &#09; <span className = "date">{moment(info.updatedAt).isSameOrAfter(info.createdAt) ? info.updatedAt + ' (edited)' : info.createdAt}</span></div>
         </a>
       </div>
     )
