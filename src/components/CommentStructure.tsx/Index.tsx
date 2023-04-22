@@ -65,7 +65,7 @@ const CommentStructure = ({
 
   /* This function format the date string into a user friendly
   text */
-  function timeSince(date:string):string {
+  const timeSince = (date:string):string => {
     let actualDate:Date = new Date(date);
     let dateNow:Date = new Date()
     const seconds:number = Math.floor((dateNow.getTime() - actualDate.getTime()) / 1000);
