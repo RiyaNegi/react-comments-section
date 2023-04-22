@@ -8,10 +8,11 @@ const AdvancedComponent = () => {
     {
       userId: '01a',
       comId: '012',
-      fullName: 'Riya Negi',
+      fullName: 'Ri Negi',
       avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
       userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
-      text: `<p>Hey <strong>loved</strong> your blog! Can you show me some other ways to <del><em>fix</em></del>  solve this?🤔<br>Here's my <a href="https://www.linkedin.com/in/riya-negi-8879631a9/" target="_blank">Linkedin Profile</a> to reach out.</p>`,
+      text: `<p>Hey <strong>loved</strong> your blog! Cans you show me some other ways to <del><em>fix</em></del>  solve this?🤔<br>Here's my <a href="https://www.linkedin.com/in/riya-negi-8879631a9/" target="_blank">Linkedin Profile</a> to reach out.</p>`,
+      datePosted:'2023-04-21 17:15:57.050735',
       replies: [
         {
           userId: '02a',
@@ -23,7 +24,8 @@ const AdvancedComponent = () => {
           <pre>event.preventDefault()</pre>
           <p>Best of luck with your project! <br></p>
           <img src="https://c.tenor.com/4cR1jMpsrEgAAAAC/snoopy-cheerleader.gif" alt="undefined" style="height: auto;width: auto"/>
-          <p></p>`
+          <p></p>`,
+          datePosted:'2023-04-21 17:15:57.050735'
         },
         {
           userId: '01a',
@@ -31,7 +33,8 @@ const AdvancedComponent = () => {
           userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
           fullName: 'Riya Negi',
           avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
-          text: '<p><strong>OMG!</strong> it worked! <span style="color: rgb(209,72,65);">DO NOT stop this blog series!!!!</span> 💃</p>'
+          text: '<p><strong>OMG!</strong> it worked! <span style="color: rgb(209,72,65);">DO NOT stop this blog series!!!!</span> 💃</p>',
+          datePosted:'2023-04-21 17:15:57.050735'
         }
       ]
     },
@@ -47,6 +50,7 @@ const AdvancedComponent = () => {
       <li>Repeat</li>
       <li>Yoursef</li>
       </ol>`,
+      datePosted:'2023-04-21 17:15:57.050735',
       avatarUrl: 'https://ui-avatars.com/api/name=Lily&background=random',
       replies: []
     }

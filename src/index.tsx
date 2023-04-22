@@ -4,7 +4,7 @@ import GlobalProvider from './context/Provider'
 import './Index.scss'
 
 interface CommentSectionProps {
-  currentUser: {
+    currentUser: {
     currentUserId: string
     currentUserImg: string
     currentUserProfile: string
@@ -41,6 +41,7 @@ interface CommentSectionProps {
     avatarUrl: string
     text: string
     userProfile?: string
+    datePosted:string
     replies?:
       | Array<{
           userId: string
@@ -49,6 +50,7 @@ interface CommentSectionProps {
           avatarUrl: string
           text: string
           userProfile?: string
+          datePosted:string
         }>
       | undefined
   }>

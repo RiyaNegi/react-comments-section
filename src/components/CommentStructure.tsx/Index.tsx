@@ -15,6 +15,7 @@ interface CommentStructureProps {
     avatarUrl: string
     text: string
     userProfile?: string
+    datePosted:string
     replies?: Array<object> | undefined
   }
   editMode: boolean
@@ -35,6 +36,7 @@ const CommentStructure = ({
   const globalStore: any = useContext(GlobalContext)
   const currentUser = globalStore.currentUserData
 
+  
   const optionsMenu = () => {
     return (
       <div className='userActions'>
@@ -61,6 +63,47 @@ const CommentStructure = ({
     )
   }
 
+  /* This function format the date string into a user friendly
+  text */
+  const timeSince = (date:string):string => {
+    let actualDate:Date = new Date(date);
+    let dateNow:Date = new Date()
+    const seconds:number = Math.floor((dateNow.getTime() - actualDate.getTime()) / 1000);
+  
+    if (seconds < 60) {
+      return `${seconds} seconds ago`;
+    }
+  
+    const minutes:number = Math.floor(seconds / 60);
+  
+    if (minutes < 60) {
+      return `${minutes} minutes ago`;
+    }
+  
+    const hours:number = Math.floor(minutes / 60);
+  
+    if (hours < 24) {
+      return `${hours} hours ago`;
+    }
+  
+    const days:number = Math.floor(hours / 24);
+  
+    if (days < 30) {
+      return `${days} days ago`;
+    }
+  
+    const months:number = Math.floor(days / 30);
+  
+    if (months < 12) {
+      return `${months} months ago`;
+    }
+  
+    const years:number = Math.floor(months / 12);
+  
+    return `${years} years ago`;
+  }
+  
+
   const userInfo = () => {
     return (
       <div className='commentsTwo'>
@@ -77,9 +120,10 @@ const CommentStructure = ({
                   : null)
               }
             />
-          </div>
-          <div className='fullName'>{info.fullName} </div>
-        </a>
+          </div>          
+          <div className='fullName'>{info.fullName}<span className='commentDate'>         
+          {timeSince(info.datePosted)}</span></div>         
+          </a>
       </div>
     )
   }
