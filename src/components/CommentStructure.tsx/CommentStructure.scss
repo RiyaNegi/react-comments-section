@@ -12,11 +12,14 @@
       margin-left: 10px;
       font-size: 16px;
       font-weight: 600;
+      align-items: center;
     }
 
     .date {
-      font-size: 11px;
-      color: rgba(160, 160, 160, 0.315);
+      font-size: 12px;
+      color: #7e7b7b;
+      cursor: default;
+      margin-left: 1em;
     }
   }
 }
