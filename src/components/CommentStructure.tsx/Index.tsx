@@ -1,5 +1,5 @@
 import './CommentStructure.scss'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { GlobalContext } from '../../context/Provider'
 import InputField from '../InputField/Index'
 import { Menu, MenuItem } from '@szhsin/react-menu'
@@ -37,6 +37,11 @@ const CommentStructure = ({
 }: CommentStructureProps) => {
   const globalStore: any = useContext(GlobalContext)
   const currentUser = globalStore.currentUserData
+
+  useEffect(() =>
+  {
+    console.log(info);
+  }, []);
 
   const optionsMenu = () => {
     return (

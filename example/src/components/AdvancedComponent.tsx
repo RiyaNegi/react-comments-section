@@ -2,6 +2,7 @@ import React from 'react'
 import { CommentSection } from 'react-comments-section'
 import 'react-comments-section/dist/index.css'
 import { useState } from 'react'
+import moment from 'moment'
 
 const AdvancedComponent = () => {
   const [data] = useState([
@@ -78,8 +79,8 @@ const AdvancedComponent = () => {
           currentUserProfile:
             'https://www.linkedin.com/in/riya-negi-8879631a9/',
           currentUserFullName: 'Riya Negi',
-          currentUserCreatedAt: "2023-04-20",
-          currentUserUpdatedAt: ""
+          currentUserCreatedAt: moment().format("YYYY-MM-DD HH:MM:SS"),
+          currentUserUpdatedAt: moment().format("YYYY-MM-DD HH:MM:SS")
         }}
         hrStyle={{ border: '0.5px solid #ff0072' }}
         commentData={data}
