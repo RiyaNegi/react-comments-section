@@ -84,8 +84,6 @@ const CommentStructure = ({
           <div className='fullName'>
             {info.fullName} &#09; 
             <span className = "date">
-              {info.updatedAt}
-              {info.createdAt}
               {info.updatedAt ? moment(info.updatedAt).isAfter(info.createdAt) ? moment(info.updatedAt, "YYYY-MM-DD HH:mm:ss").fromNow() + ' (edited)' : moment(info.createdAt, "YYYY-MM-DD HH:mm:ss").fromNow() : moment(info.createdAt, "YYYY-MM-DD HH:mm:ss").fromNow()}
             </span>
           </div>
