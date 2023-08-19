@@ -1,5 +1,5 @@
 import './CommentStructure.scss'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { GlobalContext } from '../../context/Provider'
 import InputField from '../InputField/Index'
 import { Menu, MenuItem } from '@szhsin/react-menu'
@@ -37,6 +37,13 @@ const CommentStructure = ({
 }: CommentStructureProps) => {
   const globalStore: any = useContext(GlobalContext)
   const currentUser = globalStore.currentUserData
+
+  useEffect(() =>
+  {
+    console.log(info.updatedAt);
+    console.log(info.createdAt);
+    console.log(info.updatedAt ? moment(info.updatedAt).isAfter(info.createdAt) ? moment(info.updatedAt, "YYYY-MM-DD HH:mm:ss").fromNow() + ' (edited)' : moment(info.createdAt, "YYYY-MM-DD HH:mm:ss").fromNow() : moment(info.createdAt, "YYYY-MM-DD HH:mm:ss").fromNow());
+  }, []);
 
   const optionsMenu = () => {
     return (
