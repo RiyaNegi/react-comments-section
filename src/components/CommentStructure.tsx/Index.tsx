@@ -1,5 +1,5 @@
 import './CommentStructure.scss'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { GlobalContext } from '../../context/Provider'
 import InputField from '../InputField/Index'
 import { Menu, MenuItem } from '@szhsin/react-menu'
@@ -84,7 +84,7 @@ const CommentStructure = ({
           <div className='fullName'>
             {info.fullName} &#09; 
             <span className = "date">
-              {(info?.updatedAt && moment(info?.updatedAt)?.isValid()) ? moment(info?.updatedAt).isAfter(info?.createdAt) ? moment(info?.updatedAt, "YYYY-MM-DD HH:mm:ss").fromNow() + ' (edited)' : moment(info?.createdAt, "YYYY-MM-DD HH:mm:ss").fromNow() :moment(info?.createdAt, "YYYY-MM-DD HH:mm:ss").fromNow()}
+              {(info?.updatedAt && moment(info?.updatedAt)?.isValid()) ? moment(info?.updatedAt).isAfter(info?.createdAt) ? moment(info?.updatedAt, "YYYY-MM-DD HH:mm:ss").fromNow() + ' (edited)' : moment(info?.createdAt).isValid() && moment(info?.createdAt, "YYYY-MM-DD HH:mm:ss").fromNow() : moment().fromNow()}
             </span>
           </div>
         </a>
@@ -173,11 +173,6 @@ const CommentStructure = ({
       )
     }
   }
-
-  useEffect(() =>
-  {
-    console.log(info.createdAt);
-  }, []);
 
   return (
     <div>
