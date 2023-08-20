@@ -7,10 +7,16 @@
   font-family: 'Noto Sans', sans-serif;
 }
 
+.css-1ynyhby {
+  margin: 0 8px 10px !important;
+}
+
 .overlay .header {
   position: sticky;
-  top: 0;
+  top: -1px;
   background: white;
+  z-index: 1;
+  padding-top: 0.5em;
 }
 
 .replySection {

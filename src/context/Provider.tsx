@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 // const { v4: uuidv4 } = require('uuid')
 import _ from 'lodash'
+import moment from 'moment'
 
 export const GlobalContext = createContext({})
 
@@ -147,7 +148,7 @@ export const GlobalProvider = ({
         ? currentUserData!.currentUserProfile
         : undefined,
       fullName: currentUserData!.currentUserFullName,
-      createdAt: currentUserData!.currentUserCreatedAt,
+      createdAt: moment(currentUserData!.currentUserCreatedAt).isValid() ? currentUserData!.currentUserCreatedAt : moment().format("YYYY-MM-DD HH:mm:ss"),
       updatedAt: currentUserData!.currentUserUpdatedAt,
       text: text,
       replies: []
@@ -190,7 +191,7 @@ export const GlobalProvider = ({
           ? currentUserData!.currentUserProfile
           : undefined,
         fullName: currentUserData!.currentUserFullName,
-        createdAt: currentUserData!.currentUserCreatedAt,
+        createdAt: moment(currentUserData!.currentUserCreatedAt).isValid() ? currentUserData!.currentUserCreatedAt : moment().format("YYYY-MM-DD HH:mm:ss"),
         updatedAt: currentUserData!.currentUserUpdatedAt,
         text: text
       })
@@ -208,7 +209,7 @@ export const GlobalProvider = ({
           ? currentUserData!.currentUserProfile
           : undefined,
         fullName: currentUserData!.currentUserFullName,
-        createdAt: currentUserData!.currentUserCreatedAt,
+        createdAt: moment(currentUserData!.currentUserCreatedAt).isValid() ? currentUserData!.currentUserCreatedAt : moment().format("YYYY-MM-DD HH:mm:ss"),
         updatedAt: currentUserData!.currentUserUpdatedAt,
         text: text
       })
