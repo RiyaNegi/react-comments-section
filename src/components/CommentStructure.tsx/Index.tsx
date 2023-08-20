@@ -1,5 +1,5 @@
 import './CommentStructure.scss'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { GlobalContext } from '../../context/Provider'
 import InputField from '../InputField/Index'
 import { Menu, MenuItem } from '@szhsin/react-menu'
@@ -173,11 +173,6 @@ const CommentStructure = ({
       )
     }
   }
-
-  useEffect(() =>
-  {
-    console.log("created: ", info.createdAt, "updated: ", info.updatedAt);
-  }, []);
 
   return (
     <div>
