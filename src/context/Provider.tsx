@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 // const { v4: uuidv4 } = require('uuid')
 import _ from 'lodash'
+import moment from 'moment'
 
 export const GlobalContext = createContext({})
 
@@ -31,6 +32,8 @@ export const GlobalProvider = ({
     currentUserImg: string
     currentUserProfile?: string | undefined
     currentUserFullName: string
+    currentUserCreatedAt: string
+    currentUserUpdatedAt: string
   } | null
   replyTop?: boolean
   customImg?: string
@@ -46,6 +49,8 @@ export const GlobalProvider = ({
     userId: string
     comId: string
     fullName: string
+    createdAt: string
+    updatedAt: string
     avatarUrl: string
     text: string
     userProfile?: string
@@ -54,6 +59,8 @@ export const GlobalProvider = ({
           userId: string
           comId: string
           fullName: string
+          createdAt: string
+          updatedAt: string
           avatarUrl: string
           text: string
           userProfile?: string
@@ -73,6 +80,8 @@ export const GlobalProvider = ({
       userId: string
       comId: string
       fullName: string
+      createdAt: string
+      updatedAt: string
       avatarUrl: string
       text: string
       userProfile?: string
@@ -81,6 +90,8 @@ export const GlobalProvider = ({
             userId: string
             comId: string
             fullName: string
+            createdAt: string
+            updatedAt: string
             avatarUrl: string
             text: string
             userProfile?: string
@@ -137,6 +148,8 @@ export const GlobalProvider = ({
         ? currentUserData!.currentUserProfile
         : undefined,
       fullName: currentUserData!.currentUserFullName,
+      createdAt: moment(currentUserData!.currentUserCreatedAt).isValid() ? currentUserData!.currentUserCreatedAt : moment().format("YYYY-MM-DD HH:mm:ss"),
+      updatedAt: currentUserData!.currentUserUpdatedAt,
       text: text,
       replies: []
     })
@@ -178,6 +191,8 @@ export const GlobalProvider = ({
           ? currentUserData!.currentUserProfile
           : undefined,
         fullName: currentUserData!.currentUserFullName,
+        createdAt: moment(currentUserData!.currentUserCreatedAt).isValid() ? currentUserData!.currentUserCreatedAt : moment().format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: currentUserData!.currentUserUpdatedAt,
         text: text
       })
       setData(copyData)
@@ -194,6 +209,8 @@ export const GlobalProvider = ({
           ? currentUserData!.currentUserProfile
           : undefined,
         fullName: currentUserData!.currentUserFullName,
+        createdAt: moment(currentUserData!.currentUserCreatedAt).isValid() ? currentUserData!.currentUserCreatedAt : moment().format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: currentUserData!.currentUserUpdatedAt,
         text: text
       })
       setData(copyData)

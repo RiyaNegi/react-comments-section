@@ -14,11 +14,12 @@
     "@testing-library/react": "file:../node_modules/@testing-library/react",
     "@testing-library/user-event": "file:../node_modules/@testing-library/user-event",
     "@types/jest": "file:../node_modules/@types/jest",
+    "@types/lodash": "^4.14.74",
     "@types/node": "file:../node_modules/@types/node",
     "@types/react": "file:../node_modules/@types/react",
     "@types/react-dom": "file:../node_modules/@types/react-dom",
     "react": "file:../node_modules/react",
-    "react-comments-section": "file:..",
+    "react-comments-section": "git+https://github.com/Noor-infoarc/react-comments-section.git#dev-n",
     "react-dom": "file:../node_modules/react-dom",
     "react-scripts": "file:../node_modules/react-scripts",
     "typescript": "file:../node_modules/typescript"
