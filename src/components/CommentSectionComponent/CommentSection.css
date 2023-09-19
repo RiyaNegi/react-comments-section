@@ -6,6 +6,19 @@
   padding: 20px;
   font-family: 'Noto Sans', sans-serif;
 }
+
+.css-1ynyhby {
+  margin: 0 8px 10px !important;
+}
+
+.overlay .header {
+  position: sticky;
+  top: -1px;
+  background: white;
+  z-index: 1;
+  padding-top: 0.5em;
+}
+
 .replySection {
   border-left: 1px solid rgb(235, 235, 235);
   margin-left: 25px;

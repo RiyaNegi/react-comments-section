@@ -9,6 +9,8 @@ interface CommentSectionProps {
     currentUserImg: string
     currentUserProfile: string
     currentUserFullName: string
+    currentUserCreatedAt: string
+    currentUserUpdatedAt: string
   } | null
   logIn: {
     loginLink: string
@@ -38,6 +40,8 @@ interface CommentSectionProps {
     userId: string
     comId: string
     fullName: string
+    createdAt: string
+    updatedAt: string
     avatarUrl: string
     text: string
     userProfile?: string
@@ -46,6 +50,8 @@ interface CommentSectionProps {
           userId: string
           comId: string
           fullName: string
+          createdAt: string
+          updatedAt: string
           avatarUrl: string
           text: string
           userProfile?: string

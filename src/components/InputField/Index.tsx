@@ -5,6 +5,7 @@ import React from 'react'
 const { v4: uuidv4 } = require('uuid')
 import RegularInput from './RegularInput'
 import AdvancedInput from './AdvancedInput'
+import moment from 'moment'
 
 interface InputFieldProps {
   formStyle?: object
@@ -56,6 +57,8 @@ const InputField = ({
           userProfile: globalStore.currentUserData.currentUserProfile
             ? globalStore.currentUserData.currentUserProfile
             : null,
+          createdAt: moment(globalStore.currentUserData.currentUserCreatedAt).isValid() ? globalStore.currentUserData.currentUserCreatedAt : moment().format("YYYY-MM-DD HH:mm:ss"),
+          updatedAt: globalStore.currentUserData.currentUserUpdatedAt,
           fullName: globalStore.currentUserData.currentUserFullName,
           text: textToSend,
           parentOfEditedCommentId: parentId
@@ -76,6 +79,8 @@ const InputField = ({
           userProfile: globalStore.currentUserData.currentUserProfile
             ? globalStore.currentUserData.currentUserProfile
             : null,
+          createdAt: moment(globalStore.currentUserData.currentUserCreatedAt).isValid() ? globalStore.currentUserData.currentUserCreatedAt : moment().format("YYYY-MM-DD HH:mm:ss"),
+          updatedAt: globalStore.currentUserData.currentUserUpdatedAt,
           fullName: globalStore.currentUserData.currentUserFullName,
           text: textToSend,
           parentOfRepliedCommentId: parentId,
@@ -96,6 +101,8 @@ const InputField = ({
           userProfile: globalStore.currentUserData.currentUserProfile
             ? globalStore.currentUserData.currentUserProfile
             : null,
+          createdAt: moment(globalStore.currentUserData.currentUserCreatedAt).isValid() ? globalStore.currentUserData.currentUserCreatedAt : moment().format("YYYY-MM-DD HH:mm:ss"),
+          updatedAt: globalStore.currentUserData.currentUserUpdatedAt,
           fullName: globalStore.currentUserData.currentUserFullName,
           text: textToSend,
           replies: []

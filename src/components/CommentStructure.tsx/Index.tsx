@@ -6,6 +6,7 @@ import { Menu, MenuItem } from '@szhsin/react-menu'
 import '@szhsin/react-menu/dist/core.css'
 import DeleteModal from './DeleteModal'
 import React from 'react'
+import moment from 'moment';
 
 interface CommentStructureProps {
   info: {
@@ -14,6 +15,8 @@ interface CommentStructureProps {
     fullName: string
     avatarUrl: string
     text: string
+    createdAt: string
+    updatedAt: string
     userProfile?: string
     replies?: Array<object> | undefined
   }
@@ -34,7 +37,6 @@ const CommentStructure = ({
 }: CommentStructureProps) => {
   const globalStore: any = useContext(GlobalContext)
   const currentUser = globalStore.currentUserData
-
   const optionsMenu = () => {
     return (
       <div className='userActions'>
@@ -78,7 +80,15 @@ const CommentStructure = ({
               }
             />
           </div>
-          <div className='fullName'>{info.fullName} </div>
+          <div className='fullName'>
+            {info.fullName} &#09; 
+            <span className = "date">
+              {(info?.updatedAt && moment(info?.updatedAt)?.isValid()) 
+              ? moment(info?.updatedAt, "YYYY-MM-DD HH:mm:ss").fromNow() + ' (edited)' 
+              : (info?.createdAt && moment(info?.createdAt)?.isValid())
+              && moment(info?.createdAt, "YYYY-MM-DD HH:mm:ss").fromNow()}
+            </span>
+          </div>
         </a>
       </div>
     )
