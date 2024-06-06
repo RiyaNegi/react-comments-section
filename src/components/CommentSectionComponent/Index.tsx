@@ -47,11 +47,13 @@ const CommentSection = ({
 
   return (
     <div className='overlay' style={overlayStyle}>
-      <span className='comment-title' style={titleStyle}>
-        {globalStore.commentsCount || totalComments()}{' '}
-        {totalComments() === 1 ? 'Comment' : 'Comments'}
-      </span>
-      <hr className='hr-style' style={hrStyle} />
+      <div className='header'>
+        <span className='comment-title' style={titleStyle}>
+          {globalStore.commentsCount || totalComments()}{' '}
+          {totalComments() === 1 ? 'Comment' : 'Comments'}
+        </span>
+        <hr className='hr-style' style={hrStyle} />
+      </div>
       {globalStore.currentUserData === null ? (
         loginMode()
       ) : (
@@ -66,6 +68,8 @@ const CommentSection = ({
             fullName: string
             avatarUrl: string
             text: string
+            createdAt: string
+            updatedAt: string
             userProfile?: string
             replies: Array<any> | undefined
           }) => {

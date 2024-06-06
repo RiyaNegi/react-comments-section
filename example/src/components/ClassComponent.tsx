@@ -9,6 +9,8 @@ class ClassComponent extends PureComponent {
         userId: '01a',
         comId: '012',
         fullName: 'Riya Negi',
+        createdAt: "2023-04-23",
+        updatedAt: "",
         avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
         userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
         text: 'Hey, Loved your blog! ',
@@ -18,6 +20,8 @@ class ClassComponent extends PureComponent {
             comId: '013',
             userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
             fullName: 'Adam Scott',
+            createdAt: "2023-04-23",
+            updatedAt: "",
             avatarUrl: 'https://ui-avatars.com/api/name=Adam&background=random',
             text: 'Thanks! It took me 1 month to finish this project but I am glad it helped out someone!🥰'
           },
@@ -26,6 +30,8 @@ class ClassComponent extends PureComponent {
             comId: '014',
             userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
             fullName: 'Riya Negi',
+            createdAt: "2023-04-23",
+            updatedAt: "",
             avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
             text: 'thanks!😊'
           }
@@ -35,6 +41,8 @@ class ClassComponent extends PureComponent {
         userId: '02b',
         comId: '017',
         fullName: 'Lily',
+        createdAt: "2023-04-23",
+        updatedAt: "",
         userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
         text: 'I have a doubt about the 4th point🤔',
         avatarUrl: 'https://ui-avatars.com/api/name=Lily&background=random',
@@ -64,7 +72,9 @@ class ClassComponent extends PureComponent {
               'https://ui-avatars.com/api/name=Riya&background=random',
             currentUserProfile:
               'https://www.linkedin.com/in/riya-negi-8879631a9/',
-            currentUserFullName: 'Riya Negi'
+            currentUserFullName: 'Riya Negi',
+            currentUserCreatedAt: "2023-04-23",
+            currentUserUpdatedAt: "",
           }}
           commentData={this.state.data}
           onSubmitAction={(data: any) => this.onSubmitAction(data)}

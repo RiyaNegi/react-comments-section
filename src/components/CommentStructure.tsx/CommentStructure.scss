@@ -12,6 +12,15 @@
       margin-left: 10px;
       font-size: 16px;
       font-weight: 600;
+      align-items: center;
+    }
+
+    .date {
+      font-size: 12px;
+      color: #7e7b7b;
+      cursor: default;
+      margin-left: 1em;
+      pointer-events: none;
     }
   }
 }
@@ -107,7 +116,7 @@
   padding: 6px !important;
   min-width: 7rem;
   left: -70px !important;
-  top: -5px !important;
+  // top: -5px !important;
   color: black;
 
   .szh-menu__item {
