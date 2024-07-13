@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import CommentSectionComponent from './components/CommentSectionComponent/Index'
 
-describe('ExampleComponent', () => {
+describe('CommentSectionComponent', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(CommentSectionComponent).toBeTruthy()
   })
 })
