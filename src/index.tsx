@@ -2,6 +2,10 @@ import * as React from 'react'
 import CommentSectionComponent from './components/CommentSectionComponent/Index'
 import GlobalProvider from './context/Provider'
 import './Index.scss'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+
+TimeAgo.addDefaultLocale(en)
 
 interface CommentSectionProps {
   currentUser: {
@@ -43,6 +47,7 @@ interface CommentSectionProps {
     fullName: string
     avatarUrl: string
     text: string
+    timestamp?: Date
     userProfile?: string
     replies?:
       | Array<{
@@ -51,6 +56,7 @@ interface CommentSectionProps {
           fullName: string
           avatarUrl: string
           text: string
+          timestamp?: Date
           userProfile?: string
         }>
       | undefined

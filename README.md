@@ -11,14 +11,14 @@ npm i react-comments-section
 
 
 `react-comments-section` is a simple but multi-functional react comment section component that helps you create comments section similar to youtube or instagram for your React App.
-`react-comments-section` is very useful for react beginners who want a comment section in their project but want to skip it's commplexity. This library will give a fully functional comment section with the following features: 
-  - User can reply to comments  
+`react-comments-section` is very useful for react beginners who want a comment section in their project but want to skip it's commplexity. This library will give a fully functional comment section with the following features:
+  - User can reply to comments
   - User can edit his/her comments
   - User can delete his/her comments
 
 live demo of the library -> https://riyanegi.github.io/react-comments-section/
 
-## Default Example 
+## Default Example
 
 ![commentbox](https://github.com/RiyaNegi/react-comments-section/blob/main/example/blob/default.png?raw=true)
 
@@ -77,6 +77,7 @@ const DefaultComponent = () => {
           userProfile?: string
           fullName: string
           text: string
+          timestamp: string
           replies: any
           commentId: string
         }) => console.log('check submit, ', data)}
@@ -128,7 +129,7 @@ class ClassComponent extends PureComponent {
   customNoComment = () => <div className='no-com'>No comments wohoooo!</div>
 
   render() {
-    return 
+    return
         <CommentSection
           currentUser={{
             currentUserId: '01a',

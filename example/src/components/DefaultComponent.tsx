@@ -71,6 +71,7 @@ const DefaultComponent = () => {
           userProfile?: string
           fullName: string
           text: string
+          timestamp?: Date
           replies: any
           commentId: string
         }) => console.log('check submit, ', data)}

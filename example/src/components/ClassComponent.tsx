@@ -11,7 +11,8 @@ class ClassComponent extends PureComponent {
         fullName: 'Riya Negi',
         avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
         userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
-        text: 'Hey, Loved your blog! ',
+        text: 'Hey, Loved your blog!',
+        timestamp: new Date(),
         replies: [
           {
             userId: '02a',
@@ -19,7 +20,8 @@ class ClassComponent extends PureComponent {
             userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
             fullName: 'Adam Scott',
             avatarUrl: 'https://ui-avatars.com/api/name=Adam&background=random',
-            text: 'Thanks! It took me 1 month to finish this project but I am glad it helped out someone!🥰'
+            text: 'Thanks! It took me 1 month to finish this project but I am glad it helped out someone!🥰',
+            timestamp: new Date(),
           },
           {
             userId: '01a',
@@ -27,7 +29,8 @@ class ClassComponent extends PureComponent {
             userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
             fullName: 'Riya Negi',
             avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
-            text: 'thanks!😊'
+            text: 'thanks!😊',
+            timestamp: new Date(),
           }
         ]
       },
@@ -37,6 +40,7 @@ class ClassComponent extends PureComponent {
         fullName: 'Lily',
         userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
         text: 'I have a doubt about the 4th point🤔',
+        timestamp: new Date(),
         avatarUrl: 'https://ui-avatars.com/api/name=Lily&background=random',
         replies: []
       }
