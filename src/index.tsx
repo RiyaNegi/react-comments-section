@@ -13,9 +13,12 @@ interface CommentSectionProps {
   logIn: {
     loginLink: string
     signupLink: string
+    messagePlaceholder?: string
   }
   replyTop?: boolean
   customImg?: string
+  messagePlaceholder?: string
+  replyPlaceholder?: string
   inputStyle?: object
   formStyle?: object
   submitBtnStyle?: object
@@ -57,6 +60,8 @@ interface CommentSectionProps {
 export const CommentSection = ({
   currentUser,
   customImg,
+  messagePlaceholder,
+  replyPlaceholder,
   inputStyle,
   formStyle,
   submitBtnStyle,
@@ -83,6 +88,8 @@ export const CommentSection = ({
     <GlobalProvider
       currentUser={currentUser}
       replyTop={replyTop}
+      messagePlaceholder={messagePlaceholder}
+      replyPlaceholder={replyPlaceholder}
       customImg={customImg}
       inputStyle={inputStyle}
       formStyle={formStyle}

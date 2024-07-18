@@ -4,12 +4,13 @@ import './LoginSection.scss'
 interface LoginSectionProps {
   loginLink: string
   signUpLink: string
+  messagePlaceholder?: string
 }
 
-const LoginSection = ({ loginLink, signUpLink }: LoginSectionProps) => {
+const LoginSection = ({ loginLink, signUpLink, messagePlaceholder = 'Log in or sign up to leave a comment'}: LoginSectionProps) => {
   return (
     <div className='signBox'>
-      <div className='signLine'>Log in or sign up to leave a comment</div>
+      <div className='signLine'>{messagePlaceholder}</div>
       <div>
         <a href={loginLink}>
           <button className='loginBtn' name='login'>

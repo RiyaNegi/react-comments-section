@@ -96,6 +96,8 @@ const AdvancedComponent = () => {
         }}
         advancedInput={true}
         replyInputStyle={{ borderBottom: '1px solid black', color: 'black' }}
+        messagePlaceholder='Leave a comment.'
+        replyPlaceholder='Leave a nice reply here, please.'
       />
     </div>
   )

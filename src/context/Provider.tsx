@@ -9,6 +9,8 @@ export const GlobalProvider = ({
   currentUser,
   replyTop,
   customImg,
+  messagePlaceholder,
+  replyPlaceholder,
   inputStyle,
   formStyle,
   submitBtnStyle,
@@ -34,6 +36,8 @@ export const GlobalProvider = ({
   } | null
   replyTop?: boolean
   customImg?: string
+  messagePlaceholder?: string
+  replyPlaceholder?: string
   inputStyle?: object
   formStyle?: object
   submitBtnStyle?: object
@@ -231,6 +235,8 @@ export const GlobalProvider = ({
         onReply: onReply,
         onDelete: onDelete,
         customImg: customImg,
+        messagePlaceholder: messagePlaceholder,
+        replyPlaceholder: replyPlaceholder,
         inputStyle: inputStyle,
         formStyle: formStyle,
         submitBtnStyle: submitBtnStyle,

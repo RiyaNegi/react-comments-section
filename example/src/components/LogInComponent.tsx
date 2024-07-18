@@ -55,7 +55,8 @@ const LogInComponent = () => {
         commentData={data}
         logIn={{
           loginLink: 'http://localhost:3001/',
-          signupLink: 'http://localhost:3001/'
+          signupLink: 'http://localhost:3001/',
+          messagePlaceholder: 'Please log in or sign up to leave a comment.'
         }}
       />
     </div>

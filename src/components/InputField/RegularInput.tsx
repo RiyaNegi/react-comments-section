@@ -9,6 +9,8 @@ interface RegularInputProps {
   comId?: string
   mode?: string
   customImg?: string
+  messagePlaceholder?: string
+  replyPlaceholder?: string
   inputStyle?: object
   cancelBtnStyle?: object
   submitBtnStyle?: object
@@ -25,6 +27,8 @@ const RegularInput = ({
   imgStyle,
   customImg,
   mode,
+  messagePlaceholder,
+  replyPlaceholder,
   inputStyle,
   cancelBtnStyle,
   comId,
@@ -67,7 +71,7 @@ const RegularInput = ({
               : globalStore.inputStyle || inputStyle
           }
           type='text'
-          placeholder='Type your reply here.'
+          placeholder={mode === 'replyMode' || mode === 'editMode' ? globalStore.replyPlaceholder || replyPlaceholder : globalStore.messagePlaceholder || messagePlaceholder}
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
@@ -77,6 +81,8 @@ const RegularInput = ({
           setText={setText}
           mode={mode}
           inputStyle={inputStyle}
+          messagePlaceholder={messagePlaceholder}
+          replyPlaceholder={replyPlaceholder}
         />
       )}
 
