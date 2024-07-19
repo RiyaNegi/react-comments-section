@@ -78,7 +78,7 @@
     "microbundle-crl-with-assets": "^0.13.12",
     "react-draft-wysiwyg": "^1.14.7",
     "react-responsive-modal": "^6.2.0",
-    "react-time-ago": "^6.2.1",
+    "react-time-ago": "^7.3.3",
     "sass": "^1.51.0"
   }
 }
