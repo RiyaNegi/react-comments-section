@@ -69,7 +69,7 @@ const CustomComponent = () => {
         commentsCount={8}
         commentData={data}
         currentData={(data: any) => {
-          console.log('curent data', data)
+          console.log('current data', data)
         }}
         logIn={{
           loginLink: 'http://localhost:3001/',

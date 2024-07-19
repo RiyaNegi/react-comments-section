@@ -82,7 +82,7 @@ const DefaultComponent = () => {
           commentId: string
         }) => console.log('check submit, ', data)}
         currentData={(data: any) => {
-          console.log('curent data', data)
+          console.log('current data', data)
         }}
       />
 }

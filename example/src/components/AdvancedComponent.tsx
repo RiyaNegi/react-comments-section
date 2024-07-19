@@ -74,7 +74,7 @@ const AdvancedComponent = () => {
         hrStyle={{ border: '0.5px solid #ff0072' }}
         commentData={data}
         currentData={(data: any) => {
-          console.log('curent data', data)
+          console.log('current data', data)
         }}
         logIn={{
           loginLink: 'http://localhost:3001/',
