@@ -102,6 +102,7 @@ const InputField = ({
             : null,
           fullName: globalStore.currentUserData.currentUserFullName,
           text: textToSend,
+          timestamp: new Date().toISOString(),  // Timestamp should be officially now at the time of saving, not the time of creation
           replies: []
         }))
     )
