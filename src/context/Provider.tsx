@@ -9,6 +9,8 @@ export const GlobalProvider = ({
   currentUser,
   replyTop,
   customImg,
+  messagePlaceholder,
+  replyPlaceholder,
   inputStyle,
   formStyle,
   submitBtnStyle,
@@ -21,6 +23,7 @@ export const GlobalProvider = ({
   onReplyAction,
   onEditAction,
   currentData,
+  bypassDeleteWarning,
   replyInputStyle,
   removeEmoji,
   advancedInput
@@ -34,6 +37,8 @@ export const GlobalProvider = ({
   } | null
   replyTop?: boolean
   customImg?: string
+  messagePlaceholder?: string
+  replyPlaceholder?: string
   inputStyle?: object
   formStyle?: object
   submitBtnStyle?: object
@@ -48,6 +53,7 @@ export const GlobalProvider = ({
     fullName: string
     avatarUrl: string
     text: string
+    timestamp?: Date
     userProfile?: string
     replies?:
       | Array<{
@@ -56,6 +62,7 @@ export const GlobalProvider = ({
           fullName: string
           avatarUrl: string
           text: string
+          timestamp?: Date
           userProfile?: string
         }>
       | undefined
@@ -65,6 +72,7 @@ export const GlobalProvider = ({
   onReplyAction?: Function
   onEditAction?: Function
   currentData?: Function
+  bypassDeleteWarning?: boolean
   advancedInput?: boolean
 }) => {
   const [currentUserData] = useState(currentUser)
@@ -75,6 +83,7 @@ export const GlobalProvider = ({
       fullName: string
       avatarUrl: string
       text: string
+      timestamp?: Date
       userProfile?: string
       replies?:
         | Array<{
@@ -83,6 +92,7 @@ export const GlobalProvider = ({
             fullName: string
             avatarUrl: string
             text: string
+            timestamp?: Date
             userProfile?: string
           }>
         | undefined
@@ -138,6 +148,7 @@ export const GlobalProvider = ({
         : undefined,
       fullName: currentUserData!.currentUserFullName,
       text: text,
+      timestamp: new Date(),
       replies: []
     })
     setData(copyData)
@@ -178,7 +189,8 @@ export const GlobalProvider = ({
           ? currentUserData!.currentUserProfile
           : undefined,
         fullName: currentUserData!.currentUserFullName,
-        text: text
+        text: text,
+        timestamp: new Date()
       })
       setData(copyData)
       handleAction(comId, false)
@@ -194,7 +206,8 @@ export const GlobalProvider = ({
           ? currentUserData!.currentUserProfile
           : undefined,
         fullName: currentUserData!.currentUserFullName,
-        text: text
+        text: text,
+        timestamp: new Date()
       })
       setData(copyData)
       handleAction(comId, false)
@@ -230,7 +243,10 @@ export const GlobalProvider = ({
         replyArr: replyArr,
         onReply: onReply,
         onDelete: onDelete,
+        bypassDeleteWarning: bypassDeleteWarning,
         customImg: customImg,
+        messagePlaceholder: messagePlaceholder,
+        replyPlaceholder: replyPlaceholder,
         inputStyle: inputStyle,
         formStyle: formStyle,
         submitBtnStyle: submitBtnStyle,

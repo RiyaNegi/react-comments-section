@@ -6,6 +6,7 @@ import { Menu, MenuItem } from '@szhsin/react-menu'
 import '@szhsin/react-menu/dist/core.css'
 import DeleteModal from './DeleteModal'
 import React from 'react'
+import ReactTimeAgo from  'react-time-ago'
 
 interface CommentStructureProps {
   info: {
@@ -14,6 +15,7 @@ interface CommentStructureProps {
     fullName: string
     avatarUrl: string
     text: string
+    timestamp?: Date
     userProfile?: string
     replies?: Array<object> | undefined
   }
@@ -52,8 +54,18 @@ const CommentStructure = ({
             >
               edit
             </MenuItem>
-            <MenuItem>
-              <DeleteModal comId={info.comId} parentId={parentId} />
+            <MenuItem
+              onClick={globalStore.bypassDeleteWarning ? async () => (
+                await globalStore.onDelete(info.comId, parentId),
+                globalStore.onDeleteAction &&
+                  (await globalStore.onDeleteAction({
+                    comIdToDelete: info.comId,
+                    parentOfDeleteId: parentId
+                  }))
+              ) : undefined}
+
+            >
+              {globalStore.bypassDeleteWarning ? "delete" : <DeleteModal comId={info.comId} parentId={parentId} /> }
             </MenuItem>
           </Menu>
         )}
@@ -63,31 +75,32 @@ const CommentStructure = ({
 
   const userInfo = () => {
     return (
-      <div className='commentsTwo'>
-        <a className='userLink' target='_blank' href={info.userProfile}>
+      <div className="commentsTwo">
+        <a className="userLink" target="_blank" href={info.userProfile}>
           <div>
             <img
               src={info.avatarUrl}
-              alt='userIcon'
-              className='imgdefault'
+              alt="userIcon"
+              className="imgdefault"
               style={
                 globalStore.imgStyle ||
                 (!globalStore.replyTop
-                  ? { position: 'relative', top: 7 }
+                  ? {position: 'relative', top: 7}
                   : null)
               }
             />
           </div>
-          <div className='fullName'>{info.fullName} </div>
+          <div className="fullName">{info.fullName}</div>
         </a>
+        {info.timestamp == null ? null : <ReactTimeAgo className="commentTimestamp" date={info.timestamp} />}
       </div>
     )
   }
 
   const replyTopSection = () => {
     return (
-      <div className='halfDiv'>
-        <div className='userInfo'>
+      <div className="halfDiv">
+        <div className="userInfo">
           <div>{info.text}</div>
           {userInfo()}
         </div>
@@ -98,29 +111,29 @@ const CommentStructure = ({
 
   const replyBottomSection = () => {
     return (
-      <div className='halfDiv'>
-        <div className='userInfo'>
+      <div className="halfDiv">
+        <div className="userInfo">
           {userInfo()}
           {globalStore.advancedInput ? (
             <div
-              className='infoStyle'
+              className="infoStyle"
               dangerouslySetInnerHTML={{
                 __html: info.text
               }}
             />
           ) : (
-            <div className='infoStyle'>{info.text}</div>
+            <div className="infoStyle">{info.text}</div>
           )}
-          <div style={{ marginLeft: 32 }}>
+          <div style={{marginLeft: 32}}>
             {' '}
             {currentUser && (
               <div>
                 <button
-                  className='replyBtn'
+                  className="replyBtn"
                   onClick={() => globalStore.handleAction(info.comId, false)}
                 >
-                  <div className='replyIcon' />
-                  <span style={{ marginLeft: 17 }}>Reply</span>
+                  <div className="replyIcon"/>
+                  <span style={{marginLeft: 17}}>Reply</span>
                 </button>
               </div>
             )}
@@ -131,7 +144,7 @@ const CommentStructure = ({
     )
   }
 
-  const actionModeSection = (mode: string) => {
+  const actionModeSection = ( mode: string ) => {
     if (mode === 'reply') {
       return (
         <div className='replysection'>

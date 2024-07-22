@@ -2,6 +2,10 @@ import * as React from 'react'
 import CommentSectionComponent from './components/CommentSectionComponent/Index'
 import GlobalProvider from './context/Provider'
 import './Index.scss'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+
+TimeAgo.addDefaultLocale(en)
 
 interface CommentSectionProps {
   currentUser: {
@@ -13,9 +17,12 @@ interface CommentSectionProps {
   logIn: {
     loginLink: string
     signupLink: string
+    messagePlaceholder?: string
   }
   replyTop?: boolean
   customImg?: string
+  messagePlaceholder?: string
+  replyPlaceholder?: string
   inputStyle?: object
   formStyle?: object
   submitBtnStyle?: object
@@ -32,6 +39,7 @@ interface CommentSectionProps {
   onEditAction?: Function
   customNoComment?: Function
   currentData?: Function
+  bypassDeleteWarning?: boolean
   removeEmoji?: boolean
   advancedInput?: boolean
   commentData: Array<{
@@ -40,6 +48,7 @@ interface CommentSectionProps {
     fullName: string
     avatarUrl: string
     text: string
+    timestamp?: Date
     userProfile?: string
     replies?:
       | Array<{
@@ -48,6 +57,7 @@ interface CommentSectionProps {
           fullName: string
           avatarUrl: string
           text: string
+          timestamp?: Date
           userProfile?: string
         }>
       | undefined
@@ -57,6 +67,8 @@ interface CommentSectionProps {
 export const CommentSection = ({
   currentUser,
   customImg,
+  messagePlaceholder,
+  replyPlaceholder,
   inputStyle,
   formStyle,
   submitBtnStyle,
@@ -76,6 +88,7 @@ export const CommentSection = ({
   onReplyAction,
   onEditAction,
   customNoComment,
+  bypassDeleteWarning,
   currentData,
   advancedInput
 }: CommentSectionProps) => {
@@ -83,6 +96,8 @@ export const CommentSection = ({
     <GlobalProvider
       currentUser={currentUser}
       replyTop={replyTop}
+      messagePlaceholder={messagePlaceholder}
+      replyPlaceholder={replyPlaceholder}
       customImg={customImg}
       inputStyle={inputStyle}
       formStyle={formStyle}
@@ -97,6 +112,7 @@ export const CommentSection = ({
       onReplyAction={onReplyAction}
       onEditAction={onEditAction}
       currentData={currentData}
+      bypassDeleteWarning={bypassDeleteWarning}
       removeEmoji={removeEmoji}
       advancedInput={advancedInput}
     >

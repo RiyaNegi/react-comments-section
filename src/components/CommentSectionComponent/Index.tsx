@@ -13,6 +13,7 @@ interface CommentSectionProps {
   logIn: {
     loginLink: string
     signupLink: string
+    messagePlaceholder?: string
   }
   hrStyle?: object
   titleStyle?: object
@@ -31,6 +32,7 @@ const CommentSection = ({
       <LoginSection
         loginLink={logIn!.loginLink}
         signUpLink={logIn!.signupLink}
+        messagePlaceholder={logIn!.messagePlaceholder}
       />
     )
   }
@@ -66,6 +68,7 @@ const CommentSection = ({
             fullName: string
             avatarUrl: string
             text: string
+            timestamp?: Date
             userProfile?: string
             replies: Array<any> | undefined
           }) => {

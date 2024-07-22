@@ -10,7 +10,7 @@ const DefaultComponent = () => {
       fullName: 'Riya Negi',
       avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
       userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
-      text: 'Hey, Loved your blog! ',
+      text: 'Hey, Loved your blog!',
       replies: [
         {
           userId: '02a',
@@ -71,12 +71,15 @@ const DefaultComponent = () => {
           userProfile?: string
           fullName: string
           text: string
+          timestamp?: Date
           replies: any
           commentId: string
         }) => console.log('check submit, ', data)}
         currentData={(data: any) => {
-          console.log('curent data', data)
+          console.log('current data', data)
         }}
+        messagePlaceholder='Type a message'
+        replyPlaceholder='Leave a reply here'
       />
     </div>
   )

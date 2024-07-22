@@ -1,15 +1,16 @@
-import React, { useRef, useEffect, useState, useContext } from 'react'
-import { GlobalContext } from '../../context/Provider'
+import React, {useRef, useEffect, useState, useContext} from 'react'
+import {GlobalContext} from '../../context/Provider'
 import Picker from 'emoji-picker-react'
 import './InputField.scss'
 
-function useOutsideAlerter(ref: any, setOpen: Function) {
+function useOutsideAlerter( ref: any, setOpen: Function ) {
   useEffect(() => {
-    function handleClickOutside(event: any) {
+    function handleClickOutside( event: any ) {
       if (ref.current && !ref.current.contains(event.target)) {
         setOpen(!open)
       }
     }
+
     document.addEventListener('mousedown', handleClickOutside)
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
@@ -18,13 +19,15 @@ function useOutsideAlerter(ref: any, setOpen: Function) {
 }
 
 interface EmojiInputProps {
-  text: string
-  setText: Function
-  mode?: string
-  inputStyle?: object
+  text: string,
+  setText: Function,
+  mode?: string,
+  inputStyle?: object,
+  messagePlaceholder?: string
+  replyPlaceholder?: string
 }
 
-const EmojiInput = ({ text, setText, mode, inputStyle }: EmojiInputProps) => {
+const EmojiInput = ( {text, setText, mode, inputStyle, messagePlaceholder, replyPlaceholder}: EmojiInputProps ) => {
   const [open, setOpen] = useState(false)
   const [chosenEmoji, setChosenEmoji] = useState<{ emoji?: any }>()
   const wrapperRef = useRef(null)
@@ -39,29 +42,30 @@ const EmojiInput = ({ text, setText, mode, inputStyle }: EmojiInputProps) => {
     }
   }, [chosenEmoji])
 
-  const onEmojiClick = (event: any, emojiObject: { emoji?: any }) => {
+  const onEmojiClick = ( event: any, emojiObject: { emoji?: any } ) => {
     event
     setChosenEmoji(emojiObject)
   }
 
   return (
-    <div className='emoji-input'>
+    <div className="emoji-input">
       <input
-        className='postComment'
+        className="postComment"
         style={
           mode === 'replyMode' || mode === 'editMode'
             ? globalStore.replyInputStyle
             : globalStore.inputStyle || inputStyle
         }
-        placeholder='Type your reply here'
-        type='text'
+        placeholder={mode === 'replyMode' || mode === 'editMode'
+            ? globalStore.replyPlaceholder || replyPlaceholder : globalStore.messagePlaceholder || messagePlaceholder}
+        type="text"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={( e ) => setText(e.target.value)}
       />
-      <div className='emoji-icon' onClick={() => setOpen(!open)}></div>
+      <div className="emoji-icon" onClick={() => setOpen(!open)}></div>
       {open ? (
         <div ref={wrapperRef}>
-          <Picker onEmojiClick={onEmojiClick} />
+          <Picker onEmojiClick={onEmojiClick}/>
         </div>
       ) : null}
     </div>

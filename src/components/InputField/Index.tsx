@@ -13,6 +13,8 @@ interface InputFieldProps {
   parentId?: string
   mode?: string
   customImg?: string
+  messagePlaceholder?: string
+  replyPlaceholder?: string
   inputStyle?: object
   cancelBtnStyle?: object
   submitBtnStyle?: object
@@ -27,6 +29,8 @@ const InputField = ({
   parentId,
   mode,
   customImg,
+  messagePlaceholder = 'Type your message here',
+  replyPlaceholder = 'Type your reply here',
   inputStyle,
   cancelBtnStyle,
   submitBtnStyle,
@@ -98,6 +102,7 @@ const InputField = ({
             : null,
           fullName: globalStore.currentUserData.currentUserFullName,
           text: textToSend,
+          timestamp: new Date().toISOString(),  // Timestamp should be officially now at the time of saving, not the time of creation
           replies: []
         }))
     )
@@ -123,6 +128,8 @@ const InputField = ({
           text={mode === 'editMode' ? text : ''}
           formStyle={formStyle}
           mode={mode}
+          messagePlaceholder={messagePlaceholder}
+          replyPlaceholder={replyPlaceholder}
           cancelBtnStyle={cancelBtnStyle}
           submitBtnStyle={submitBtnStyle}
           comId={comId}
@@ -137,6 +144,8 @@ const InputField = ({
           imgStyle={imgStyle}
           customImg={customImg}
           mode={mode}
+          messagePlaceholder={messagePlaceholder}
+          replyPlaceholder={replyPlaceholder}
           inputStyle={inputStyle}
           cancelBtnStyle={cancelBtnStyle}
           comId={comId}

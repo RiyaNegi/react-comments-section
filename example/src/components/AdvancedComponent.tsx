@@ -74,7 +74,7 @@ const AdvancedComponent = () => {
         hrStyle={{ border: '0.5px solid #ff0072' }}
         commentData={data}
         currentData={(data: any) => {
-          console.log('curent data', data)
+          console.log('current data', data)
         }}
         logIn={{
           loginLink: 'http://localhost:3001/',
@@ -96,6 +96,8 @@ const AdvancedComponent = () => {
         }}
         advancedInput={true}
         replyInputStyle={{ borderBottom: '1px solid black', color: 'black' }}
+        messagePlaceholder='Leave a comment.'
+        replyPlaceholder='Leave a nice reply here, please.'
       />
     </div>
   )
