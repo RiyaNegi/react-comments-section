@@ -23,6 +23,7 @@ export const GlobalProvider = ({
   onReplyAction,
   onEditAction,
   currentData,
+  bypassDeleteWarning,
   replyInputStyle,
   removeEmoji,
   advancedInput
@@ -71,6 +72,7 @@ export const GlobalProvider = ({
   onReplyAction?: Function
   onEditAction?: Function
   currentData?: Function
+  bypassDeleteWarning?: boolean
   advancedInput?: boolean
 }) => {
   const [currentUserData] = useState(currentUser)
@@ -241,6 +243,7 @@ export const GlobalProvider = ({
         replyArr: replyArr,
         onReply: onReply,
         onDelete: onDelete,
+        bypassDeleteWarning: bypassDeleteWarning,
         customImg: customImg,
         messagePlaceholder: messagePlaceholder,
         replyPlaceholder: replyPlaceholder,

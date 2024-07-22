@@ -54,8 +54,18 @@ const CommentStructure = ({
             >
               edit
             </MenuItem>
-            <MenuItem>
-              <DeleteModal comId={info.comId} parentId={parentId} />
+            <MenuItem
+              onClick={globalStore.bypassDeleteWarning ? async () => (
+                await globalStore.onDelete(info.comId, parentId),
+                globalStore.onDeleteAction &&
+                  (await globalStore.onDeleteAction({
+                    comIdToDelete: info.comId,
+                    parentOfDeleteId: parentId
+                  }))
+              ) : undefined}
+
+            >
+              {globalStore.bypassDeleteWarning ? "delete" : <DeleteModal comId={info.comId} parentId={parentId} /> }
             </MenuItem>
           </Menu>
         )}

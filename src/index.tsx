@@ -39,6 +39,7 @@ interface CommentSectionProps {
   onEditAction?: Function
   customNoComment?: Function
   currentData?: Function
+  bypassDeleteWarning?: boolean
   removeEmoji?: boolean
   advancedInput?: boolean
   commentData: Array<{
@@ -87,6 +88,7 @@ export const CommentSection = ({
   onReplyAction,
   onEditAction,
   customNoComment,
+  bypassDeleteWarning,
   currentData,
   advancedInput
 }: CommentSectionProps) => {
@@ -110,6 +112,7 @@ export const CommentSection = ({
       onReplyAction={onReplyAction}
       onEditAction={onEditAction}
       currentData={currentData}
+      bypassDeleteWarning={bypassDeleteWarning}
       removeEmoji={removeEmoji}
       advancedInput={advancedInput}
     >
