@@ -18,6 +18,7 @@ interface AdvancedInputProps {
   imgDiv?: object
   customImg?: string
   text: string
+  placeHolder?: string
 }
 
 const AdvancedInput = ({
@@ -30,7 +31,8 @@ const AdvancedInput = ({
   imgDiv,
   imgStyle,
   customImg,
-  text
+  text,
+  placeHolder
 }: AdvancedInputProps) => {
   const [html, setHtml] = useState('<p></p>')
   const globalStore: any = useContext(GlobalContext)
@@ -96,7 +98,7 @@ const AdvancedInput = ({
           <div className='advanced-border'>
             <Editor
               editorState={editorState}
-              placeholder={'Type your reply here'}
+              placeholder={placeHolder ? placeHolder : 'Type your reply here.'}
               onEditorStateChange={(editorState) =>
                 onEditorStateChange(editorState)
               }

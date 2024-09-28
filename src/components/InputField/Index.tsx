@@ -18,6 +18,7 @@ interface InputFieldProps {
   submitBtnStyle?: object
   imgStyle?: object
   imgDiv?: object
+  placeHolder?: string
 }
 
 const InputField = ({
@@ -31,7 +32,8 @@ const InputField = ({
   cancelBtnStyle,
   submitBtnStyle,
   imgStyle,
-  imgDiv
+  imgDiv,
+  placeHolder
 }: InputFieldProps) => {
   const [text, setText] = useState('')
 
@@ -129,6 +131,7 @@ const InputField = ({
           imgDiv={imgDiv}
           imgStyle={imgStyle}
           customImg={customImg}
+          placeHolder={placeHolder}
         />
       ) : (
         <RegularInput
@@ -144,6 +147,7 @@ const InputField = ({
           handleSubmit={handleSubmit}
           text={text}
           setText={setText}
+          placeHolder={placeHolder}
         />
       )}
     </div>

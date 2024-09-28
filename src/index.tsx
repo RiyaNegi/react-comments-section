@@ -36,6 +36,7 @@ interface CommentSectionProps {
   currentData?: Function
   removeEmoji?: boolean
   advancedInput?: boolean
+  placeHolder?: string
   commentData: Array<{
     userId: string
     comId: string
@@ -43,6 +44,7 @@ interface CommentSectionProps {
     avatarUrl: string
     text: string
     userProfile?: string
+    timeStamp?: string
     replies?:
       | Array<{
           userId: string
@@ -70,6 +72,7 @@ export const CommentSection = ({
   replyTop,
   commentsCount,
   commentData,
+  placeHolder,
   hrStyle,
   titleStyle,
   removeEmoji,
@@ -101,6 +104,7 @@ export const CommentSection = ({
       currentData={currentData}
       removeEmoji={removeEmoji}
       advancedInput={advancedInput}
+      placeHolder={placeHolder}
     >
       <CommentSectionComponent
         overlayStyle={overlayStyle}

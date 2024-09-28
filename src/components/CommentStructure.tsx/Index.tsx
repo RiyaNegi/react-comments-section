@@ -15,6 +15,7 @@ interface CommentStructureProps {
     avatarUrl: string
     text: string
     userProfile?: string
+    timeStamp?: string
     replies?: Array<object> | undefined
   }
   editMode: boolean
@@ -79,6 +80,7 @@ const CommentStructure = ({
                   : null)
               }
             />
+            {/* {info.timeStamp == null ? null : info.timeStamp} */}
           </div>
           <div className='fullName'>{info.fullName} </div>
         </a>

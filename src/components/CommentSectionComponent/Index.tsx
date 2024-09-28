@@ -60,6 +60,7 @@ const CommentSection = ({
 
   return (
     <div className='overlay' style={overlayStyle}>
+      {console.log('checl', globalStore)}
       <span className='comment-title' style={titleStyle}>
         {globalStore.commentsCount || totalComments()}{' '}
         {totalComments() === 1 ? 'Comment' : 'Comments'}
@@ -68,7 +69,11 @@ const CommentSection = ({
       {globalStore.currentUserData === null ? (
         loginMode()
       ) : (
-        <InputField formStyle={{ margin: '10px 0px' }} imgDiv={{ margin: 0 }} />
+        <InputField
+          placeHolder={globalStore.placeHolder}
+          formStyle={{ margin: '10px 0px' }}
+          imgDiv={{ margin: 0 }}
+        />
       )}
 
       {globalStore.data.length > 0 ? (

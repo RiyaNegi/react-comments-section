@@ -23,7 +23,8 @@ export const GlobalProvider = ({
   currentData,
   replyInputStyle,
   removeEmoji,
-  advancedInput
+  advancedInput,
+  placeHolder
 }: {
   children: any
   currentUser?: {
@@ -66,6 +67,7 @@ export const GlobalProvider = ({
   onEditAction?: Function
   currentData?: Function
   advancedInput?: boolean
+  placeHolder?: string
 }) => {
   const [currentUserData] = useState(currentUser)
   const [data, setData] = useState<
@@ -243,7 +245,8 @@ export const GlobalProvider = ({
         onEditAction: onEditAction,
         replyInputStyle: replyInputStyle,
         removeEmoji: removeEmoji,
-        advancedInput: advancedInput
+        advancedInput: advancedInput,
+        placeHolder: placeHolder
       }}
     >
       {children}
