@@ -11,8 +11,10 @@ import NoComments from './NoComments'
 interface CommentSectionProps {
   overlayStyle?: object
   logIn: {
-    loginLink: string
-    signupLink: string
+    loginLink?: string | (() => void)
+    signUpLink?: string | (() => void)
+    onLogin?: string | (() => void)
+    onSignUp?: string | (() => void)
   }
   hrStyle?: object
   titleStyle?: object
@@ -26,13 +28,24 @@ const CommentSection = ({
   titleStyle,
   customNoComment
 }: CommentSectionProps) => {
+  const handleLogin = () => {
+    if (typeof logIn.onLogin === 'function') {
+      logIn.onLogin()
+    } else if (typeof logIn.loginLink === 'string') {
+      window.location.href = logIn.loginLink
+    }
+  }
+
+  const handleSignUp = () => {
+    if (typeof logIn.onSignUp === 'function') {
+      logIn.onSignUp()
+    } else if (typeof logIn.signUpLink === 'string') {
+      window.location.href = logIn.signUpLink
+    }
+  }
+
   const loginMode = () => {
-    return (
-      <LoginSection
-        loginLink={logIn!.loginLink}
-        signUpLink={logIn!.signupLink}
-      />
-    )
+    return <LoginSection loginLink={handleLogin} signUpLink={handleSignUp} />
   }
   const globalStore: any = useContext(GlobalContext)
 

@@ -21,8 +21,10 @@ interface CommentStructureProps {
   parentId?: string
   replyMode: boolean
   logIn: {
-    loginLink: string
-    signupLink: string
+    loginLink?: string | (() => void)
+    signUpLink?: string | (() => void)
+    onLogin?: string | (() => void)
+    onSignUp?: string | (() => void)
   }
 }
 

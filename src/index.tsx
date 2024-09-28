@@ -11,8 +11,10 @@ interface CommentSectionProps {
     currentUserFullName: string
   } | null
   logIn: {
-    loginLink: string
-    signupLink: string
+    loginLink?: string | (() => void)
+    signUpLink?: string | (() => void)
+    onLogin?: string | (() => void)
+    onSignUp?: string | (() => void)
   }
   replyTop?: boolean
   customImg?: string

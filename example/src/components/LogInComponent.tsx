@@ -54,8 +54,8 @@ const LogInComponent = () => {
         currentUser={null}
         commentData={data}
         logIn={{
-          loginLink: 'http://localhost:3001/',
-          signupLink: 'http://localhost:3001/'
+          onLogin: () => alert('Call login function '),
+          signUpLink: 'http://localhost:3001/'
         }}
       />
     </div>
