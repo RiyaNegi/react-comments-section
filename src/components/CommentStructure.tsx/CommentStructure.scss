@@ -13,12 +13,13 @@
       font-size: 16px;
       font-weight: 600;
     }
-    .commenttimeStamp {
+    .commenttimestamp {
       display: flex;
       margin-left: 10px;
       font-size: 14px;
       font-weight: 400;
       color: gray;
+      align-items: flex-end;
     }
   }
 }

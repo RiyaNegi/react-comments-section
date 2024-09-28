@@ -11,6 +11,7 @@ const DefaultComponent = () => {
       avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
       userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
       text: 'Hey, Loved your blog! ',
+      timestamp: '2024-09-28T10:34:56Z',
       replies: [
         {
           userId: '02a',
@@ -18,7 +19,8 @@ const DefaultComponent = () => {
           userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
           fullName: 'Adam Scott',
           avatarUrl: 'https://ui-avatars.com/api/name=Adam&background=random',
-          text: 'Thanks! It took me 1 month to finish this project but I am glad it helped out someone!🥰'
+          text: 'Thanks! It took me 1 month to finish this project but I am glad it helped out someone!🥰',
+          timestamp: '2024-09-28T12:34:56Z'
         },
         {
           userId: '01a',
@@ -26,7 +28,8 @@ const DefaultComponent = () => {
           userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
           fullName: 'Riya Negi',
           avatarUrl: 'https://ui-avatars.com/api/name=Riya&background=random',
-          text: 'thanks!😊'
+          text: 'thanks!😊',
+          timestamp: '2024-09-28T12:34:56Z'
         }
       ]
     },
@@ -37,6 +40,7 @@ const DefaultComponent = () => {
       userProfile: 'https://www.linkedin.com/in/riya-negi-8879631a9/',
       text: 'I have a doubt about the 4th point🤔',
       avatarUrl: 'https://ui-avatars.com/api/name=Lily&background=random',
+      timestamp: '2024-09-28T12:34:56Z',
       replies: []
     }
   ]

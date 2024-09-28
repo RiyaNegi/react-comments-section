@@ -44,7 +44,7 @@ interface CommentSectionProps {
     avatarUrl: string
     text: string
     userProfile?: string
-    timeStamp?: string
+    timestamp?: string
     replies?:
       | Array<{
           userId: string
