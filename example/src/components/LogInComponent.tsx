@@ -57,6 +57,7 @@ const LogInComponent = () => {
           onLogin: () => alert('Call login function '),
           signUpLink: 'http://localhost:3001/'
         }}
+        showTimestamp={false}
       />
     </div>
   )

@@ -49,6 +49,7 @@ export const GlobalProvider = ({
     fullName: string
     avatarUrl: string
     text: string
+    timestamp?: string
     userProfile?: string
     replies?:
       | Array<{
@@ -57,6 +58,7 @@ export const GlobalProvider = ({
           fullName: string
           avatarUrl: string
           text: string
+          timestamp?: string
           userProfile?: string
         }>
       | undefined
@@ -78,6 +80,7 @@ export const GlobalProvider = ({
       avatarUrl: string
       text: string
       userProfile?: string
+      timestamp?: string
       replies?:
         | Array<{
             userId: string
@@ -85,6 +88,7 @@ export const GlobalProvider = ({
             fullName: string
             avatarUrl: string
             text: string
+            timestamp?: string
             userProfile?: string
           }>
         | undefined
@@ -140,6 +144,7 @@ export const GlobalProvider = ({
         : undefined,
       fullName: currentUserData!.currentUserFullName,
       text: text,
+      timestamp: `${new Date().toISOString()}`,
       replies: []
     })
     setData(copyData)
@@ -180,7 +185,8 @@ export const GlobalProvider = ({
           ? currentUserData!.currentUserProfile
           : undefined,
         fullName: currentUserData!.currentUserFullName,
-        text: text
+        text: text,
+        timestamp: `${new Date().toISOString()}`
       })
       setData(copyData)
       handleAction(comId, false)
@@ -196,7 +202,8 @@ export const GlobalProvider = ({
           ? currentUserData!.currentUserProfile
           : undefined,
         fullName: currentUserData!.currentUserFullName,
-        text: text
+        text: text,
+        timestamp: `${new Date().toISOString()}`
       })
       setData(copyData)
       handleAction(comId, false)

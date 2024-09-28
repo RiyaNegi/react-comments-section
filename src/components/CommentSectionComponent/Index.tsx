@@ -19,6 +19,7 @@ interface CommentSectionProps {
   hrStyle?: object
   titleStyle?: object
   customNoComment?: Function
+  showTimestamp?: boolean
 }
 
 const CommentSection = ({
@@ -26,7 +27,8 @@ const CommentSection = ({
   logIn,
   hrStyle,
   titleStyle,
-  customNoComment
+  customNoComment,
+  showTimestamp = true
 }: CommentSectionProps) => {
   const handleLogin = () => {
     if (typeof logIn.onLogin === 'function') {
@@ -60,7 +62,6 @@ const CommentSection = ({
 
   return (
     <div className='overlay' style={overlayStyle}>
-      {console.log('checl', globalStore)}
       <span className='comment-title' style={titleStyle}>
         {globalStore.commentsCount || totalComments()}{' '}
         {totalComments() === 1 ? 'Comment' : 'Comments'}
@@ -102,6 +103,7 @@ const CommentSection = ({
                       : true
                   }
                   logIn={logIn}
+                  showTimestamp={showTimestamp}
                 />
                 {i.replies &&
                   i.replies.length > 0 &&
@@ -122,6 +124,7 @@ const CommentSection = ({
                               : true
                           }
                           logIn={logIn}
+                          showTimestamp={showTimestamp}
                         />
                       </div>
                     )

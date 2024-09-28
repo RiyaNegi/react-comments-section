@@ -64,6 +64,7 @@ const CustomComponent = () => {
             'https://www.linkedin.com/in/riya-negi-8879631a9/',
           currentUserFullName: 'Riya Negi'
         }}
+        showTimestamp={false}
         hrStyle={{ border: '0.5px solid #ff0072' }}
         titleStyle={{ color: '#f2f2f2' }}
         commentsCount={8}

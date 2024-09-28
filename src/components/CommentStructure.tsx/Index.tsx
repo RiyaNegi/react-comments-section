@@ -21,6 +21,7 @@ interface CommentStructureProps {
   editMode: boolean
   parentId?: string
   replyMode: boolean
+  showTimestamp?: boolean
   logIn: {
     loginLink?: string | (() => void)
     signUpLink?: string | (() => void)
@@ -33,7 +34,8 @@ const CommentStructure = ({
   info,
   editMode,
   parentId,
-  replyMode
+  replyMode,
+  showTimestamp
 }: CommentStructureProps) => {
   const globalStore: any = useContext(GlobalContext)
   const currentUser = globalStore.currentUserData
@@ -104,12 +106,12 @@ const CommentStructure = ({
                   : null)
               }
             />
-            {console.log('check', info)}
           </div>
           <div className='fullName'>
-            {info.fullName}{' '}
+            {info.fullName}
             <span className='commenttimestamp'>
-              {info.timestamp == null ? null : timeAgo(info.timestamp)}
+              {showTimestamp &&
+                (info.timestamp == null ? null : timeAgo(info.timestamp))}
             </span>
           </div>
         </a>
