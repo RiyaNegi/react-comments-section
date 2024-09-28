@@ -68,7 +68,7 @@ const DefaultComponent = () => {
           onLogin: () => alert('Call login function '),
           signUpLink: 'http://localhost:3001/'
         }}
-        placeHolder='Write a comment'
+        placeHolder='Write your comment...'
         onSubmitAction={(data: {
           userId: string
           comId: string
