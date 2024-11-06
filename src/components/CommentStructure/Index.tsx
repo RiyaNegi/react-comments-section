@@ -1,11 +1,11 @@
 import './CommentStructure.scss'
 import { useContext } from 'react'
 import { GlobalContext } from '../../context/Provider'
-import InputField from '../InputField/Index'
 import { Menu, MenuItem } from '@szhsin/react-menu'
 import '@szhsin/react-menu/dist/core.css'
 import DeleteModal from './DeleteModal'
 import React from 'react'
+import InputField from "../InputField/Index";
 
 interface CommentStructureProps {
   info: {
@@ -22,6 +22,8 @@ interface CommentStructureProps {
   parentId?: string
   replyMode: boolean
   showTimestamp?: boolean
+  mentions?: any[]
+  tags?: string[]
   logIn: {
     loginLink?: string | (() => void)
     signUpLink?: string | (() => void)
@@ -35,7 +37,9 @@ const CommentStructure = ({
   editMode,
   parentId,
   replyMode,
-  showTimestamp
+  showTimestamp,
+  mentions,
+  tags
 }: CommentStructureProps) => {
   const globalStore: any = useContext(GlobalContext)
   const currentUser = globalStore.currentUserData
@@ -57,8 +61,18 @@ const CommentStructure = ({
             >
               edit
             </MenuItem>
-            <MenuItem>
-              <DeleteModal comId={info.comId} parentId={parentId} />
+            <MenuItem
+              onClick={globalStore.bypassDeleteWarning ? async () => (
+                await globalStore.onDelete(info.comId, parentId),
+                globalStore.onDeleteAction &&
+                  (await globalStore.onDeleteAction({
+                    comIdToDelete: info.comId,
+                    parentOfDeleteId: parentId
+                  }))
+              ) : undefined}
+
+            >
+              {globalStore.bypassDeleteWarning ? "delete" : <DeleteModal comId={info.comId} parentId={parentId} /> }
             </MenuItem>
           </Menu>
         )}
@@ -143,9 +157,16 @@ const CommentStructure = ({
                 __html: info.text
               }}
             />
-          ) : (
-            <div className='infoStyle'>{info.text}</div>
-          )}
+          ) : info.text.includes("<span data-link-id=") ? (
+              <div
+                className='infoStyle'
+                dangerouslySetInnerHTML={{
+                  __html: info.text
+                }}
+              />
+            ) : (
+              <div className='infoStyle'>{info.text.replaceAll(/@\[([^\]]+)]\([^)]+\)/g, '$1')}</div>
+            )}
           <div style={{ marginLeft: 32 }}>
             {' '}
             {currentUser && (
@@ -181,6 +202,8 @@ const CommentStructure = ({
             fillerText={''}
             mode={'replyMode'}
             parentId={parentId}
+            mentions={mentions}
+            tags={tags}
           />
         </div>
       )
@@ -196,6 +219,8 @@ const CommentStructure = ({
           fillerText={info.text}
           mode={'editMode'}
           parentId={parentId}
+          mentions={mentions}
+          tags={tags}
         />
       )
     }

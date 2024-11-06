@@ -11,11 +11,18 @@ npm i react-comments-section
 ## Detailed Documentation : https://riyanegi.github.io/react-comments-documentation/
 
 `react-comments-section` is a simple but multi-functional react comment section component that helps you create comments section similar to youtube or instagram for your React App.
+<<<<<<< HEAD
+`react-comments-section` is very useful for react beginners who want a comment section in their project but want to skip it's commplexity. This library will give a fully functional comment section with the following features:
+  - User can reply to comments
+  - User can edit his/her comments
+  - User can delete his/her comments
+=======
 `react-comments-section` is very useful for react beginners who want a comment section in their project but want to skip it's complexity. This library will give a fully functional comment section with the following features:
 
 - User can reply to comments
 - User can edit his/her comments
 - User can delete his/her comments
+>>>>>>> 7809d1cbacb31bb40a1ae4d13c8fb67ab0653ceb
 
 live demo of the library -> https://riyanegi.github.io/react-comments-section/
 
@@ -81,6 +88,7 @@ const DefaultComponent = () => {
           userProfile?: string
           fullName: string
           text: string
+          timestamp: string
           replies: any
           commentId: string
         }) => console.log('check submit, ', data)}
@@ -134,6 +142,26 @@ class ClassComponent extends PureComponent {
   customNoComment = () => <div className='no-com'>No comments wohoooo!</div>
 
   render() {
+<<<<<<< HEAD
+    return
+        <CommentSection
+          currentUser={{
+            currentUserId: '01a',
+            currentUserImg:
+              'https://ui-avatars.com/api/name=Riya&background=random',
+            currentUserProfile:
+              'https://www.linkedin.com/in/riya-negi-8879631a9/',
+            currentUserFullName: 'Riya Negi'
+          }}
+          commentData={this.state.data}
+          onSubmitAction={(data:any) => this.onSubmitAction(data)}
+          customNoComment={() => this.customNoComment()}
+          logIn={{
+            loginLink: 'http://localhost:3001/',
+            signupLink: 'http://localhost:3001/'
+          }}
+        />
+=======
     return (
       <CommentSection
       currentUser={{
@@ -152,6 +180,7 @@ class ClassComponent extends PureComponent {
       }}
       placeholder="Write your comment..."
     />)
+>>>>>>> 7809d1cbacb31bb40a1ae4d13c8fb67ab0653ceb
   }
 }
 

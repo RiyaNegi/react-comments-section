@@ -19,6 +19,8 @@ interface InputFieldProps {
   imgStyle?: object
   imgDiv?: object
   placeHolder?: string
+  mentions?: any[]
+  tags?: string[]
 }
 
 const InputField = ({
@@ -33,7 +35,9 @@ const InputField = ({
   submitBtnStyle,
   imgStyle,
   imgDiv,
-  placeHolder
+  placeHolder,
+  mentions,
+  tags
 }: InputFieldProps) => {
   const [text, setText] = useState('')
 
@@ -100,6 +104,7 @@ const InputField = ({
             : null,
           fullName: globalStore.currentUserData.currentUserFullName,
           text: textToSend,
+          timestamp: new Date().toISOString(),  // Timestamp should be officially now at the time of saving, not the time of creation
           replies: []
         }))
     )
@@ -148,6 +153,8 @@ const InputField = ({
           text={text}
           setText={setText}
           placeHolder={placeHolder}
+          mentions={mentions}
+          tags={tags}
         />
       )}
     </div>

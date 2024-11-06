@@ -3,11 +3,16 @@
   background-color: rgb(243, 243, 243);
   padding: 20px;
   border-radius: 8px;
+
+  textarea {
+    border: none;
+    padding: 1px 2px;
+  }
   .userImg {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0px 10px;
+    margin: 0 10px;
   }
 
   .postComment {
@@ -23,7 +28,6 @@
     border-bottom: 2px solid rgb(14, 14, 14);
   }
   .postComment::placeholder {
-    margin-top: -2px;
   }
 
   .postBtn {
@@ -36,7 +40,6 @@
     margin-left: 15px;
     font-size: 16px;
     cursor: pointer;
-    padding: 5px 20px;
     &:hover {
       border: 2px solid rgb(0, 184, 240);
       background-color: rgb(0, 184, 240);
@@ -52,7 +55,6 @@
     margin-left: 15px;
     font-size: 16px;
     cursor: pointer;
-    padding: 5px 20px;
     &:hover {
       border: 2px solid rgb(210, 210, 210);
       background-color: rgb(210, 210, 210);
@@ -93,7 +95,7 @@
   width: 100%;
 }
 .advanced-form {
-  padding: 0px;
+  padding: 0;
   flex-direction: column;
 }
 .rdw-editor-main {
@@ -103,7 +105,7 @@
 .advanced-btns {
   width: 100%;
   display: flex;
-  margin: 6px 0px 0px 0px;
+  margin: 6px 0 0 0;
 }
 .advanced-border {
   border: 1px solid #e8e8e8;
@@ -122,10 +124,67 @@
 }
 .advanced-overlay {
   display: flex;
-  margin: 10px 0px;
+  margin: 10px 0;
   width: 100%;
 }
 .advanced-input {
   margin-left: 6px;
   width: 100%;
+}
+
+.mention {
+  .control {
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  .multiLine {
+    .control {
+      font-family: monospace;
+      min-height: 63px;
+    }
+
+    .highlighter {
+      padding: 9px;
+      border: 1px solid transparent;
+    }
+
+    input {
+      padding: 9px;
+      border: 1px solid silver;
+    }
+  }
+
+  .singleLine {
+    display: inline-block;
+    width: 180px;
+
+    .highlighter {
+      padding: 1px;
+      border: 2px inset transparent;
+    }
+
+    input {
+      padding: 1px;
+      border: 2px inset;
+    }
+  }
+
+  .suggestions {
+    .list {
+      background-color: white;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      font-size: 14px;
+    }
+
+    .item {
+      padding: 5px 15px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+
+      .focused {
+        background-color: #cee4e5;
+      }
+    }
+  }
 }

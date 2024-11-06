@@ -1,15 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-
 .overlay {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  font-family: 'Noto Sans', sans-serif;
 }
 .replySection {
   border-left: 1px solid rgb(235, 235, 235);
   margin-left: 25px;
-  padding: 0px 0px 0px 15px;
+  padding: 0 0 0 15px;
 }
 .comment-title {
   font-family: 'Noto Sans', sans-serif;

@@ -2,6 +2,10 @@ import * as React from 'react'
 import CommentSectionComponent from './components/CommentSectionComponent/Index'
 import GlobalProvider from './context/Provider'
 import './Index.scss'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+
+TimeAgo.addDefaultLocale(en)
 
 interface CommentSectionProps {
   currentUser: {
@@ -34,10 +38,13 @@ interface CommentSectionProps {
   onEditAction?: Function
   customNoComment?: Function
   currentData?: Function
+  bypassDeleteWarning?: boolean
   removeEmoji?: boolean
   advancedInput?: boolean
   placeHolder?: string
   showTimestamp?: boolean
+  mentions?: any[]
+  tags?: any[]
   commentData: Array<{
     userId: string
     comId: string
@@ -76,6 +83,8 @@ export const CommentSection = ({
   commentData,
   placeHolder,
   showTimestamp,
+  mentions,
+  tags,
   hrStyle,
   titleStyle,
   removeEmoji,
@@ -84,6 +93,7 @@ export const CommentSection = ({
   onReplyAction,
   onEditAction,
   customNoComment,
+  bypassDeleteWarning,
   currentData,
   advancedInput
 }: CommentSectionProps) => {
@@ -105,6 +115,7 @@ export const CommentSection = ({
       onReplyAction={onReplyAction}
       onEditAction={onEditAction}
       currentData={currentData}
+      bypassDeleteWarning={bypassDeleteWarning}
       removeEmoji={removeEmoji}
       advancedInput={advancedInput}
       placeHolder={placeHolder}
@@ -116,6 +127,8 @@ export const CommentSection = ({
         titleStyle={titleStyle}
         customNoComment={customNoComment}
         showTimestamp={showTimestamp}
+        mentions={mentions}
+        tags={tags}
       />
     </GlobalProvider>
   )

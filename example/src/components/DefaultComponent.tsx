@@ -69,6 +69,7 @@ const DefaultComponent = () => {
           signUpLink: 'http://localhost:3001/'
         }}
         placeHolder='Write your comment...'
+        removeEmoji={true}
         onSubmitAction={(data: {
           userId: string
           comId: string
@@ -82,6 +83,21 @@ const DefaultComponent = () => {
         currentData={(data: any) => {
           console.log('current data', data)
         }}
+        mentions={[
+          {id: 1, display: "Hooters"},
+          {id: 2, display: "A's"},
+          {id: 3, display: "Beru Revue"},
+          {id: 4, display: "Tommy Conwell"},
+          {id: 5, display: "Ben Arnold"},
+        ]}
+        tags={[
+          "todo",
+          "follow-up",
+          "solar",
+          "bess",
+          "evse",
+          "gbe",
+        ]}
       />
     </div>
   )

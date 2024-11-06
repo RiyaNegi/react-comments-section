@@ -22,7 +22,7 @@ code {
 }
 .example-row {
   display: flex;
-  width: 100;
+  width: 100%;
 }
 .title {
   font-size: 18px;
@@ -40,7 +40,7 @@ code {
 @media screen and (max-width: 600px) {
   .example-row {
     display: flex;
-    width: 100;
+    width: 100%;
     flex-direction: column;
   }
 }

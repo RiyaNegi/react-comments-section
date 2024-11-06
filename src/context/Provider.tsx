@@ -21,6 +21,7 @@ export const GlobalProvider = ({
   onReplyAction,
   onEditAction,
   currentData,
+  bypassDeleteWarning,
   replyInputStyle,
   removeEmoji,
   advancedInput,
@@ -68,6 +69,7 @@ export const GlobalProvider = ({
   onReplyAction?: Function
   onEditAction?: Function
   currentData?: Function
+  bypassDeleteWarning?: boolean
   advancedInput?: boolean
   placeHolder?: string
 }) => {
@@ -239,6 +241,7 @@ export const GlobalProvider = ({
         replyArr: replyArr,
         onReply: onReply,
         onDelete: onDelete,
+        bypassDeleteWarning: bypassDeleteWarning,
         customImg: customImg,
         inputStyle: inputStyle,
         formStyle: formStyle,

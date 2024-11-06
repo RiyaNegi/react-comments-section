@@ -83,6 +83,7 @@ const CustomComponent = () => {
           userProfile?: string
           fullName: string
           text: string
+          timestamp?: Date
           replies: any
         }) => console.log('check submit, ', data)}
         onDeleteAction={(data: any) => console.log('comment was deleted', data)}
@@ -94,6 +95,7 @@ const CustomComponent = () => {
           userProfile?: string
           fullName: string
           text: string
+          timestamp?: Date
         }) => console.log('check reply, ', data)}
         onEditAction={(data: any) => console.log('check edit', data)}
         customNoComment={() => customNoComment()}

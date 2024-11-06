@@ -16,14 +16,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es5",
+    "target": "es6",
     "allowJs": false,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "build"]
