@@ -1,9 +1,11 @@
 import React, { createContext, useEffect, useState } from 'react'
-// const { v4: uuidv4 } = require('uuid')
-import _ from 'lodash'
+// const { v4: uuidv4 } = require('uuid')  // Si vous souhaitez générer des UUID, décommentez cette ligne
+import _ from 'lodash'  // Utilisation de Lodash pour les manipulations de tableaux
 
+// Création du contexte global pour partager l'état avec les composants enfants
 export const GlobalContext = createContext({})
 
+// Le fournisseur de contexte qui gère l'état et les actions liées aux commentaires
 export const GlobalProvider = ({
   children,
   currentUser,
@@ -26,6 +28,7 @@ export const GlobalProvider = ({
   advancedInput,
   placeHolder
 }: {
+  // Définition des props que le fournisseur recevra, comme les données sur l'utilisateur, les styles, etc.
   children: any
   currentUser?: {
     currentUserId: string
@@ -71,6 +74,7 @@ export const GlobalProvider = ({
   advancedInput?: boolean
   placeHolder?: string
 }) => {
+  // État local pour les données de l'utilisateur courant et les commentaires
   const [currentUserData] = useState(currentUser)
   const [data, setData] = useState<
     Array<{
@@ -93,22 +97,25 @@ export const GlobalProvider = ({
           }>
         | undefined
     }>
-  >([])
-  const [editArr, setEdit] = useState<string[]>([])
-  const [replyArr, setReply] = useState<string[]>([])
+  >([])  // Données des commentaires et réponses
+  const [editArr, setEdit] = useState<string[]>([])  // État pour les commentaires en cours d'édition
+  const [replyArr, setReply] = useState<string[]>([])  // État pour les commentaires en cours de réponse
 
+  // Effet pour charger les données des commentaires depuis les props si elles sont définies
   useEffect(() => {
     if (commentData) {
       setData(commentData)
     }
   }, [commentData])
 
+  // Effet pour envoyer les données actuelles à la fonction `currentData` à chaque mise à jour des données
   useEffect(() => {
     if (currentData) {
       currentData(data)
     }
   }, [data])
 
+  // Fonction pour gérer les actions de réponse et d'édition (ajouter ou retirer de l'array `editArr` ou `replyArr`)
   const handleAction = (id: string, edit: boolean) => {
     if (edit) {
       let editArrCopy: string[] = [...editArr]
@@ -133,6 +140,7 @@ export const GlobalProvider = ({
     }
   }
 
+  // Fonction pour soumettre un nouveau commentaire
   const onSubmit = (text: string, uuid: string) => {
     let copyData = [...data]
     copyData.push({
@@ -150,6 +158,7 @@ export const GlobalProvider = ({
     setData(copyData)
   }
 
+  // Fonction pour éditer un commentaire
   const onEdit = (text: string, comId: string, parentId: string) => {
     let copyData = [...data]
     if (parentId) {
@@ -168,6 +177,7 @@ export const GlobalProvider = ({
     }
   }
 
+  // Fonction pour répondre à un commentaire
   const onReply = (
     text: string,
     comId: string,
@@ -210,6 +220,7 @@ export const GlobalProvider = ({
     }
   }
 
+  // Fonction pour supprimer un commentaire ou une réponse
   const onDelete = (comId: string, parentId: string) => {
     let copyData = [...data]
     if (parentId) {
@@ -229,6 +240,7 @@ export const GlobalProvider = ({
   return (
     <GlobalContext.Provider
       value={{
+        // Valeurs partagées par le contexte pour les enfants
         currentUserData: currentUserData,
         replyTop: replyTop,
         data: data,
@@ -256,9 +268,9 @@ export const GlobalProvider = ({
         placeHolder: placeHolder
       }}
     >
-      {children}
+      {children}  {/* Les composants enfants qui consomment ce contexte */}
     </GlobalContext.Provider>
   )
 }
 
-export default GlobalProvider
+export default GlobalProvider  // Exportation du fournisseur pour utilisation dans l'application

@@ -7,6 +7,7 @@ import '@szhsin/react-menu/dist/core.css'
 import DeleteModal from './DeleteModal'
 import React from 'react'
 
+// Définition des types des props du composant
 interface CommentStructureProps {
   info: {
     userId: string
@@ -22,12 +23,6 @@ interface CommentStructureProps {
   parentId?: string
   replyMode: boolean
   showTimestamp?: boolean
-  logIn: {
-    loginLink?: string | (() => void)
-    signUpLink?: string | (() => void)
-    onLogin?: string | (() => void)
-    onSignUp?: string | (() => void)
-  }
 }
 
 const CommentStructure = ({
@@ -37,12 +32,15 @@ const CommentStructure = ({
   replyMode,
   showTimestamp
 }: CommentStructureProps) => {
+  // Utilisation du contexte global pour accéder aux données de l'utilisateur actuel
   const globalStore: any = useContext(GlobalContext)
   const currentUser = globalStore.currentUserData
 
+  // Fonction pour afficher le menu d'options (éditer, supprimer)
   const optionsMenu = () => {
     return (
       <div className='userActions'>
+        {/* Si c'est le commentaire de l'utilisateur actuel, il voit les options d'édition et de suppression */}
         {info.userId === currentUser.currentUserId && (
           <Menu
             menuButton={
@@ -58,6 +56,7 @@ const CommentStructure = ({
               edit
             </MenuItem>
             <MenuItem>
+              {/* Modal de suppression pour supprimer ce commentaire */}
               <DeleteModal comId={info.comId} parentId={parentId} />
             </MenuItem>
           </Menu>
@@ -66,6 +65,7 @@ const CommentStructure = ({
     )
   }
 
+  // Fonction pour calculer l'intervalle de temps (comme "il y a 2 heures")
   const timeAgo = (date: string | number | Date): string => {
     const units = [
       { label: 'year', seconds: 31536000 },
@@ -80,6 +80,7 @@ const CommentStructure = ({
       (new Date().valueOf() - new Date(date).valueOf()) / 1000
     )
 
+    // Parcourt les unités de temps pour déterminer combien de temps s'est écoulé
     for (let { label, seconds } of units) {
       const interval = Math.floor(time / seconds)
       if (interval >= 1) {
@@ -90,6 +91,7 @@ const CommentStructure = ({
     return 'just now'
   }
 
+  // Fonction pour afficher les informations de l'utilisateur (nom, avatar, profil)
   const userInfo = () => {
     return (
       <div className='commentsTwo'>
@@ -99,12 +101,7 @@ const CommentStructure = ({
               src={info.avatarUrl}
               alt='userIcon'
               className='imgdefault'
-              style={
-                globalStore.imgStyle ||
-                (!globalStore.replyTop
-                  ? { position: 'relative', top: 7 }
-                  : null)
-              }
+              style={globalStore.imgStyle || (!globalStore.replyTop ? { position: 'relative', top: 7 } : null)}
             />
           </div>
           <div className='fullName'>
@@ -119,6 +116,7 @@ const CommentStructure = ({
     )
   }
 
+  // Section pour afficher une réponse au commentaire en haut (ou le bas) d'une conversation
   const replyTopSection = () => {
     return (
       <div className='halfDiv'>
@@ -131,6 +129,7 @@ const CommentStructure = ({
     )
   }
 
+  // Section pour afficher la réponse en bas d'une conversation
   const replyBottomSection = () => {
     return (
       <div className='halfDiv'>
@@ -147,7 +146,7 @@ const CommentStructure = ({
             <div className='infoStyle'>{info.text}</div>
           )}
           <div style={{ marginLeft: 32 }}>
-            {' '}
+            {/* Si l'utilisateur est connecté, il voit l'option pour répondre */}
             {currentUser && (
               <div>
                 <button
@@ -166,11 +165,13 @@ const CommentStructure = ({
     )
   }
 
+  // Affichage des sections selon le mode (réponse ou édition)
   const actionModeSection = (mode: string) => {
     if (mode === 'reply') {
       return (
         <div className='replysection'>
           {globalStore.replyTop ? replyTopSection() : replyBottomSection()}
+          {/* Champ pour répondre au commentaire */}
           <InputField
             formStyle={{
               backgroundColor: 'transparent',
@@ -186,6 +187,7 @@ const CommentStructure = ({
       )
     } else {
       return (
+        // Champ pour éditer un commentaire
         <InputField
           formStyle={{
             backgroundColor: 'transparent',
@@ -203,6 +205,7 @@ const CommentStructure = ({
 
   return (
     <div>
+      {/* Si en mode édition, afficher le champ d'édition */}
       {editMode
         ? actionModeSection('edit')
         : replyMode

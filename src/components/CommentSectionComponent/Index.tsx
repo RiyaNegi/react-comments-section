@@ -1,82 +1,63 @@
-import CommentStructure from '../CommentStructure.tsx/Index'
-import InputField from '../InputField/Index'
-import './CommentSection.css'
-import { useContext } from 'react'
-import { GlobalContext } from '../../context/Provider'
-import _ from 'lodash'
+// Importation des composants et des fichiers nécessaires
+import CommentStructure from '../CommentStructure.tsx/Index' // Structure d'un commentaire individuel
+import InputField from '../InputField/Index' // Champ pour écrire un nouveau commentaire
+import './CommentSection.css' // Fichier CSS pour le style du composant
+import { useContext } from 'react' // Hook React pour accéder au contexte global
+import { GlobalContext } from '../../context/Provider' // Contexte global pour stocker les commentaires et l'utilisateur
+import _ from 'lodash' // Librairie utilitaire pour manipuler les tableaux et objets
 import React from 'react'
-import LoginSection from '../LoginSection/LoginSection'
-import NoComments from './NoComments'
+import NoComments from './NoComments' // Composant affiché si aucun commentaire n'existe
 
+// Définition des props du composant
 interface CommentSectionProps {
-  overlayStyle?: object
-  logIn: {
-    loginLink?: string | (() => void)
-    signUpLink?: string | (() => void)
-    onLogin?: string | (() => void)
-    onSignUp?: string | (() => void)
-  }
-  hrStyle?: object
-  titleStyle?: object
-  customNoComment?: Function
-  showTimestamp?: boolean
+  overlayStyle?: object // Style CSS pour la superposition de la section de commentaires
+  hrStyle?: object // Style CSS pour la ligne de séparation
+  titleStyle?: object // Style CSS pour le titre de la section de commentaires
+  customNoComment?: Function // Fonction personnalisée pour afficher un message si aucun commentaire
+  showTimestamp?: boolean // Indique si l'on affiche l'horodatage des commentaires
 }
 
+// Définition du composant `CommentSection`
 const CommentSection = ({
   overlayStyle,
-  logIn,
   hrStyle,
   titleStyle,
   customNoComment,
-  showTimestamp = true
+  showTimestamp = true, // Par défaut, les timestamps sont affichés
 }: CommentSectionProps) => {
-  const handleLogin = () => {
-    if (typeof logIn.onLogin === 'function') {
-      logIn.onLogin()
-    } else if (typeof logIn.loginLink === 'string') {
-      window.location.href = logIn.loginLink
-    }
-  }
 
-  const handleSignUp = () => {
-    if (typeof logIn.onSignUp === 'function') {
-      logIn.onSignUp()
-    } else if (typeof logIn.signUpLink === 'string') {
-      window.location.href = logIn.signUpLink
-    }
-  }
-
-  const loginMode = () => {
-    return <LoginSection loginLink={handleLogin} signUpLink={handleSignUp} />
-  }
+  // Accès aux données globales (commentaires, utilisateur, etc.) via le contexte
   const globalStore: any = useContext(GlobalContext)
 
+  // Fonction pour compter le nombre total de commentaires (y compris les réponses)
   const totalComments = () => {
     let count = 0
     globalStore.data.map((i: any) => {
       count = count + 1
-      i.replies.map(() => (count = count + 1))
+      i.replies.map(() => (count = count + 1)) // Compte également les réponses aux commentaires
     })
     return count
   }
 
   return (
     <div className='overlay' style={overlayStyle}>
+      {/* Affichage du nombre total de commentaires */}
       <span className='comment-title' style={titleStyle}>
         {globalStore.commentsCount || totalComments()}{' '}
         {totalComments() === 1 ? 'Comment' : 'Comments'}
       </span>
-      <hr className='hr-style' style={hrStyle} />
-      {globalStore.currentUserData === null ? (
-        loginMode()
-      ) : (
-        <InputField
-          placeHolder={globalStore.placeHolder}
-          formStyle={{ margin: '10px 0px' }}
-          imgDiv={{ margin: 0 }}
-        />
-      )}
 
+      <hr className='hr-style' style={hrStyle} />
+
+      // Sinon, afficher le champ de saisie pour ajouter un commentaire
+      <InputField
+        placeHolder={globalStore.placeHolder}
+        formStyle={{ margin: '10px 0px' }}
+        imgDiv={{ margin: 0 }}
+      />
+
+
+      {/* Affichage des commentaires */}
       {globalStore.data.length > 0 ? (
         globalStore.data.map(
           (i: {
@@ -90,6 +71,7 @@ const CommentSection = ({
           }) => {
             return (
               <div key={i.comId}>
+                {/* Affichage d'un commentaire */}
                 <CommentStructure
                   info={i}
                   editMode={
@@ -102,9 +84,10 @@ const CommentSection = ({
                       ? false
                       : true
                   }
-                  logIn={logIn}
                   showTimestamp={showTimestamp}
                 />
+
+                {/* Si le commentaire a des réponses, les afficher */}
                 {i.replies &&
                   i.replies.length > 0 &&
                   i.replies.map((j) => {
@@ -123,7 +106,6 @@ const CommentSection = ({
                               ? false
                               : true
                           }
-                          logIn={logIn}
                           showTimestamp={showTimestamp}
                         />
                       </div>
@@ -134,8 +116,10 @@ const CommentSection = ({
           }
         )
       ) : customNoComment ? (
+        // Si aucun commentaire mais une fonction personnalisée est fournie, l'exécuter
         customNoComment()
       ) : (
+        // Sinon, afficher le composant par défaut "NoComments"
         <NoComments />
       )}
     </div>

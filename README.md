@@ -1,45 +1,58 @@
 # react-comments-section
 
-## Install
+### 🚀 À propos de ce fork
+Ce projet est un fork du projet original [react-comments-section](https://github.com/RiyaNegi/react-comments-section) créé par [RiyaNegi](https://github.com/RiyaNegi). Je ne suis pas l'auteur du plugin, mais je travaille sur une version modifiée ou adaptée.
 
-Install the latest version!
+### 📌 Objectif de cette contribution
+Le but de cette contribution est de démontrer ma capacité à :
+
+- Modifier une bibliothèque React existante.
+
+- Comprendre et analyser le code écrit par d'autres développeurs.
+
+- Améliorer et optimiser un code déjà existant.
+
+## Installation
+
+Installez la dernière version !
 
 ```bash
 npm i react-comments-section
 ```
 
-## Detailed Documentation : https://riyanegi.github.io/react-comments-documentation/
+## Documentation détaillée : https://riyanegi.github.io/react-comments-documentation/
 
-`react-comments-section` is a simple but multi-functional react comment section component that helps you create comments section similar to youtube or instagram for your React App.
-`react-comments-section` is very useful for react beginners who want a comment section in their project but want to skip it's complexity. This library will give a fully functional comment section with the following features:
+`react-comments-section`  est un composant React simple mais multifonctionnel qui vous permet d'ajouter une section de commentaires similaire à celles de YouTube ou Instagram dans votre application React.
+`react-comments-section`  est particulièrement utile pour les développeurs débutants qui souhaitent intégrer une section de commentaires sans se plonger dans sa complexité. Cette bibliothèque fournit une section de commentaires entièrement fonctionnelle avec les fonctionnalités suivantes :
 
-- User can reply to comments
-- User can edit his/her comments
-- User can delete his/her comments
+L'utilisateur peut répondre aux commentaires
 
-live demo of the library -> https://riyanegi.github.io/react-comments-section/
+L'utilisateur peut modifier ses propres commentaires
 
-## Default Example
+L'utilisateur peut supprimer ses propres commentaires
+
+Démo en ligne de la bibliothèque → https://riyanegi.github.io/react-comments-section/
+
+## Exemple par défaut
 
 ![commentbox](https://github.com/RiyaNegi/react-comments-section/blob/main/example/blob/default.png?raw=true)
 
-## Advanced Input (rich text editor)
+## Saisie avancée (éditeur de texte enrichi)
 
 ![commentbox](https://github.com/RiyaNegi/react-comments-section/blob/main/example/blob/advanced.png?raw=true)
 
-## Usage
+## Utilisation
 
-### Hooks Implementation (Typescript)
+### Implémentation avec Hooks (TypeScript)
 
-Following is a basic example to start testing the library in your project. This library works on a user basis
-system and here are a few important points to remember:
+Voici un exemple de base pour tester la bibliothèque dans votre projet. Cette bibliothèque fonctionne avec un système d'utilisateur, voici quelques points importants à retenir :
 
-- currentUser[required]. For no user details pass the prop as currentUser={null}
-- A new user can be redirected using the login/signup links in the logIn[required] prop.
-- The currentData[optional] prop returns an object of current data available after any action such as comment submission, reply, edit or delete.
-- The onSubmitAction returns an object of data with the required information to make an API call after a comment is submitted.
+- currentUser [obligatoire] : Pour une utilisation sans utilisateur connecté, passez currentUser={null}.
+- logIn [obligatoire] : L'utilisateur peut être redirigé vers une page de connexion/inscription via cette prop.
+- currentData [optionnel] : Retourne un objet contenant les données mises à jour après chaque action (ajout, réponse, modification ou suppression de commentaire).
+- onSubmitAction : Retourne un objet avec les informations nécessaires pour effectuer un appel API après la soumission d'un commentaire.
   For more details check out the props list in our detailed documentation.
-  This is how the basic default component would look.
+  Voici à quoi ressemble l'utilisation du composant par défaut :
 
 ```jsx
 import React from 'react'
@@ -94,7 +107,7 @@ export default DefaultComponent
 
 ```
 
-### Class Implementation
+### Implémentation avec une classe
 
 ```jsx
 import React, { PureComponent } from 'react'
